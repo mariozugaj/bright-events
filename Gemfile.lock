@@ -57,6 +57,9 @@ GEM
       railties (>= 4.1.0, < 5.1)
       responders
       warden (~> 1.2.3)
+    devise_zxcvbn (4.4.1)
+      devise
+      zxcvbn-js (~> 4.4.1)
     erubis (2.7.0)
     execjs (2.7.0)
     ffi (1.9.18)
@@ -87,6 +90,7 @@ GEM
     nio4r (2.0.0)
     nokogiri (1.7.1)
       mini_portile2 (~> 2.1.0)
+    normalize-rails (4.1.1)
     orm_adapter (0.5.0)
     puma (3.8.2)
     rack (2.0.1)
@@ -161,6 +165,8 @@ GEM
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
+    zxcvbn-js (4.4.2)
+      execjs
 
 PLATFORMS
   ruby
@@ -169,9 +175,11 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.2)
   devise
+  devise_zxcvbn
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)
+  normalize-rails
   puma (~> 3.0)
   rails (~> 5.0.2)
   sass-rails (~> 5.0)

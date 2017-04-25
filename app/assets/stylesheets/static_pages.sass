@@ -1,0 +1,35 @@
+@import 'colors'
+
+.main-header
+  grid-area: header
+  display: flex
+
+
+.logo
+  display: inline-block
+  color: $primary-color
+  font-weight: 700
+  font-size: 1.5rem
+  line-height: 2rem
+  padding: 9px 1.4rem
+  border-right: 1px solid $border-color
+
+.main-header_nav
+  margin-left: auto
+  display: flex
+
+.main-header_nav-link
+  display: inline-block
+  padding: 22px
+  border-left: 1px solid $border-color
+  color: $text-color
+  font-size: 0.6rem
+  text-transform: uppercase
+  letter-spacing: 0.5px
+
+  &:hover
+    background-color: $border-color
+
+.main-header_nav-item:last-of-type .main-header_nav-link
+  color: $alt-color
+  font-weight: bold

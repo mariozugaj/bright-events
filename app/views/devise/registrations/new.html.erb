@@ -1,29 +1,31 @@
-<h2>Sign up</h2>
+<% provide(:title, 'Sign up') %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+<section class='new-form'>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+  <header class='new-form_header'>
+    <h2>Sign up</h2>
+    <p>(All fields required)</p>
+  </header>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+  <hr>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= devise_error_messages! %>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+      <%= f.text_field :name, required: true, autofocus: true, placeholder: 'Name' %>
 
-<%= render "devise/shared/links" %>
+      <%= f.email_field :email, required: true, placeholder: 'Email' %>
+
+      <%= f.password_field :password, autocomplete: 'off', required: true, placeholder: "Password" %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+
+
+      <%= f.submit "Sign up", class: 'btn btn-success new-form_btn' %>
+
+  <% end %>
+
+  <p>Already have an account?
+    <%= link_to 'Log in', new_user_session_path, class: 'link-decorate' %>
+  </p>
+
+</section>
