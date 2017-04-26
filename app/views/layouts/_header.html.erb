@@ -1,24 +1,39 @@
 <header class='main-header'>
   <%= link_to 'Eventbrite', root_path, id: 'logo', class: 'logo' %>
   <nav class='main-header_nav'>
+
       <div class='main-header_nav-item'>
         <%= link_to 'Browse events', '#', class: 'main-header_nav-link'%>
       </div>
+
       <% if user_signed_in? %>
-        <div class='main-header_nav-item'>
-          <%= link_to 'Logout', destroy_user_session_path, method: 'delete',
-              class: 'main-header_nav-link main-header_nav-link-dropdown'%>
+
+        <div class="main-header_nav-item dropdown">
+          <%= link_to svg('user.svg', class: 'icon'), '#',
+                          class: 'main-header_nav-link main-header_nav-link--smp dropbtn' %>
+          <div class="dropdown-content">
+            <%= link_to 'Profile', current_user, title: 'Your profile', class: 'main-header_dropdown-link' %>
+            <%= link_to 'Manage events', '#', title: 'Manage your events', class: 'main-header_dropdown-link' %>
+            <%= link_to 'Logout', destroy_user_session_path, title: 'Logout',
+                         class: 'main-header_dropdown-link', method: 'delete' %>
+          </div>
         </div>
+
       <% else %>
+
         <div class='main-header_nav-item'>
           <%= link_to 'Sign up', new_user_registration_path, class: 'main-header_nav-link'%>
         </div>
+
         <div class='main-header_nav-item'>
           <%= link_to 'Log in', new_user_session_path, class: 'main-header_nav-link'%>
         </div>
+
       <% end %>
+
       <div class='main-header_nav-item'>
         <%= link_to 'Create event', '#', class: 'main-header_nav-link'%>
       </div>
+
   </nav>
 </header>

@@ -55,3 +55,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'devise_zxcvbn'
 gem 'normalize-rails'
+gem 'nokogiri'

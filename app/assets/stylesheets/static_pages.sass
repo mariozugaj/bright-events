@@ -1,9 +1,14 @@
 @import 'colors'
 
 .main-header
+  position: fixed
+  top: 0
+  width: 100%
+  //overflow: hidden
   grid-area: header
   display: flex
-
+  background-color: white
+  z-index: 10
 
 .logo
   display: inline-block
@@ -30,6 +35,36 @@
   &:hover
     background-color: $border-color
 
+.main-header_nav-link--smp
+  padding: 16px
+
 .main-header_nav-item:last-of-type .main-header_nav-link
   color: $alt-color
   font-weight: bold
+
+/*------------ Dropdown menu ---------*/
+
+.dropdown
+  position: relative
+
+.dropdown-content
+  display: none
+  position: absolute
+  left: -103px
+  background-color: white
+  min-width: 160px
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2)
+  z-index: 9999
+
+.main-header_dropdown-link
+  color: $text-color
+  font-size: 0.8rem
+  padding: 12px 16px
+  text-decoration: none
+  display: block
+  text-align: center
+  &:hover
+    background-color: $border-color
+
+.dropdown:hover .dropdown-content
+  display: block

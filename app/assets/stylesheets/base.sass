@@ -6,11 +6,19 @@ html
   font-size: 21px
   box-sizing: border-box
 
+body
+  margin-top: 60px
+  background-color: #F8F8FA
+/*--------- Links ------------*/
+
 a
   text-decoration: none
 
 .link-decorate:hover
   text-decoration: underline
+
+.link-decorate:visited, .link-decorate
+  color: $alt-color
 
 ul
   list-style: none
@@ -34,3 +42,7 @@ h1, h2, h3, h4, h5, h6, p
 
 .mt-1
   margin-top: 1rem
+
+::-webkit-input-placeholder
+  font-size: 0.8rem
+  text-align: center
