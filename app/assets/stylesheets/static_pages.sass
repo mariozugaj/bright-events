@@ -3,9 +3,8 @@
 .main-header
   position: fixed
   top: 0
+  grid-column: 1 / 17
   width: 100%
-  //overflow: hidden
-  grid-area: header
   display: flex
   background-color: white
   z-index: 10
@@ -14,7 +13,7 @@
   display: inline-block
   color: $primary-color
   font-weight: 700
-  font-size: 1.5rem
+  font-size: 1rem
   line-height: 2rem
   padding: 9px 1.4rem
   border-right: 1px solid $border-color
@@ -23,10 +22,19 @@
   margin-left: auto
   display: flex
 
+.main-header_nav-item
+  border-left: 1px solid $border-color
+  margin-left: auto
+  margin-right: auto
+  margin-top: auto
+  margin-bottom: auto
+
+.main-header_nav-item_username
+  display: inline
+
 .main-header_nav-link
   display: inline-block
   padding: 22px
-  border-left: 1px solid $border-color
   color: $text-color
   font-size: 0.6rem
   text-transform: uppercase
@@ -46,11 +54,12 @@
 
 .dropdown
   position: relative
+  cursor: default
 
 .dropdown-content
   display: none
   position: absolute
-  left: -103px
+  //left: -103px
   background-color: white
   min-width: 160px
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2)
@@ -68,3 +77,26 @@
 
 .dropdown:hover .dropdown-content
   display: block
+
+/*----------- Main content -------*/
+
+.hero-image-wrapper
+  grid-column: 1 / 17
+  grid-row: 2 / 2
+  position: relative
+  height: 500px
+  overflow: hidden
+
+.hero-img
+  width: 100%
+  height: auto
+  position: absolute
+  top: 0px
+  left: 0px
+  z-index: 0
+  -webkit-animation: imageAnimation 28s ease-in-out infinite
+
+.main-wrapper
+  display: grid
+  grid-column: 3 / 15
+  grid-row: 3 / 4

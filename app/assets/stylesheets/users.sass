@@ -1,3 +1,46 @@
-// Place all the styles related to the Users controller here.
-// They will automatically be included in application.css.
-// You can use Sass here: http://sass-lang.com/
+@import 'colors'
+
+.profile-header
+  grid-column: 3 / 15
+  grid-row: 2
+  display: flex
+  justify-content: space-between
+  padding: 1rem 0
+  align-items: center
+
+.profile-header_account
+  font-size: 0.8rem
+
+/*------- Profile aside ------*/
+
+.profile_aside
+  grid-column: 3 / 6
+  grid-row: 3
+  margin-top: 1rem
+  background-color: white
+  border-radius: 4px
+
+.profile_aside_title
+  margin-bottom: 0.5rem
+  padding: 0.5rem 0
+  border-bottom: 1px solid $border-color
+  font-size: 1rem
+  font-weight: 400
+
+.profile_aside_link
+  font-size: 0.8rem
+  color: $alt-color
+
+.profile_aside_box
+  padding: 0 0.8rem 0.5rem
+  border-bottom: 1px solid $border-color
+
+.profile_aside_box_item
+  margin: 0 0 1rem
+
+.profile_main
+  grid-column: 6 / 15
+  grid-row: 3
+  background-color: lightpink
+  margin-top: 1rem
+  padding: 0 1rem

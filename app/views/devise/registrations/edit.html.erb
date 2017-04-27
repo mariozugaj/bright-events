@@ -1,9 +1,10 @@
-<% provide(:title, 'Sign up') %>
+<% provide(:title, 'Update account') %>
 
 <section class='reglog-form'>
 
   <header class='reglog-form_header'>
-    <h2>Edit your account</h2>
+    <h2>Update your account</h2>
+    <p>Member since <%= time_ago_in_words(current_user.created_at) %> ago</p>
   </header>
 
   <hr class='reglog-form_h-rule'>

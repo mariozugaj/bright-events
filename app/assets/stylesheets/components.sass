@@ -25,6 +25,7 @@
   display: flex
   flex-direction: column
   align-items: center
+  grid-column: 8
 
   p
     font-size: 0.8rem
@@ -101,6 +102,7 @@
   li
     font-size: 0.8rem
     text-align: center
+
 /*---------- Buttons --------*/
 
 .btn
@@ -124,3 +126,38 @@
 
 .reglog-form_btn
   margin: 1rem 0
+
+.btn-aside
+  margin-left: auto
+  margin-right: auto
+  margin-top: 1rem
+  margin-bottom: 0.5rem
+
+/*----------- Grid ----------*/
+
+.page-container
+  position: relative
+  top: 60px
+  display: grid
+  width: 100%
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr
+  grid-template-rows: auto auto auto auto auto
+  grid-gap: 0 0.5rem
+
+/*---------- Home search ----------*/
+
+.search_wrapper
+  position: relative
+  z-index: 99
+  margin-top: -140px
+  padding: 25px 0
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,.25)
+  background: linear-gradient( rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 100%)
+  border-radius: 4px
+
+.search_title
+  line-height: 60px
+  color: $primary-color
+  font-weight: 200
+  text-align: center
+  margin-top: 10px

@@ -9,11 +9,13 @@
       <% if user_signed_in? %>
 
         <div class="main-header_nav-item dropdown">
-          <%= link_to svg('user.svg', class: 'icon'), '#',
-                          class: 'main-header_nav-link main-header_nav-link--smp dropbtn' %>
+          <div class='main-header_nav-link dropbtn'>
+            <%= svg('user.svg', class: 'icon') %>
+            <p class='main-header_nav-item_username'><%= current_user.name %></p>
+          </div>
           <div class="dropdown-content">
-            <%= link_to 'Profile', current_user, title: 'Your profile', class: 'main-header_dropdown-link' %>
-            <%= link_to 'Manage events', '#', title: 'Manage your events', class: 'main-header_dropdown-link' %>
+            <%= link_to 'Manage events', current_user, title: 'Manage your events', class: 'main-header_dropdown-link' %>
+            <%= link_to 'Update account', edit_user_registration_path, title: 'Update account', class: 'main-header_dropdown-link' %>
             <%= link_to 'Logout', destroy_user_session_path, title: 'Logout',
                          class: 'main-header_dropdown-link', method: 'delete' %>
           </div>

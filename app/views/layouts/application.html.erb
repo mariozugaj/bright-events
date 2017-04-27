@@ -7,9 +7,11 @@
   </head>
 
   <body>
-    <%= render 'layouts/header' %>
-    <%= render 'shared/flash' %>
-    <%= yield %>
-    <%= render 'layouts/footer' %>
+    <main class="page-container">
+      <%= render 'layouts/header' %>
+      <%= render 'shared/flash' %>
+      <%= yield %>
+      <%= render 'layouts/footer' %>
+    </main>
   </body>
 </html>
