@@ -15,16 +15,21 @@ ActiveRecord::Schema.define(version: 20170428084227) do
   create_table "events", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
-    t.string   "location"
+    t.string   "venue"
+    t.datetime "date"
+    t.string   "picture"
     t.float    "longitude"
     t.float    "latitude"
-    t.datetime "date"
     t.integer  "user_id"
     t.integer  "category_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["category_id"], name: "index_events_on_category_id"
+    t.index ["date"], name: "index_events_on_date"
+    t.index ["picture"], name: "index_events_on_picture"
+    t.index ["title"], name: "index_events_on_title"
     t.index ["user_id"], name: "index_events_on_user_id"
+    t.index ["venue"], name: "index_events_on_venue"
   end
 
   create_table "users", force: :cascade do |t|

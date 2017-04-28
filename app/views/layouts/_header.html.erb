@@ -3,7 +3,7 @@
   <nav class='main-header_nav'>
 
       <div class='main-header_nav-item'>
-        <%= link_to 'Browse events', '#', class: 'main-header_nav-link'%>
+        <%= link_to 'Browse events', events_path, class: 'main-header_nav-link'%>
       </div>
 
       <% if user_signed_in? %>

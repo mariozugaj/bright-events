@@ -1,31 +1,5 @@
-<div class="profile-header">
-  <h2 class='profile-header_title'><%= current_user.name %></h2>
-</div>
+<h2 class='profile-header_name title--skinny'><%= current_user.name %></h2>
+<h2 class='profile-header_title title--skinny'>Events you've created</h2>
+<%= render 'users/aside' %>
 
-<aside class="profile_aside">
-
-  <div class="profile_aside_box">
-    <h3 class='profile_aside_title'>
-      <%= svg('headphones.svg', class: 'icon') %>
-      Your events</h3>
-    <ul>
-      <li class='profile_aside_box_item'>
-        <%= link_to 'Upcoming events', '#', class: 'profile_aside_link' %>
-      </li>
-      <li class ='profile_aside_box_item'>
-        <%= link_to 'Past events', '#', class: 'profile_aside_link' %>
-      </li>
-      <li class ='profile_aside_box_item'>
-        <%= link_to "Events you're attending", '#', class: 'profile_aside_link' %>
-      </li>
-    </ul>
-  </div>
-  <div class="profile_aside_box">
-    <button class='btn btn-success btn-aside'>
-      <%= link_to 'Create event', '#', class: 'button-link' %>
-    </button>
-  </div>
-</aside>
-
-<section class='profile_main' id='profile-main'>
-</section>
+<%= render 'users/main_box' %>
