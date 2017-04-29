@@ -13,16 +13,31 @@ User.create!(name: 'Mario Zugaj',
                password: password,
                confirmed_at: Time.zone.now)
 end
+# Categories
+categories = [
+  'Auto, Boat & Air', 'Business & Professional', 'Charity & Causes',
+  'Community & Culture', 'Family & Education', 'Fashion & Beauty',
+  'Film, Media & Entertainment', 'Food & Drink',
+  'Government & Politics', 'Health & Wellness',
+  'Hobbies & Special Interest', 'Home & Lifestyle',
+  'Music', 'Other', 'Performing & Visual Arts',
+  'Religion & Spirituality', 'Science & Technology',
+  'Seasonal & Holiday', 'Sports & Fitness', 'Travel & Outdoor'
+]
 
-#Event
+categories.each do |category|
+  Category.create!(name: category)
+end
+# Event
 
 users = User.all
 15.times do
-  title = Faker::Friends.quote
+  title = Faker::Beer.name
   description = Faker::Lorem.sentences(4)
   venue = "#{Faker::Address.street_address}, #{Faker::Address.city}"
-  picture = "event-#{rand(4)}.jpeg"
+  picture = Rails.root.join("app/assets/images/event-#{rand(4)}.jpg").open
   date = Faker::Date.forward(60)
+  category = rand(19) + 1
   longitude = Faker::Address.longitude
   latitude = Faker::Address.latitude
   users.each do |user|
@@ -31,6 +46,7 @@ users = User.all
                         venue: venue,
                         date: date,
                         picture: picture,
+                        category_id: category,
                         longitude: longitude,
                         latitude: latitude)
   end
