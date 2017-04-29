@@ -7,7 +7,7 @@
     <p>Member since <%= time_ago_in_words(current_user.created_at) %> ago</p>
   </header>
 
-  <hr class='reglog-form_h-rule'>
+  <hr class='h-rule-5--orange'>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= devise_error_messages! %>
@@ -25,7 +25,7 @@
     <i class='reglog-form_input-exp'>(leave blank if you don't want to change it)</i>
     <em class='reglog-form_input-exp'><%= @minimum_password_length %> characters minimum</em>
 
-    <hr class='reglog-form_h-rule'>
+    <hr class='h-rule-5--orange'>
 
     <%= f.password_field :current_password, autocomplete: "off",
                           placeholder: 'Current password',
