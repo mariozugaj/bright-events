@@ -3,11 +3,11 @@
     <%= link_to event, class: 'event-postcard_main' do %>
 
       <header class='event-postcard_main_header'>
-        <%= image_tag event.picture, class: 'event-postcard_image' %>
+        <%= image_tag event.picture.thumb.url, class: 'event-postcard_image' %>
       </header>
 
       <div class='event-postcard_main_body'>
-        <%= time_tag event.date, event.date.strftime("%a, %d %b %k:%M %p"), class: 'event-postcard_date' %>
+        <%= time_tag event.date, event.date.strftime("%a, %d %b %Y %k:%M %p"), class: 'event-postcard_date' %>
         <%= content_tag(:h5, truncate(event.title, length: 45), class: 'event-postcard_title') %>
         <%= content_tag(:h6, event.venue, class: 'event-postcard_venue') %>
       </div>

@@ -1,0 +1,44 @@
+<%= form_for @event, html: { class: 'event-form' } do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <div class='event-form_group'>
+    <%= f.label :title %>
+    <%= f.text_field :title, required: true, autofocus: true,
+                    placeholder: 'Short, distinct title', class: 'event-form_field' %>
+  </div>
+
+  <div class='event-form_group'>
+    <%= f.label :venue %>
+    <%= f.text_field :venue, required: true, placeholder: 'Where it\'s held',
+                     class: 'event-form_field' %>
+  </div>
+
+  <div class='event-form_group'>
+    <%= f.label 'Date and time' %>
+    <%= f.datetime_field :date, required: true, min: Date.tomorrow, class: 'event-form_field' %>
+  </div>
+
+  <div class='event-form_group'>
+    <%= f.label :category %>
+    <div class='select-box'>
+      <%= svg('circle-down.svg', class: 'select-icon') %>
+      <%= f.select :category_id, Category.pluck(:name, :id),
+                                 { include_blank: 'Please select a category' },
+                                 { class: 'event-form_select', required: true } %>
+    </div>
+  </div>
+
+  <div class='event-form_group'>
+    <%= f.label :description %>
+    <%= f.text_area :description, placeholder: 'Provide a detailed description of your event',
+                                  class: 'event-form_text-area' %>
+  </div>
+
+  <div class='event-form_group'>
+    <%= f.file_field :picture, class: 'inputfile inputfile-1' %>
+    <label for="event_picture"><%= svg('fileinput.svg') %><span>Add event image</span></label>
+    <p class='file-input-exp'>Please use only 1 image, at least 2160x1080px (2:1), max 5MB</p>
+  </div>
+
+  <%= f.submit 'Make it live', class: 'btn btn-success btn--large' %>
+<% end %>
