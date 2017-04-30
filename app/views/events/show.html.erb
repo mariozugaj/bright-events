@@ -1,1 +1,60 @@
-<h1><%= @event.title %></h1>
+<div class="hero-image-wrapper">
+  <%= image_tag @event.picture, class: 'event_hero--blurry' %>
+</div>
+
+<section class='event-show_wrapper'>
+
+  <figure class='event-show_header_picture-container'>
+    <%= image_tag @event.picture, class: 'event-show_header_picture'%>
+    <% if @event.creator == current_user %>
+      <div class='event_edit--big event_edit'><%= link_to('edit', edit_event_path(@event), class: 'link-decorate') %></div>
+    <% end %>
+  </figure>
+
+  <aside class='event-show_header_info-container'>
+
+    <div class='event-show_info_date'>
+      <%= time_tag @event.date, '', class: 'event-show_date' do %>
+        <%= content_tag :p, @event.date.strftime("%b"), class: 'event-show_sec-title text--muted' %>
+        <%= content_tag :p, @event.date.strftime("%d"), class: 'event-show_info_date_day text--muted' %>
+      <% end %>
+    </div>
+
+    <div class='event-show_info_body'>
+      <%= content_tag :h2, @event.title, class: 'event-show_info_title' %>
+      <%= content_tag :p, (link_to "by #{@event.creator.name}",
+          user_path(@event.creator), class: 'link-decorate text--muted'), class: 'event-show_info_creator' %>
+    </div>
+  </aside>
+
+  <div class='event-show_attend-btn'>
+    <button class='btn btn--success btn--mtb1'>Click to attend</button>
+  </div>
+
+  <section class='event-show_description-container'>
+    <%= content_tag :h3, 'Descripton', class: 'event-show_sec-title' %>
+    <div class='event-show_description'>
+      <%= sanitize @event.description, tags: %w(strong em a h3 h4 h5 h6 p hr), attributes: %w(href) %>
+    </div>
+  </section>
+
+  <aside class="event-show_aside-info">
+
+    <div class='event-show_aside-info_item'>
+      <%= content_tag :h3, 'Date and time', class: 'event-show_sec-title' %>
+      <div class='event-show_aside-info_content'>
+        <%= time_tag @event.date, @event.date.strftime("%a, %d %b %Y %k:%M %p") %>
+      </div>
+    </div>
+
+    <div class='event-show_aside-info_item'>
+      <%= content_tag :h3, 'Location', class: 'event-show_sec-title' %>
+      <address class='event-show_aside-info_content'>
+        <% @event.venue.split(', ').each do |address_slice| %>
+          <%= content_tag :p, address_slice %>
+        <% end %>
+      </address>
+    </div>
+
+  </aside>
+</section>

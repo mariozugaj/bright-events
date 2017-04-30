@@ -82,11 +82,12 @@
 
 .hero-image-wrapper
   grid-column: 1 / 17
-  grid-row: 2 / 2
+  grid-row: 2
   position: relative
-  height: 30vw
+  height: 35vw
   max-height: 500px
   overflow: hidden
+  z-index: 0
 
 .hero-img
   height: 100%
@@ -98,6 +99,9 @@
   left: 0
   z-index: 0
   -webkit-animation: imageAnimation 28s ease-in-out infinite
+
+.event_hero--blurry
+  filter: blur(50px), brightness(0.9)
 
 .main-wrapper
   display: grid

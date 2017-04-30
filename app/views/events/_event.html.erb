@@ -1,6 +1,8 @@
 <div class='event_cell'>
   <div class='event-postcard'>
-    <div class='event_edit'><%= link_to('edit', edit_event_path(event), class: 'link-decorate') %></div>
+    <% if event.creator == current_user %>
+      <div class='event_edit'><%= link_to('edit', edit_event_path(event), class: 'link-decorate') %></div>
+    <% end %>
 
     <%= link_to event, class: 'event-postcard_main' do %>
 

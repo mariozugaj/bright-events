@@ -25,6 +25,11 @@
   right: 8px
   top: 8px
   z-index: 10
+  text-transform: uppercase
+
+.event_edit--big
+  padding: 0.4rem 1rem
+  font-size: 0.8rem
 
 .event-postcard_main_header
   width: 100%
@@ -88,3 +93,112 @@
   flex-direction: column
   grid-row: 5
   grid-column: 6 / 12
+
+/*--------- Event show ------------*/
+
+.event_hero--blurry
+  -webkit-filter: blur(50px) brightness(0.9)
+  filter: blur(50px) brightness(0.9)
+  height: 100%
+  width: 100%
+  object-fit: cover
+  object-position: center
+  position: absolute
+  top: 0
+  left: 0
+  z-index: 0
+
+.event-show_wrapper
+  grid-row: 2 / 4
+  grid-column: 3 / 15
+  position: relative
+  margin-top: 2rem
+  display: grid
+  grid-template-columns: 2fr 1fr
+  grid-template-rows: minmax(200px, 360px) auto auto auto auto auto
+  background-color: white
+  border-radius: 4px
+
+.event-show_header_picture-container
+  grid-row: 1 / 2
+  grid-column: 1 / 2
+  position: relative
+  overflow: hidden
+
+.event-show_header_picture
+  width: 100%
+  height: 100%
+  border-radius: 4px 0 0 0
+
+.event-show_header_info-container
+  grid-row: 1 / 2
+  grid-column: 2 / 3
+  padding: 1.4rem
+  background-color: rgba(232, 231, 231, 0.3)
+
+.event-show_info_date
+  position: absolute
+  text-align: center
+
+.event-show_sec-title
+  font-size: 0.6rem
+  line-height: 0.7rem
+  text-transform: uppercase
+  font-weight: 600
+  letter-spacing: 0.5px
+  color: $text-color--accent
+
+.event-show_info_date_day
+  font-size: 1rem
+  letter-spacing: 1px
+  font-weight: 400
+  line-height: 1.25rem
+  text-align: center
+
+.event-show_info_body
+  padding-top: 3rem
+
+.event-show_info_title
+  font-size: 1.4rem
+  line-height: 1.6rem
+  letter-spacing: 1px
+  font-weight: 500
+
+.event-show_info_creator
+  padding-top: 1rem
+  font-size: 0.8rem
+
+.event-show_attend-btn
+  grid-row: 2 / 3
+  grid-column: 1 / 3
+  display: flex
+  justify-content: center
+  align-items: center
+  border-bottom: 1px solid $border-color
+
+.event-show_description-container
+  grid-column: 1 / 2
+  grid-row: 3 / 4
+  padding: 2.5rem 5rem
+  display: flex
+  align-items: flex-start
+  flex-direction: column
+  border-bottom: 1px solid $border-color
+
+.event-show_description, .event-show_aside-info_content
+  font-size: 0.8rem
+  padding-top: 1rem
+  font-weight: 300
+  line-height: 1rem
+
+.event-show_description
+  white-space: pre-line
+
+.event-show_aside-info
+  grid-row: 3 / 4
+  grid-column: 2 / 3
+  padding: 2.5rem 5rem 1rem 0
+  border-bottom: 1px solid $border-color
+
+.event-show_aside-info_item
+  margin-bottom: 2rem
