@@ -22,6 +22,9 @@
 .flash-notice
   background-color: $alt-color
 
+.flash-success
+  background-color: $success-color
+
 
 /*--------- Login/signup forms ------*/
 
@@ -110,7 +113,7 @@
     padding: 0.5rem 0
 
 .event-form_group
-  padding: 1rem
+  padding: 0 1rem 1rem
   width: 450px
 
 .event-form_field
@@ -184,12 +187,13 @@
 .inputfile-1
   + label
     color: white
-    background-color: $primary-color
+    background-color: $alt-color
   &:focus + label, &.has-focus + label, + label:hover
-    background-color: #8a4225
+    background-color: #044b71
 
 .file-input-exp
   font-size: 0.7rem
+
 /*---------- Buttons --------*/
 
 .btn
@@ -206,10 +210,10 @@
   &:hover
     opacity: 0.8
 
-.btn-success
+.btn--success
   background-color: $success-color
 
-.btn-danger
+.btn--danger
   background-color: $primary-color
 
 .btn--large
@@ -217,10 +221,13 @@
   font-weight: 600
   padding: 0.8rem 1.6rem
 
-.reglog-form_btn
+.btn--mtb1
   margin: 1rem 0
 
-.btn-aside
+.btn--m1
+  margin: 1rem
+
+.btn--aside
   margin: 1rem auto
 
 /*----------- Grid ----------*/

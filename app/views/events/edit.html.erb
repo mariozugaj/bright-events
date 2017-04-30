@@ -1,0 +1,16 @@
+<% provide(:title, 'Edit the event') %>
+
+<section class='page-container_header--2'>
+  <h2 class='title title--bold title--center'>Edit the event</h2>
+</section>
+<hr class='h-rule-5--orange h-rule-5--grid-3'>
+
+<%= render 'form' %>
+
+<section class='event-delete'>
+  <h4>Want to delete the event?</h4>
+
+  <%= button_to "Delete event", event_path,
+                data: { confirm: "Are you sure?" }, method: :delete,
+                class: 'btn btn--danger btn--mtb1' %>
+</section>

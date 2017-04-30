@@ -1,5 +1,7 @@
 <div class='event_cell'>
   <div class='event-postcard'>
+    <div class='event_edit'><%= link_to('edit', edit_event_path(event), class: 'link-decorate') %></div>
+
     <%= link_to event, class: 'event-postcard_main' do %>
 
       <header class='event-postcard_main_header'>
@@ -9,13 +11,14 @@
       <div class='event-postcard_main_body'>
         <%= time_tag event.date, event.date.strftime("%a, %d %b %Y %k:%M %p"), class: 'event-postcard_date' %>
         <%= content_tag(:h5, truncate(event.title, length: 45), class: 'event-postcard_title') %>
-        <%= content_tag(:h6, event.venue, class: 'event-postcard_venue') %>
+        <%= content_tag(:h6, truncate(event.venue, length: 30), class: 'event-postcard_venue') %>
       </div>
+
     <% end %>
+
     <footer class='event-postcard_footer'>
-      <div>
-        <!--Categories-->
-      </div>
+      <%= content_tag(:h6, link_to("##{event.category.name}", '#', class: 'link-decorate'), class: 'event-postcard_category') %>
     </footer>
+
   </div>
 </div>

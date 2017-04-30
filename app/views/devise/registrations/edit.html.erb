@@ -32,7 +32,7 @@
                           class: 'reglog-form_input reglog-form_input--no-margin' %>
     <i class='reglog-form_input-exp'>(we need your current password to confirm your changes)</i>
 
-    <%= f.submit "Update", class: 'btn btn-success reglog-form_btn' %>
+    <%= f.submit "Update", class: 'btn btn--success btn--mtb1' %>
 
   <% end %>
 
@@ -40,4 +40,4 @@
 
   <%= button_to "Delete account", registration_path(resource_name),
                 data: { confirm: "Are you sure?" }, method: :delete,
-                class: 'btn btn-danger reglog-form_btn' %>
+                class: 'btn btn--danger btn--mtb1' %>

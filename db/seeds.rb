@@ -4,6 +4,7 @@ User.create!(name: 'Mario Zugaj',
              password: 'Qw1ITlgILwyWgfWbPhK9vNeVofGKnDC8',
              confirmed_at: Time.zone.now)
 
+=begin
 10.times do |n|
   name = Faker::Name.name
   email = "example-#{n + 1}@example.com"
@@ -13,6 +14,8 @@ User.create!(name: 'Mario Zugaj',
                password: password,
                confirmed_at: Time.zone.now)
 end
+=end
+
 # Categories
 categories = [
   'Auto, Boat & Air', 'Business & Professional', 'Charity & Causes',
@@ -30,6 +33,7 @@ categories.each do |category|
 end
 # Event
 
+=begin
 users = User.all
 15.times do
   title = Faker::Beer.name
@@ -51,3 +55,4 @@ users = User.all
                         latitude: latitude)
   end
 end
+=end

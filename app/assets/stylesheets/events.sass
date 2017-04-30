@@ -14,6 +14,17 @@
   background-color: white
   box-shadow: 0 1px 0 0 rgba(0,0,0,.1)
   border-radius: 4px
+  position: relative
+
+.event_edit
+  position: absolute
+  padding: 0.1rem 0.5rem
+  background-color: white
+  border-radius: 4px
+  font-size: 0.8rem
+  right: 8px
+  top: 8px
+  z-index: 10
 
 .event-postcard_main_header
   width: 100%
@@ -35,7 +46,7 @@
     -webkit-transform: scale(1.1)
     transform: scale(1.1)
 
-.event-postcard_main_body
+.event-postcard_main_body, .event-postcard_footer
   padding: 5px 15px
 
 .event-postcard_date
@@ -57,12 +68,23 @@
   height: 38px
   text-transform: capitalize
 
-.event-postcard_venue, .event-postcard_date
+.event-postcard_venue, .event-postcard_date, .event-postcard_category
   font-size: 12px
   line-height: 18px
   font-weight: 400
   letter-spacing: 0.5px
 
-.event-postcard_venue
-  height: 36px
-  max-height: 36px
+.event-postcard_footer
+  border-top: 1px solid $border-color
+
+.event-postcard_category
+  line-height: 35px
+
+.event-delete
+  padding: 1rem
+  display: flex
+  justify-content: center
+  align-items: center
+  flex-direction: column
+  grid-row: 5
+  grid-column: 6 / 12
