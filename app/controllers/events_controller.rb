@@ -6,7 +6,7 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find(params[:id])
+    @event = Event.find_by(slug: params[:id])
   end
 
   def new
@@ -24,11 +24,11 @@ class EventsController < ApplicationController
   end
 
   def edit
-    @event = Event.find(params[:id])
+    @event = Event.find_by(slug: params[:id])
   end
 
   def update
-    @event = Event.find(params[:id])
+    @event = Event.find_by(slug: params[:id])
     if @event.update_attributes(event_params)
       flash[:success] = 'Event updated'
       redirect_to @event
@@ -38,7 +38,7 @@ class EventsController < ApplicationController
   end
 
   def destroy
-    Event.find(params[:id]).destroy
+    Event.find_by(slug: params[:id]).destroy
     flash[:success] = 'Event deleted'
     redirect_to user_path(current_user)
   end

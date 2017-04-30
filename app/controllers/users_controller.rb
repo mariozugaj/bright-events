@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:show]
+
   def show
-    @events = current_user.events
+    @user = current_user || User.find_by(slug: params[:id])
+    @events = User.find_by(slug: params[:id]).events
   end
 end
