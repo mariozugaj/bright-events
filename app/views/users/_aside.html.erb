@@ -4,15 +4,24 @@
     <h3 class='profile_aside_title'>
       <%= svg('headphones.svg', class: 'icon') %>
       Your events</h3>
-    <ul>
+    <ul class='profile_aside_link-container'>
       <li class='profile_aside_box_item'>
-        <%= link_to 'Events you created', event_path, remote: true, class: 'profile_aside_link active' %>
+        <%= link_to "Events you created (#{@user.events.count})",
+                    created_events_user_path,
+                    remote: true,
+                    class: 'profile_aside_link link--active' %>
       </li>
       <li class='profile_aside_box_item'>
-        <%= link_to 'Upcoming attending events', '#', remote: true, class: 'profile_aside_link' %>
+        <%= link_to "Attending events (#{@user.upcoming_events.count})",
+                     upcoming_events_user_path,
+                     remote: true,
+                     class: 'profile_aside_link' %>
       </li>
       <li class ='profile_aside_box_item'>
-        <%= link_to 'Past  attended events', '#', remote: true, class: 'profile_aside_link' %>
+        <%= link_to "Attended events (#{@user.past_attended_events.count})",
+                    past_attended_events_user_path,
+                    remote: true,
+                    class: 'profile_aside_link' %>
       </li>
     </ul>
   </div>

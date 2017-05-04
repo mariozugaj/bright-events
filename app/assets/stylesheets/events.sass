@@ -5,6 +5,8 @@
   display: flex
   flex-wrap: wrap
 
+/*------- Event postcard ------*/
+
 .event_cell
   padding: 0 0.5rem 0.8rem
   box-sizing: border-box
@@ -33,15 +35,13 @@
 
 .event-postcard_main_header
   width: 100%
-  height: 160px
+  height: 165px
   overflow: hidden
+  border-bottom: 1px solid $border-color
 
-.event-postcard_image
+.event-postcard_image, .event-list_image
   width: 100%
   height: 100%
-  object-fit: cover
-  object-position: center
-  border-radius: 4px 4px 0 0
   -moz-transition: all 0.3s
   -webkit-transition: all 0.3s
   transition: all 0.3s
@@ -50,6 +50,12 @@
     -moz-transform: scale(1.1)
     -webkit-transform: scale(1.1)
     transform: scale(1.1)
+
+.event-postcard_image
+  border-radius: 4px 4px 0 0
+
+.event_image--grayscale
+  filter: grayscale(0.9)
 
 .event-postcard_main_body, .event-postcard_footer
   padding: 5px 15px
@@ -101,12 +107,18 @@
   filter: blur(50px) brightness(0.9)
   height: 100%
   width: 100%
+  -o-object-fit: cover
   object-fit: cover
+  -o-object-position: center
   object-position: center
   position: absolute
   top: 0
   left: 0
   z-index: 0
+
+.event_hero--blurry--grayscale
+  -webkit-filter: blur(50px) brightness(0.9) grayscale(0.9)
+  filter: blur(50px) brightness(0.9) grayscale(0.9)
 
 .event-show_wrapper
   grid-row: 2 / 4
@@ -115,7 +127,7 @@
   margin-top: 2rem
   display: grid
   grid-template-columns: 2fr 1fr
-  grid-template-rows: minmax(200px, 360px) auto auto auto auto auto
+  grid-template-rows: minmax(200px, 360px) auto auto minmax(200px, 360px) auto auto
   background-color: white
   border-radius: 4px
 
@@ -129,6 +141,11 @@
   width: 100%
   height: 100%
   border-radius: 4px 0 0 0
+  object-fit: cover
+  object-position: center
+
+.event-show_header_picture--grayscale
+  filter: grayscale(0.9)
 
 .event-show_header_info-container
   grid-row: 1 / 2
@@ -168,13 +185,14 @@
   padding-top: 1rem
   font-size: 0.8rem
 
-.event-show_attend-btn
+.event-show_attend-container
   grid-row: 2 / 3
   grid-column: 1 / 3
   display: flex
   justify-content: center
   align-items: center
   border-bottom: 1px solid $border-color
+  padding: 1rem 0
 
 .event-show_description-container
   grid-column: 1 / 2
@@ -186,13 +204,17 @@
   border-bottom: 1px solid $border-color
 
 .event-show_description, .event-show_aside-info_content
-  font-size: 0.8rem
+  font-size: 0.9rem
   padding-top: 1rem
   font-weight: 300
   line-height: 1rem
+  letter-spacing: 0.5px
 
 .event-show_description
   white-space: pre-line
+
+.event-show_aside-info_content
+  font-size: 0.8rem
 
 .event-show_aside-info
   grid-row: 3 / 4
@@ -202,3 +224,113 @@
 
 .event-show_aside-info_item
   margin-bottom: 2rem
+
+.event-show_map-container
+  grid-row: 4 / 5
+  grid-column: 1 / 3
+  overflow: hidden
+
+.event-show_footer-info
+  grid-row: 5 / 6
+  grid-column: 1 / 3
+  display: flex
+  flex-direction: column
+  align-items: center
+  padding: 2rem 0
+
+.event-show_footer_title
+  font-size: 1rem
+
+.event-show_footer_at
+  font-size: 0.7rem
+  padding: 0.5rem 0
+  font-weight: 300
+
+.event-show_footer_address
+  font-size: 0.8rem
+  padding-top: 0.3rem
+  font-weight: 300
+  line-height: 1rem
+
+/*------- Event list -------*/
+.event_cell--list
+  width: 100%
+  padding: 0 0.5rem 0.8rem
+  box-sizing: border-box
+
+.event-list
+  display: flex
+  position: relative
+  height: 137px
+
+.event-list_main_header
+  flex-grow: 1
+  max-width: 200px
+  height: 100%
+  overflow: hidden
+  border-right: 1px solid $border-color
+
+.event-list_main_body
+  background-color: white
+  flex-grow: 3
+  height: 100%
+
+.event-list_footer
+  display: flex
+  justify-content: flex-start
+  align-items: flex-end
+  border-top: 1px solid $border-color
+  padding-top: 0.4rem
+
+.event-list_date, .event-list_venue, .event-list_category
+  color: $text-color
+  font-size: 12px
+  line-height: 18px
+  font-weight: 400
+  letter-spacing: 0.5px
+  padding-left: 0.8rem
+
+.event-list_title
+  color: $text-color--accent
+  font-size: 16px
+  line-height: 19px
+  font-weight: 600
+  letter-spacing: 0.5px
+  text-transform: capitalize
+  height: 38px
+  padding-left: 0.8rem
+
+.event-list_venue
+  padding: 0.3rem 0.8rem
+
+.event-list_date
+  padding-top: 0.8rem
+
+$loader-size: 5rem
+$animation-duration: 1.5s
+
+.pulse
+  display: none
+  width: $loader-size
+  height: $loader-size
+  margin: 0 auto
+  border-radius: 100%
+  background-color: white
+  opacity: 1
+  animation: pulse $animation-duration infinite ease-in-out
+
+
+@keyframes pulse
+  0%
+    transform: scale(0)
+    opacity: .8
+
+  100%
+    transform: scale(1)
+    opacity: 0
+
+.load-more-container
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: center

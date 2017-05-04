@@ -1,0 +1,40 @@
+<% if @events.any? %>
+  <% @events.each do |event| %>
+
+    <div class='event_cell' data-id="<%= event.id %>">
+      <div class='event-postcard'>
+        <% if event.creator == current_user && event.upcoming? %>
+          <div class='event_edit'><%= link_to('edit', edit_event_path(event), class: 'link-decorate') %></div>
+        <% end %>
+
+        <%= link_to event, class: 'event-postcard_main' do %>
+
+          <header class='event-postcard_main_header'>
+            <% if event.upcoming? %>
+              <%= image_tag event.picture.thumb.url,
+                            class: 'event-postcard_image' %>
+            <% else %>
+              <%= image_tag event.picture.thumb.url,
+                            class: 'event-postcard_image event_image--grayscale' %>
+            <% end %>
+          </header>
+
+          <div class='event-postcard_main_body'>
+            <%= time_tag event.date, event.date.strftime("%a, %d %b %Y %k:%M %p"), class: 'event-postcard_date' %>
+            <%= content_tag(:h5, truncate(event.title, length: 45), class: 'event-postcard_title') %>
+            <%= content_tag(:h6, truncate((event.venue + ', ').concat(event.address),length: 35), class: 'event-postcard_venue') %>
+          </div>
+
+        <% end %>
+
+        <footer class='event-postcard_footer'>
+          <%= content_tag(:h6, link_to("##{event.category.name}", '#', class: 'link-decorate'), class: 'event-postcard_category') %>
+          <%= content_tag(:h6, "Attendees: #{event.attendees.count}", class: 'event-postcard_category') %>
+        </footer>
+
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <h3 class='title title--center title--skinny'>No events found</h3>
+<% end %>

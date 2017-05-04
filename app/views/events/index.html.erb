@@ -4,6 +4,10 @@
 </div>
 <section class='main-wrapper'>
   <div class='events-wrapper'>
-    <%= render @events %>
+    <%= render 'events/event-postcard' %>
+  </div>
+  <div class="load-more-container">
+    <div class="pulse"></div>
+    <%= link_to "Load More", events_path, class: "load-more btn btn--hollow" %>
   </div>
 </section>

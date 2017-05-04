@@ -1,12 +1,22 @@
 <div class="hero-image-wrapper">
-  <%= image_tag @event.picture, class: 'event_hero--blurry' %>
+  <% if @event.upcoming? %>
+    <%= image_tag @event.picture, class: 'event_hero--blurry' %>
+  <% else %>
+    <%= image_tag @event.picture, class: 'event_hero--blurry event_image--grayscale' %>
+  <% end %>
 </div>
 
 <section class='event-show_wrapper'>
 
   <figure class='event-show_header_picture-container'>
-    <%= image_tag @event.picture, class: 'event-show_header_picture'%>
-    <% if @event.creator == current_user %>
+
+    <% if @event.upcoming? %>
+      <%= image_tag @event.picture.show.url, class: 'event-show_header_picture'%>
+    <% else %>
+      <%= image_tag @event.picture.show.url, class: 'event-show_header_picture event_image--grayscale'%>
+    <% end %>
+
+    <% if @event.creator == current_user && @event.upcoming? %>
       <div class='event_edit--big event_edit'><%= link_to('edit', edit_event_path(@event), class: 'link-decorate') %></div>
     <% end %>
   </figure>
@@ -22,13 +32,21 @@
 
     <div class='event-show_info_body'>
       <%= content_tag :h2, @event.title, class: 'event-show_info_title' %>
+      <%= content_tag :h2, "Attendees: #{@event.attendees.count}", class: 'event-show_info_creator text--muted' %>
       <%= content_tag :p, (link_to "by #{@event.creator.name}",
-          user_path(@event.creator), class: 'link-decorate text--muted'), class: 'event-show_info_creator' %>
+          user_path(@event.creator), class: 'link-decorate'), class: 'event-show_info_creator' %>
     </div>
   </aside>
 
-  <div class='event-show_attend-btn'>
-    <button class='btn btn--success btn--mtb1'>Click to attend</button>
+  <div class='event-show_attend-container'>
+    <% if current_user && @event.upcoming? %>
+      <%= render 'attend-form' %>
+    <% elsif @event.past? %>
+      <p>This event was held on <%= @event.date.strftime("%a, %d %b %Y") %></p>
+    <% else %>
+      <p><%= link_to 'Sign up', new_user_registration_path, class: 'link-decorate' %> or
+         <%= link_to 'log in', new_user_session_path, class: 'link-decorate' %> to attend this event</p>
+    <% end %>
   </div>
 
   <section class='event-show_description-container'>
@@ -53,8 +71,28 @@
         <% @event.venue.split(', ').each do |address_slice| %>
           <%= content_tag :p, address_slice %>
         <% end %>
+        <% @event.address.split(', ').each do |address_slice| %>
+          <%= content_tag :p, address_slice %>
+        <% end %>
       </address>
     </div>
 
   </aside>
+  <div class='event-show_map-container'>
+    <iframe width="100%"
+            height="100%"
+            frameborder="0"
+            style="border:0"
+            src="https://www.google.com/maps/embed/v1/place?q=
+            <%= (@event.venue + ', ').concat(@event.address).gsub(/\s/, '+').gsub(/,/, '') %>
+            &key=AIzaSyBK6hpYvJ0UgvA_quED9fmBtYnysmfucv4"
+            allowfullscreen>
+    </iframe>
+  </div>
+  <div class='event-show_footer-info'>
+    <%= content_tag :h2, @event.title, class: 'event-show_footer_title' %>
+    <span class='text--muted event-show_footer_at'>at</span>
+    <%= content_tag :h2, @event.venue, class: 'event-show_footer_title' %>
+    <%= content_tag :p, @event.address, class: 'event-show_footer_address' %>
+  </div>
 </section>

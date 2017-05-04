@@ -1,8 +1,16 @@
 class EventsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
+  respond_to :js, only: [:index]
 
   def index
-    @events = Event.order(date: :desc)
+    @events =
+      if params[:id]
+        Event.upcoming
+             .where('id < ?', params[:id])
+             .limit(15)
+      else
+        Event.upcoming.limit(20)
+      end
   end
 
   def show
@@ -47,6 +55,7 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(:title, :venue, :date, :description, :picture,
-                                  :user_id, :category_id)
+                                  :user_id, :category_id, :latitude, :longitude,
+                                  :address)
   end
 end

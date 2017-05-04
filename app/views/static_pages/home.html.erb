@@ -17,6 +17,9 @@
     <hr class='h-rule-5--orange'>
   </header>
   <div class='events-wrapper events-wrapper--home'>
-    <%= render @events %>
+    <%= render 'events/event-postcard' %>
   </div>
+
 </section>
+
+<%= link_to 'Show more', events_path, class: 'btn btn--hollow btn--showmore btn--mtb1' %>

@@ -1,31 +1,49 @@
 class Event < ApplicationRecord
+  include EventState
+
   belongs_to :creator, class_name: 'User', foreign_key: 'user_id'
   belongs_to :category, class_name: 'Category', foreign_key: 'category_id'
+
+  default_scope -> { order(date: :desc) }
+  
+
+  has_many :attendances, class_name: 'Attendance',
+                         foreign_key: 'attended_event_id',
+                         dependent: :destroy
+  has_many :attendees, through: :attendances, source: :attendee
 
   before_create :create_slug
   before_validation :normalize_title
 
-  validates_presence_of :user_id, :title, :venue, :date, :category_id,
+  validates_presence_of :user_id, :title, :venue, :address, :date, :category_id,
                         :description, :picture
 
   validates_length_of :title, :venue, maximum: 140
   validates_length_of :description, maximum: 1500
+  validate :date_in_future
 
   mount_uploader :picture, ImageUploader
   validate :picture_size, :picture_dimensions
 
+  geocoded_by :address
+  after_validation :geocode
+
+  def per_page
+    self.per_page = 10
+  end
+
   def to_param
-    self.slug
+    slug
   end
 
   private
 
   def create_slug
-    self.slug = self.title.parameterize
+    self.slug = title.parameterize
   end
 
   def normalize_title
-    self.title = title.downcase.titleize
+    self.title = title.downcase.mb_chars.titleize
   end
 
   def picture_size
@@ -37,5 +55,9 @@ class Event < ApplicationRecord
     if image[:width] < 2160 && image[:height] < 1080
       errors.add :picture, 'should be at least 2160px x 1080px'
     end
+  end
+
+  def date_in_future
+    errors.add :date, 'should be at least one day from now' if date <= Time.zone.now
   end
 end

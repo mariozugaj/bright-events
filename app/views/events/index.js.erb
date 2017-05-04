@@ -1,0 +1,9 @@
+<% if @events.any? %>
+  $('.events-wrapper').append("<%= j render 'events/event-postcard' %>")
+<% else %>
+$('.load-more-container').empty();
+  $('<h4>', {
+      'class': 'title title--skinny',
+      'text': 'Sorry, no more events...'
+    }).appendTo('.load-more-container');
+<% end %>

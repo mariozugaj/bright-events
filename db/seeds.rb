@@ -4,7 +4,11 @@ User.create!(name: 'Mario Zugaj',
              password: 'Qw1ITlgILwyWgfWbPhK9vNeVofGKnDC8',
              confirmed_at: Time.zone.now)
 
-=begin
+User.create!(name: 'Martina Zugaj',
+             email: 'martinazugaj5@gmail.com',
+             password: 'Qw1ITlgILwyWgfWbPhK9vNeVofGKnDC8',
+             confirmed_at: Time.zone.now)
+
 10.times do |n|
   name = Faker::Name.name
   email = "example-#{n + 1}@example.com"
@@ -14,7 +18,6 @@ User.create!(name: 'Mario Zugaj',
                password: password,
                confirmed_at: Time.zone.now)
 end
-=end
 
 # Categories
 categories = [
@@ -31,28 +34,55 @@ categories = [
 categories.each do |category|
   Category.create!(name: category)
 end
+
 # Event
 
-=begin
-users = User.all
+user1 = User.first
+user2 = User.find(2)
+
 15.times do
   title = Faker::Beer.name
-  description = Faker::Lorem.sentences(4)
-  venue = "#{Faker::Address.street_address}, #{Faker::Address.city}"
-  picture = Rails.root.join("app/assets/images/event-#{rand(4)}.jpg").open
+  description = Faker::Lorem.paragraphs(8).join('\n\n')
+  venue = Faker::GameOfThrones.city
+  address = "#{Faker::Address.street_address}, #{Faker::Address.city}"
+  picture = Rails.root.join("app/assets/images/hero-#{rand(3) + 1}.jpg").open
+  date = Faker::Date.backward(60)
+  category = rand(19) + 1
+
+  user1.events.create!(title: title,
+                       description: description,
+                       venue: venue,
+                       address: address,
+                       date: date,
+                       picture: picture,
+                       category_id: category)
+end
+
+35.times do
+  title = Faker::Beer.name
+  description = Faker::Lorem.paragraphs(7).join("\r\n\n")
+  venue = Faker::GameOfThrones.city
+  address = "#{Faker::Address.street_address}, #{Faker::Address.city}"
+  picture = Rails.root.join("app/assets/images/hero-#{rand(3) + 1}.jpg").open
   date = Faker::Date.forward(60)
   category = rand(19) + 1
-  longitude = Faker::Address.longitude
-  latitude = Faker::Address.latitude
+
+  user2.events.create!(title: title,
+                       description: description,
+                       venue: venue,
+                       address: address,
+                       date: date,
+                       picture: picture,
+                       category_id: category)
+end
+
+# Attend events
+
+events = Event.all
+users = User.all
+
+25.times do
   users.each do |user|
-    user.events.create!(title: title,
-                        description: description,
-                        venue: venue,
-                        date: date,
-                        picture: picture,
-                        category_id: category,
-                        longitude: longitude,
-                        latitude: latitude)
+    user.attend(events[rand(events.size - 1) + 1])
   end
 end
-=end
