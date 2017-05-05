@@ -1,24 +1,23 @@
 class UsersController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show]
-  respond_to :html
-  respond_to :js, only: [:created_events,
-                         :upcoming_events,
-                         :past_attended_events]
 
   def show
-    @user = User.find_by(slug: params[:id])
-    @events = @user.events
-  end
-
-  def created_events
-    @events = current_user.events
+    @user = User.find(params[:id])
+    @events = @user.events.paginate(page: params[:page], per_page: 15)
+    @header_title = 'Events you created'
   end
 
   def upcoming_events
-    @events = current_user.upcoming_events
+    @user = User.find(params[:id])
+    @events = @user.upcoming_events.paginate(page: params[:page], per_page: 15)
+    @header_title = 'Upcoming events you\'re attending'
+    render 'show'
   end
 
   def past_attended_events
-    @events = current_user.past_attended_events
+    @user = User.find(params[:id])
+    @events = @user.past_attended_events.paginate(page: params[:page], per_page: 15)
+    @header_title = 'Events you attended'
+    render 'show'
   end
 end

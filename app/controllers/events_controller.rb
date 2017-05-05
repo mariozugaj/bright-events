@@ -1,23 +1,26 @@
 class EventsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
-  respond_to :js, only: [:index]
   before_action :concatenate_date, only: [:create, :update]
-
-  has_scope :title
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
     @events =
-      if params[:id]
-        apply_scopes(Event.upcoming
-             .where('id < ?', params[:id])
-             .limit(15))
+      if params[:location].present?
+        Event.near(params[:location]).filter(params.slice(:by_category, :by_title)).paginate(page: params[:page])
       else
-        Event.upcoming.limit(20)
+        Event.filter(params.slice(:by_category, :by_title)).upcoming.paginate(page: params[:page])
       end
+    @hash = Gmaps4rails.build_markers(@events) do |event, marker|
+      marker.lat event.latitude
+      marker.lng event.longitude
+      marker.infowindow event.title
+      marker.json(id: event.id)
+      marker.infowindow render_to_string(partial: '/events/infowindow', locals: { object: event })
+    end
   end
 
   def show
-    @event = Event.find_by(slug: params[:id])
+    @event = Event.find(params[:id])
   end
 
   def new
@@ -35,11 +38,11 @@ class EventsController < ApplicationController
   end
 
   def edit
-    @event = Event.find_by(slug: params[:id])
+    @event = Event.find(params[:id])
   end
 
   def update
-    @event = Event.find_by(slug: params[:id])
+    @event = Event.find(params[:id])
     if @event.update_attributes(event_params)
       flash[:success] = 'Event updated'
       redirect_to @event
@@ -49,7 +52,7 @@ class EventsController < ApplicationController
   end
 
   def destroy
-    Event.find_by(slug: params[:id]).destroy
+    Event.find(params[:id]).destroy
     flash[:success] = 'Event deleted'
     redirect_to user_path(current_user)
   end
@@ -59,10 +62,17 @@ class EventsController < ApplicationController
   def event_params
     params.require(:event).permit(:title, :venue, :date_and_time, :description,
                                   :picture, :user_id, :category_id, :address,
-                                  :date, :time_submit)
+                                  :date)
   end
+
+  # Before actions
 
   def concatenate_date
     params[:event][:date_and_time] = (params[:date] + ' ' + params[:time_submit]).to_datetime
+  end
+
+  def correct_user
+    @event = Event.find(params[:id])
+    redirect_to(root_url) unless current_user == @event.creator
   end
 end

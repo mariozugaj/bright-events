@@ -8,7 +8,7 @@ User.create!(name: 'Martina Zugaj',
              email: 'martinazugaj5@gmail.com',
              password: 'Qw1ITlgILwyWgfWbPhK9vNeVofGKnDC8',
              confirmed_at: Time.zone.now)
-
+=begin
 10.times do |n|
   name = Faker::Name.name
   email = "example-#{n + 1}@example.com"
@@ -18,7 +18,7 @@ User.create!(name: 'Martina Zugaj',
                password: password,
                confirmed_at: Time.zone.now)
 end
-
+=end
 # Categories
 categories = [
   'Auto, Boat & Air', 'Business & Professional', 'Charity & Causes',
@@ -34,7 +34,7 @@ categories = [
 categories.each do |category|
   Category.create!(name: category)
 end
-
+=begin
 # Event
 
 user1 = User.first
@@ -86,3 +86,4 @@ users = User.all
     user.attend(events[rand(events.size - 1) + 1])
   end
 end
+=end

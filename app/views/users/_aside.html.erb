@@ -7,21 +7,21 @@
     <ul class='profile_aside_link-container'>
       <li class='profile_aside_box_item'>
         <%= link_to "Events you created (#{@user.events.count})",
-                    created_events_user_path,
-                    remote: true,
-                    class: 'profile_aside_link link--active' %>
+                    user_path,
+                    class: class_string('profile_aside_link',
+                                         'link--active' => current_page?(user_path)) %>
       </li>
       <li class='profile_aside_box_item'>
         <%= link_to "Attending events (#{@user.upcoming_events.count})",
                      upcoming_events_user_path,
-                     remote: true,
-                     class: 'profile_aside_link' %>
+                     class: class_string('profile_aside_link',
+                                         'link--active' => current_page?(upcoming_events_user_path)) %>
       </li>
       <li class ='profile_aside_box_item'>
         <%= link_to "Attended events (#{@user.past_attended_events.count})",
                     past_attended_events_user_path,
-                    remote: true,
-                    class: 'profile_aside_link' %>
+                    class: class_string('profile_aside_link',
+                                        'link--active' => current_page?(past_attended_events_user_path)) %>
       </li>
     </ul>
   </div>

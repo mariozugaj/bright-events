@@ -9,12 +9,7 @@ class User < ApplicationRecord
                          dependent: :destroy
   has_many :attending_events, through: :attendances, source: :attended_event
 
-  before_create :create_slug
   validates :name, presence: true
-
-  def to_param
-    slug
-  end
 
   def attend(event)
     attendances.create!(attended_event_id: event.id)
@@ -29,16 +24,13 @@ class User < ApplicationRecord
   end
 
   def upcoming_events
-    attending_events.where('date_and_time > :time_now', time_now: Time.zone.now)
+    attending_events.where('date_and_time > ?', Time.zone.now)
   end
 
   def past_attended_events
-    attending_events.where('date_and_time < :time_now', time_now: Time.zone.now)
+    attending_events.where('date_and_time < ?', Time.zone.now)
   end
 
   private
 
-  def create_slug
-    self.slug = name.parameterize
-  end
 end

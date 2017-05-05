@@ -16,4 +16,6 @@
 //= require datetimepicker/picker
 //= require datetimepicker/picker.date
 //= require datetimepicker/picker.time
+//= require underscore
+//= require gmaps/google
 //= require_tree .

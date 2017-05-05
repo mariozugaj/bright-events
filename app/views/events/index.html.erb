@@ -5,10 +5,25 @@
 <%= render 'aside-filter' %>
 <section class='profile_main'>
   <div class='events-wrapper'>
-    <%= render 'events/event-list' %>
+    <%= list_events @events %>
   </div>
-  <div class="load-more-container">
-    <div class="pulse"></div>
-    <%= link_to "Load More", events_path, class: "load-more btn btn--hollow" %>
-  </div>
+  <%= will_paginate %>
 </section>
+
+<% content_for :scripts do %>
+<script type='text/javascript'>
+
+  handler = Gmaps.build('Google');
+  handler.buildMap({
+    provider: {
+      zoom: 20
+    },
+    internal: { id: 'map' }},
+    function() {
+      markers = handler.addMarkers(<%= raw @hash.to_json %>);
+      handler.bounds.extendWith(markers);
+      handler.fitMapToBounds();
+  });
+
+</script>
+<% end %>

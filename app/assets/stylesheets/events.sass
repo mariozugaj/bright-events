@@ -2,15 +2,16 @@
 @import 'base'
 
 .events-wrapper
-  display: flex
-  flex-wrap: wrap
+  display: grid
+  grid-template-columns: 1fr 1fr 1fr
+  grid-template-rows: auto auto auto auto auto
 
 /*------- Event postcard ------*/
 
 .event_cell
   padding: 0 0.5rem 0.8rem
   box-sizing: border-box
-  width: 33.3333333333%
+  //width: 33.3333333333%
   position: relative
 
 .event-postcard
@@ -40,7 +41,7 @@
   overflow: hidden
   border-bottom: 1px solid $border-color
 
-.event-postcard_image, .event-list_image
+.event-postcard_image, .event_list_image
   width: 100%
   height: 100%
   -moz-transition: all 0.3s
@@ -255,36 +256,36 @@
 
 /*------- Event list -------*/
 .event_cell--list
-  width: 100%
+  grid-column: 1 / span 3
   padding: 0 0.5rem 0.8rem
   box-sizing: border-box
   position: relative
 
-.event-list
+.event_list
   display: flex
   position: relative
   height: 137px
 
-.event-list_main_header
+.event_list_main_header
   flex-grow: 1
   max-width: 200px
   height: 100%
   overflow: hidden
   border-right: 1px solid $border-color
 
-.event-list_main_body
+.event_list_main_body
   background-color: white
   flex-grow: 3
   height: 100%
 
-.event-list_footer
+.event_list_footer
   display: flex
   justify-content: flex-start
   align-items: flex-end
   border-top: 1px solid $border-color
   padding-top: 0.4rem
 
-.event-list_date, .event-list_venue, .event-list_category
+.event_list_date, .event_list_venue, .event_list_category
   color: $text-color
   font-size: 12px
   line-height: 18px
@@ -292,7 +293,7 @@
   letter-spacing: 0.5px
   padding-left: 0.8rem
 
-.event-list_title
+.event_list_title
   color: $text-color--accent
   font-size: 16px
   line-height: 19px
@@ -302,10 +303,10 @@
   height: 38px
   padding-left: 0.8rem
 
-.event-list_venue
+.event_list_venue
   padding: 0.3rem 0.8rem
 
-.event-list_date
+.event_list_date
   padding-top: 0.8rem
 
 $loader-size: 5rem
@@ -345,3 +346,6 @@ $animation-duration: 1.5s
   display: grid
   grid-column: 3 / 15
   grid-row: 3 / 4
+
+.map
+  margin: 0.5rem 0

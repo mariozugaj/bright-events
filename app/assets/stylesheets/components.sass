@@ -300,3 +300,33 @@
 .h-rule-5--grid-3
   grid-column: 3 / 15
   grid-row: 3
+
+.pagination
+  margin: 1rem
+  text-align: center
+  padding: 0.3em
+  cursor: default
+  a, span, em
+    padding: 0.2em 0.5em
+  .disabled
+    color: #aaaaaa
+  .current
+    font-style: normal
+    font-weight: bold
+    color: $primary-color
+  a
+    border: 1px solid #dddddd
+    color: $alt-color
+    text-decoration: none
+    &:hover, &:focus
+      background: $alt-color
+      color: white
+  .page_info
+    color: #aaaaaa
+    padding-top: 0.8em
+  .previous_page, .next_page
+    border-width: 2px
+  .previous_page
+    margin-right: 1em
+  .next_page
+    margin-left: 1em

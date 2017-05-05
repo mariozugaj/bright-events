@@ -6,21 +6,22 @@
 </section>
 
 <section class='main-wrapper'>
+
   <div class="search_wrapper">
     <h1 class='search_title'>Find your next experience</h1>
-    <div class="search_bar">
-
-    </div>
   </div>
+
   <header class=''>
-    <h2 class='title title--center title--skinny'>Events for you</h2>
+    <h2 class='title title--center title--skinny'>Events near you</h2>
     <hr class='h-rule-5--orange'>
   </header>
+
   <div class='events-wrapper events-wrapper--home'>
-    <%= render 'events/event-postcard' %>
+    <%= postcard_events(@events) %>
   </div>
 
 </section>
-<% if @events.any? %>
+
+<% if @events.any? && Event.count > @events.size %>
   <%= link_to 'Show more', events_path, class: 'btn btn--hollow btn--showmore btn--mtb1' %>
 <% end %>

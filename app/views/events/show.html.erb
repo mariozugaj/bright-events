@@ -1,24 +1,23 @@
 <div class="hero-image-wrapper">
-  <% if @event.upcoming? %>
-    <%= image_tag @event.picture, class: 'event_hero--blurry' %>
-  <% else %>
-    <%= image_tag @event.picture, class: 'event_hero--blurry event_image--grayscale' %>
-  <% end %>
+    <%= image_tag @event.picture,
+                  class: class_string('event_hero--blurry',
+                                      'event_hero--blurry--grayscale' => @event.past?) %>
 </div>
 
 <section class='event-show_wrapper'>
 
   <figure class='event-show_header_picture-container'>
 
-    <% if @event.upcoming? %>
-      <%= image_tag @event.picture.show.url, class: 'event-show_header_picture'%>
-    <% else %>
-      <%= image_tag @event.picture.show.url, class: 'event-show_header_picture event_image--grayscale'%>
-    <% end %>
+      <%= image_tag @event.picture.show.url,
+                    class: class_string('event-show_header_picture',
+                                        'event_image--grayscale' => @event.past?) %>
 
     <% if @event.creator == current_user && @event.upcoming? %>
-      <div class='event_edit--big event_edit'><%= link_to('edit', edit_event_path(@event), class: 'link-decorate') %></div>
+      <div class='event_edit--big event_edit'>
+        <%= link_to('edit', edit_event_path(@event), class: 'link-decorate') %>
+      </div>
     <% end %>
+
   </figure>
 
   <aside class='event-show_header_info-container'>
@@ -39,14 +38,18 @@
   </aside>
 
   <div class='event-show_attend-container'>
+
     <% if current_user && @event.upcoming? %>
       <%= render 'attend-form' %>
+
     <% elsif @event.past? %>
       <p>This event was held on <%= @event.date_and_time.strftime("%a, %d %b %Y") %></p>
+
     <% else %>
       <p><%= link_to 'Sign up', new_user_registration_path, class: 'link-decorate' %> or
          <%= link_to 'log in', new_user_session_path, class: 'link-decorate' %> to attend this event</p>
     <% end %>
+    
   </div>
 
   <section class='event-show_description-container'>

@@ -2,14 +2,23 @@
 
   <div class="profile_aside_box">
     <h3 class='profile_aside_title'>
-      <%= svg('headphones.svg', class: 'icon') %>
-      Your events</h3>
-
+      <%= svg('filter.svg', class: 'icon') %>
+      Filter events</h3>
+    <%= form_tag :events, method: 'get' do %>
+      <%= text_field_tag :location, params[:location], { class: 'profile_aside_box_item event-form_field',
+                                          placeholder: 'Event\'s location' } %>
+      <%= text_field_tag :by_title, params[:by_title], { class: 'profile_aside_box_item event-form_field',
+                                          placeholder: 'Event\'s title' } %>
+      <%= select_tag :by_category, options_for_select(Category.pluck(:name, :id), params[:by_category]),
+                                 { include_blank: 'Select category',
+                                 class: 'event-form_select' } %>
+      <%= submit_tag 'Search', { class: 'btn btn--notice btn--aside' } %>
+    <% end %>
+    <%= button_to "Clear Search", events_path, method: 'get', class: "btn btn--danger btn--aside" %>
   </div>
   <div class="profile_aside_box">
-    <button class='btn btn--success btn--aside'>
-      <%= link_to 'Create event', new_event_path, class: 'button-link' %>
-    </button>
-    <a><div></div><a><a></a></a></a>
+    <div class='map'>
+      <div id="map" style='width: 100%; height: 200px;'></div>
+    </div>
   </div>
 </aside>

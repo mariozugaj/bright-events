@@ -2,7 +2,7 @@
 
 <% if @user == current_user %>
 
-  <h2 class='profile-header_title title title--center title--skinny'>Events you've created</h2>
+  <h2 class='profile-header_title title title--center title--skinny'><%= @header_title %></h2>
   <%= render 'users/aside' %>
 
 <% else %>
