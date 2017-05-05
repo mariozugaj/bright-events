@@ -12,9 +12,12 @@
       <%= select_tag :by_category, options_for_select(Category.pluck(:name, :id), params[:by_category]),
                                  { include_blank: 'Select category',
                                  class: 'event-form_select' } %>
-      <%= submit_tag 'Search', { class: 'btn btn--notice btn--aside' } %>
+      <%= submit_tag 'Search', { class: 'btn btn--notice btn--aside', id: 'search' } %>
     <% end %>
-    <%= button_to "Clear Search", events_path, method: 'get', class: "btn btn--danger btn--aside" %>
+    <%= button_to "Clear Search", events_path,
+                                  method: 'get',
+                                  class: 'btn btn--danger btn--aside',
+                                  id: 'clear-search' %>
   </div>
   <div class="profile_aside_box">
     <div class='map'>

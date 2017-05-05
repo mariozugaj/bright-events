@@ -44,4 +44,10 @@ $(document).on('turbolinks:load', function() {
   $('#timepicker').pickatime({
     formatSubmit: 'HH:i',
   });
+
+  $('.profile_aside_box').on('click', '#search, #clear-search', function (e) {
+    window.setTimeout(function () {
+      $('.event_cell--list').css({ 'opacity': '0.5' });
+    }, 0);
+  });
 });
