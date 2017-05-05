@@ -29,11 +29,11 @@ class User < ApplicationRecord
   end
 
   def upcoming_events
-    attending_events.where('date > :time_now', time_now: Time.zone.now)
+    attending_events.where('date_and_time > :time_now', time_now: Time.zone.now)
   end
 
   def past_attended_events
-    attending_events.where('date < :time_now', time_now: Time.zone.now)
+    attending_events.where('date_and_time < :time_now', time_now: Time.zone.now)
   end
 
   private

@@ -42,18 +42,18 @@ user2 = User.find(2)
 
 15.times do
   title = Faker::Beer.name
-  description = Faker::Lorem.paragraphs(8).join('\n\n')
+  description = Faker::Lorem.paragraphs(8).join("\r\n\n")
   venue = Faker::GameOfThrones.city
   address = "#{Faker::Address.street_address}, #{Faker::Address.city}"
   picture = Rails.root.join("app/assets/images/hero-#{rand(3) + 1}.jpg").open
-  date = Faker::Date.backward(60)
+  date = Faker::Date.forward(60)
   category = rand(19) + 1
 
   user1.events.create!(title: title,
                        description: description,
                        venue: venue,
                        address: address,
-                       date: date,
+                       date_and_time: date,
                        picture: picture,
                        category_id: category)
 end
@@ -71,7 +71,7 @@ end
                        description: description,
                        venue: venue,
                        address: address,
-                       date: date,
+                       date_and_time: date,
                        picture: picture,
                        category_id: category)
 end

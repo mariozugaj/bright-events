@@ -4,7 +4,7 @@ class CreateEvents < ActiveRecord::Migration[5.0]
       t.string :title, index: true
       t.text :description
       t.string :venue, index: true
-      t.datetime :date, index: true
+      t.date :date, index: true
       t.string :picture, index: true
       t.float :longitude
       t.float :latitude

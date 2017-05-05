@@ -64,4 +64,11 @@ $(document).on('turbolinks:load', function () {
         },
     });
   });
+
+  $('#datepicker').pickadate({
+    min: new Date((new Date()).valueOf() + 86400000),
+  });
+  $('#timepicker').pickatime({
+    formatSubmit: 'HH:i',
+  });
 });

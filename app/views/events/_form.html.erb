@@ -15,14 +15,19 @@
 
   <div class='event-form_group'>
     <%= f.label :address %>
-    <%= f.text_field :address, required: true, placeholder: 'Venue full address',
+    <%= f.text_field :address, required: true, placeholder: 'Venue\'s full address',
                      class: 'event-form_field' %>
   </div>
 
   <div class='event-form_group'>
     <%= f.label 'Date and time' %>
-    <%= f.datetime_field :date, required: true, min: Date.tomorrow, class: 'event-form_field' %>
+    <%= text_field_tag :date, '', { id: 'datepicker', class: 'event-form_field datetime-picker',
+                     placeholder: 'Set event\'s date' } %>
+    <%= text_field_tag :time, '', { id: 'timepicker', class: 'event-form_field datetime-picker',
+                     placeholder: 'Set event\'s time' } %>
   </div>
+
+  <%= hidden_field_tag :date_and_time %>
 
   <div class='event-form_group'>
     <%= f.label :category %>
@@ -43,7 +48,13 @@
 
   <div class='event-form_group'>
     <%= f.file_field :picture, class: 'inputfile inputfile-1' %>
-    <label for="event_picture"><%= svg('fileinput.svg') %><span>Add event image</span></label>
+    <label for="event_picture"><%= svg('fileinput.svg') %>
+      <% if @event.picture %>
+        <span>Update event image</span>
+      <% else %>
+        <span>Add event image</span>
+      <% end %>
+    </label>
     <p class='file-input-exp'>Please use only 1 image, at least 2160x1080px (2:1), max 5MB</p>
   </div>
 

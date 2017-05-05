@@ -3,19 +3,19 @@ module EventState
 
   included do
     def self.past
-      where('date < ?', Time.zone.now)
+      where('date_and_time < ?', Time.zone.now)
     end
 
     def past?
-      date < Time.zone.now
+      date_and_time < Time.zone.now
     end
 
     def self.upcoming
-      where('date > ?', Time.zone.now)
+      where('date_and_time > ?', Time.zone.now)
     end
 
     def upcoming?
-      date > Time.zone.now
+      date_and_time > Time.zone.now
     end
   end
 end

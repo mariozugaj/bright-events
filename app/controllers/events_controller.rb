@@ -1,13 +1,16 @@
 class EventsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   respond_to :js, only: [:index]
+  before_action :concatenate_date, only: [:create, :update]
+
+  has_scope :title
 
   def index
     @events =
       if params[:id]
-        Event.upcoming
+        apply_scopes(Event.upcoming
              .where('id < ?', params[:id])
-             .limit(15)
+             .limit(15))
       else
         Event.upcoming.limit(20)
       end
@@ -54,8 +57,12 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:title, :venue, :date, :description, :picture,
-                                  :user_id, :category_id, :latitude, :longitude,
-                                  :address)
+    params.require(:event).permit(:title, :venue, :date_and_time, :description,
+                                  :picture, :user_id, :category_id, :address,
+                                  :date, :time_submit)
+  end
+
+  def concatenate_date
+    params[:event][:date_and_time] = (params[:date] + ' ' + params[:time_submit]).to_datetime
   end
 end

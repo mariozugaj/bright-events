@@ -1,5 +1,5 @@
 <% if @events.any? %>
-  $('.events-wrapper').append("<%= j render 'events/event-postcard' %>")
+  $('.events-wrapper').append("<%= j render 'events/event-list' %>")
 <% else %>
 $('.load-more-container').empty();
   $('<h4>', {

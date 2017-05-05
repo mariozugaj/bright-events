@@ -21,5 +21,6 @@
   </div>
 
 </section>
-
-<%= link_to 'Show more', events_path, class: 'btn btn--hollow btn--showmore btn--mtb1' %>
+<% if @events.any? %>
+  <%= link_to 'Show more', events_path, class: 'btn btn--hollow btn--showmore btn--mtb1' %>
+<% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170504092955) do
+ActiveRecord::Schema.define(version: 20170504140405) do
 
   create_table "attendances", force: :cascade do |t|
     t.integer  "attended_event_id"
@@ -31,20 +31,22 @@ ActiveRecord::Schema.define(version: 20170504092955) do
     t.string   "title"
     t.text     "description"
     t.string   "venue"
-    t.datetime "date"
     t.string   "picture"
     t.float    "longitude"
     t.float    "latitude"
     t.integer  "user_id"
     t.integer  "category_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.string   "slug"
     t.string   "address"
+    t.datetime "date_and_time"
+    t.index ["address"], name: "index_events_on_address"
     t.index ["category_id"], name: "index_events_on_category_id"
-    t.index ["date"], name: "index_events_on_date"
+    t.index ["date_and_time"], name: "index_events_on_date_and_time"
     t.index ["longitude", "latitude"], name: "index_events_on_longitude_and_latitude"
     t.index ["picture"], name: "index_events_on_picture"
+    t.index ["slug"], name: "index_events_on_slug"
     t.index ["title"], name: "index_events_on_title"
     t.index ["user_id"], name: "index_events_on_user_id"
     t.index ["venue"], name: "index_events_on_venue"

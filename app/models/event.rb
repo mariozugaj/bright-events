@@ -4,8 +4,8 @@ class Event < ApplicationRecord
   belongs_to :creator, class_name: 'User', foreign_key: 'user_id'
   belongs_to :category, class_name: 'Category', foreign_key: 'category_id'
 
-  default_scope -> { order(date: :desc) }
-  
+  default_scope -> { order(date_and_time: :desc) }
+  scope :title, -> title { where("title LIKE ?", title) }
 
   has_many :attendances, class_name: 'Attendance',
                          foreign_key: 'attended_event_id',
@@ -15,7 +15,7 @@ class Event < ApplicationRecord
   before_create :create_slug
   before_validation :normalize_title
 
-  validates_presence_of :user_id, :title, :venue, :address, :date, :category_id,
+  validates_presence_of :user_id, :title, :venue, :address, :date_and_time, :category_id,
                         :description, :picture
 
   validates_length_of :title, :venue, maximum: 140
@@ -58,6 +58,6 @@ class Event < ApplicationRecord
   end
 
   def date_in_future
-    errors.add :date, 'should be at least one day from now' if date <= Time.zone.now
+    errors.add :date_and_time, 'should be at least one day from now' if date_and_time <= Time.zone.now
   end
 end

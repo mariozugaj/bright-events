@@ -1,10 +1,11 @@
 <div class='page-container_header--2'>
-  <h2 class='title title--bottom title--center title--skinny'>Browse all events</h2>
+  <h2 class='title title--bottom title--center title--skinny'>Search all events</h2>
   <hr class='h-rule-5--orange'>
 </div>
-<section class='main-wrapper'>
+<%= render 'aside-filter' %>
+<section class='profile_main'>
   <div class='events-wrapper'>
-    <%= render 'events/event-postcard' %>
+    <%= render 'events/event-list' %>
   </div>
   <div class="load-more-container">
     <div class="pulse"></div>

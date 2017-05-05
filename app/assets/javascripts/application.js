@@ -13,4 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require datetimepicker/picker
+//= require datetimepicker/picker.date
+//= require datetimepicker/picker.time
 //= require_tree .

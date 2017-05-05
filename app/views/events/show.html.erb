@@ -24,9 +24,9 @@
   <aside class='event-show_header_info-container'>
 
     <div class='event-show_info_date'>
-      <%= time_tag @event.date, '', class: 'event-show_date' do %>
-        <%= content_tag :p, @event.date.strftime("%b"), class: 'event-show_sec-title text--muted' %>
-        <%= content_tag :p, @event.date.strftime("%d"), class: 'event-show_info_date_day text--muted' %>
+      <%= time_tag @event.date_and_time, '', class: 'event-show_date' do %>
+        <%= content_tag :p, @event.date_and_time.strftime("%b"), class: 'event-show_sec-title text--muted' %>
+        <%= content_tag :p, @event.date_and_time.strftime("%d"), class: 'event-show_info_date_day text--muted' %>
       <% end %>
     </div>
 
@@ -42,7 +42,7 @@
     <% if current_user && @event.upcoming? %>
       <%= render 'attend-form' %>
     <% elsif @event.past? %>
-      <p>This event was held on <%= @event.date.strftime("%a, %d %b %Y") %></p>
+      <p>This event was held on <%= @event.date_and_time.strftime("%a, %d %b %Y") %></p>
     <% else %>
       <p><%= link_to 'Sign up', new_user_registration_path, class: 'link-decorate' %> or
          <%= link_to 'log in', new_user_session_path, class: 'link-decorate' %> to attend this event</p>
@@ -61,7 +61,7 @@
     <div class='event-show_aside-info_item'>
       <%= content_tag :h3, 'Date and time', class: 'event-show_sec-title' %>
       <div class='event-show_aside-info_content'>
-        <%= time_tag @event.date, @event.date.strftime("%a, %d %b %Y %k:%M %p") %>
+        <%= time_tag @event.date_and_time, @event.date_and_time.strftime("%a, %d %b %Y %k:%M %p") %>
       </div>
     </div>
 
