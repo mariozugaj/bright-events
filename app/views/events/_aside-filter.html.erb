@@ -9,9 +9,13 @@
                                           placeholder: 'Event\'s location' } %>
       <%= text_field_tag :by_title, params[:by_title], { class: 'profile_aside_box_item event-form_field',
                                           placeholder: 'Event\'s title' } %>
-      <%= select_tag :by_category, options_for_select(Category.pluck(:name, :id), params[:by_category]),
-                                 { include_blank: 'Select category',
-                                 class: 'event-form_select' } %>
+      <div class='select-box'>
+        <%= svg('circle-down.svg', class: 'select-icon') %>
+        <%= select_tag :by_category, options_for_select(Category.pluck(:name, :id), params[:by_category]),
+                                   { include_blank: 'Select category',
+                                   class: 'event-form_select' } %>
+      </div>
+
       <%= submit_tag 'Search', { class: 'btn btn--notice btn--aside', id: 'search' } %>
     <% end %>
     <%= button_to "Clear Search", events_path,
