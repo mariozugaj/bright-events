@@ -13,9 +13,9 @@ class EventsController < ApplicationController
     @hash = Gmaps4rails.build_markers(@events) do |event, marker|
       marker.lat event.latitude
       marker.lng event.longitude
-      marker.infowindow event.title
       marker.infowindow render_to_string(partial: '/events/infowindow', locals: { object: event })
     end
+    gon.mapHash = @hash
   end
 
   def show
@@ -25,6 +25,7 @@ class EventsController < ApplicationController
       marker.lng event.longitude
       marker.infowindow event.venue
     end
+    gon.mapHash = @hash
   end
 
   def new

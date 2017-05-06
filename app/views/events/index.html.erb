@@ -9,22 +9,3 @@
   </div>
   <%= will_paginate %>
 </section>
-
-<% content_for :scripts do %>
-<script type='text/javascript'>
-
-  handler = Gmaps.build('Google');
-  handler.buildMap({
-    provider: {},
-    internal: { id: 'map' }},
-    function() {
-      markers = handler.addMarkers(<%= raw @hash.to_json %>);
-      handler.bounds.extendWith(markers);
-      handler.fitMapToBounds();
-      "<% if @hash.size == 1 %>"
-        handler.getMap().setZoom(15);
-      "<% end %>"
-  });
-
-</script>
-<% end %>
