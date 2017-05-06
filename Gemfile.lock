@@ -111,6 +111,7 @@ GEM
       mini_portile2 (~> 2.1.0)
     normalize-rails (4.1.1)
     orm_adapter (0.5.0)
+    pg (0.20.0)
     puma (3.8.2)
     rack (2.0.1)
     rack-test (0.6.3)
@@ -210,6 +211,7 @@ DEPENDENCIES
   listen (~> 3.0.5)
   mini_magick
   normalize-rails
+  pg
   puma (~> 3.0)
   rails (~> 5.0.2)
   sass-rails (~> 5.0)
