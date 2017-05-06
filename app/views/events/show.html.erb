@@ -49,7 +49,7 @@
       <p><%= link_to 'Sign up', new_user_registration_path, class: 'link-decorate' %> or
          <%= link_to 'log in', new_user_session_path, class: 'link-decorate' %> to attend this event</p>
     <% end %>
-    
+
   </div>
 
   <section class='event-show_description-container'>
@@ -82,20 +82,34 @@
 
   </aside>
   <div class='event-show_map-container'>
-    <iframe width="100%"
-            height="100%"
-            frameborder="0"
-            style="border:0"
-            src="https://www.google.com/maps/embed/v1/place?q=
-            <%= (@event.venue + ', ').concat(@event.address).gsub(/\s/, '+').gsub(/,/, '') %>
-            &key=AIzaSyBK6hpYvJ0UgvA_quED9fmBtYnysmfucv4"
-            allowfullscreen>
-    </iframe>
+    <div id='map' class='gmap'>
+    </div>
   </div>
   <div class='event-show_footer-info'>
     <%= content_tag :h2, @event.title, class: 'event-show_footer_title' %>
     <span class='text--muted event-show_footer_at'>at</span>
     <%= content_tag :h2, @event.venue, class: 'event-show_footer_title' %>
     <%= content_tag :p, @event.address, class: 'event-show_footer_address' %>
+    <%= link_to 'Directions',
+                "https://www.google.com/maps?saddr=My+Location&daddr=#{@event.latitude},#{@event.longitude}",
+                 class: 'link-decorate event-show_footer_address',
+                target: '_blank' %>
   </div>
 </section>
+
+<% content_for :scripts do %>
+<script type='text/javascript'>
+
+  handler = Gmaps.build('Google');
+  handler.buildMap({
+    provider: {},
+    internal: { id: 'map' }},
+    function() {
+      markers = handler.addMarkers(<%= raw @hash.to_json %>);
+      handler.bounds.extendWith(markers);
+      handler.fitMapToBounds();
+      handler.getMap().setZoom(15);
+  });
+
+</script>
+<% end %>

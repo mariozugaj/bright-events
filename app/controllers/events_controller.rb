@@ -14,13 +14,17 @@ class EventsController < ApplicationController
       marker.lat event.latitude
       marker.lng event.longitude
       marker.infowindow event.title
-      marker.json(id: event.id)
       marker.infowindow render_to_string(partial: '/events/infowindow', locals: { object: event })
     end
   end
 
   def show
     @event = Event.find(params[:id])
+    @hash = Gmaps4rails.build_markers(@event) do |event, marker|
+      marker.lat event.latitude
+      marker.lng event.longitude
+      marker.infowindow event.venue
+    end
   end
 
   def new

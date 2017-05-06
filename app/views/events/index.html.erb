@@ -15,14 +15,15 @@
 
   handler = Gmaps.build('Google');
   handler.buildMap({
-    provider: {
-      zoom: 20
-    },
+    provider: {},
     internal: { id: 'map' }},
     function() {
       markers = handler.addMarkers(<%= raw @hash.to_json %>);
       handler.bounds.extendWith(markers);
       handler.fitMapToBounds();
+      "<% if @hash.size == 1 %>"
+        handler.getMap().setZoom(15);
+      "<% end %>"
   });
 
 </script>

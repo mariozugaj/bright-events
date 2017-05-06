@@ -8,7 +8,7 @@
       <%= text_field_tag :location, params[:location], { class: 'profile_aside_box_item event-form_field',
                                           placeholder: 'Event\'s location' } %>
       <%= text_field_tag :by_title, params[:by_title], { class: 'profile_aside_box_item event-form_field',
-                                          placeholder: 'Event\'s title' } %>
+                                          placeholder: 'Event\'s title, description' } %>
       <div class='select-box'>
         <%= svg('circle-down.svg', class: 'select-icon') %>
         <%= select_tag :by_category, options_for_select(Category.pluck(:name, :id), params[:by_category]),
