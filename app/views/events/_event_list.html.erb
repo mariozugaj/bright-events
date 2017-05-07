@@ -13,7 +13,7 @@
       </header>
 
       <div class='event_list_main_body'>
-        <div class='event_list_date'><%= time_tag event.date_and_time, event.date_and_time.strftime("%a, %d %b %Y %k:%M %p")%></div>
+        <div class='event_list_date'><%= time_tag event.date_and_time, event.date_and_time.strftime("%a, %d %b %Y %l:%M %p")%></div>
         <%= content_tag(:h5, truncate(event.title, length: 80), class: 'event_list_title') %>
         <%= content_tag(:h6, truncate((event.venue + ', ').concat(event.address),length: 80), class: 'event_list_venue') %>
         <footer class='event_list_footer'>

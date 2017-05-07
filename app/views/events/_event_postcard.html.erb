@@ -17,7 +17,7 @@
       </header>
 
       <div class='event-postcard_main_body'>
-        <%= time_tag event.date_and_time, event.date_and_time.strftime("%a, %d %b %Y %k:%M %p"), class: 'event-postcard_date' %>
+        <%= time_tag event.date_and_time, event.date_and_time.strftime("%a, %d %b %Y %l:%M %p"), class: 'event-postcard_date' %>
         <%= content_tag(:h5, truncate(event.title, length: 45), class: 'event-postcard_title') %>
         <%= content_tag(:h6, truncate((event.venue + ', ').concat(event.address),length: 35), class: 'event-postcard_venue') %>
       </div>

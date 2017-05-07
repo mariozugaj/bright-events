@@ -21,10 +21,16 @@
 
   <div class='event-form_group'>
     <%= f.label 'Date and time' %>
-    <%= text_field_tag :date, '', { id: 'datepicker', class: 'event-form_field datetime-picker',
-                     placeholder: 'Set event\'s date' } %>
-    <%= text_field_tag :time, '', { id: 'timepicker', class: 'event-form_field datetime-picker',
-                     placeholder: 'Set event\'s time' } %>
+    <%= text_field_tag :date,
+                       (@event.date_and_time.strftime("%e %b, %Y") unless @event.date_and_time.nil?),
+                       { id: 'datepicker',
+                         class: 'event-form_field datetime-picker',
+                         placeholder: 'Set event\'s date' } %>
+    <%= text_field_tag :time,
+                       (@event.date_and_time.strftime("%l:%M %p") unless @event.date_and_time.nil?),
+                       { id: 'timepicker',
+                         class: 'event-form_field datetime-picker',
+                         placeholder: 'Set event\'s time' } %>
   </div>
 
   <%= hidden_field_tag :date_and_time %>
@@ -49,7 +55,7 @@
   <div class='event-form_group'>
     <%= f.file_field :picture, class: 'inputfile inputfile-1' %>
     <label for="event_picture"><%= svg('fileinput.svg') %>
-      <% if @event.picture %>
+      <% unless @event.new_record? %>
         <span>Update event image</span>
       <% else %>
         <span>Add event image</span>
