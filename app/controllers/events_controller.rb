@@ -57,7 +57,9 @@ class EventsController < ApplicationController
   end
 
   def destroy
-    Event.find(params[:id]).destroy
+    @event = Event.find(params[:id])
+    Cloudinary::Api.delete_resources(@event.picture.public_id)
+    @event.destroy
     flash[:success] = 'Event deleted'
     redirect_to user_path(current_user)
   end
@@ -67,7 +69,7 @@ class EventsController < ApplicationController
   def event_params
     params.require(:event).permit(:title, :venue, :date_and_time, :description,
                                   :picture, :user_id, :category_id, :address,
-                                  :date)
+                                  :date, :picture_cache)
   end
 
   # Before actions

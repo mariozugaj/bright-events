@@ -8,7 +8,7 @@
 
       <header class='event-postcard_main_header'>
         <% if event.upcoming? %>
-          <%= image_tag event.picture.thumb.url,
+          <%= image_tag event.picture_url(:thumb_card),
                         class: 'event-postcard_image' %>
         <% else %>
           <%= image_tag event.picture.thumb.url,

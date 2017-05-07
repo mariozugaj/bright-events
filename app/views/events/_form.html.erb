@@ -21,16 +21,19 @@
 
   <div class='event-form_group'>
     <%= f.label 'Date and time' %>
-    <%= text_field_tag :date,
-                       (@event.date_and_time.strftime("%e %b, %Y") unless @event.date_and_time.nil?),
-                       { id: 'datepicker',
-                         class: 'event-form_field datetime-picker',
-                         placeholder: 'Set event\'s date' } %>
-    <%= text_field_tag :time,
-                       (@event.date_and_time.strftime("%l:%M %p") unless @event.date_and_time.nil?),
-                       { id: 'timepicker',
-                         class: 'event-form_field datetime-picker',
-                         placeholder: 'Set event\'s time' } %>
+
+    <div class='datetime-picker_container'>
+      <%= text_field_tag :date,
+                         (@event.date_and_time.strftime("%e %b, %Y") unless @event.date_and_time.nil?),
+                         { id: 'datepicker',
+                           class: 'event-form_field datetime-picker',
+                           placeholder: 'Set event\'s date' } %>
+      <%= text_field_tag :time,
+                         (@event.date_and_time.strftime("%l:%M %p") unless @event.date_and_time.nil?),
+                         { id: 'timepicker',
+                           class: 'event-form_field datetime-picker',
+                           placeholder: 'Set event\'s time' } %>
+    </div>
   </div>
 
   <%= hidden_field_tag :date_and_time %>
@@ -53,6 +56,12 @@
   </div>
 
   <div class='event-form_group'>
+    <%= f.hidden_field(:picture_cache) %>
+
+    <% if @event.picture? %>
+      <%= image_tag @event.picture_url(:thumb_card), class: 'event-form_img-container' %>
+    <% end %>
+
     <%= f.file_field :picture, class: 'inputfile inputfile-1' %>
     <label for="event_picture"><%= svg('fileinput.svg') %>
       <% unless @event.new_record? %>
@@ -61,7 +70,8 @@
         <span>Add event image</span>
       <% end %>
     </label>
-    <p class='file-input-exp'>Please use only 1 image, at least 2160x1080px (2:1), max 5MB</p>
+
+    <p class='file-input-exp'>Please use only 1 image, at least 1440x720px (2:1), max 10MB</p>
   </div>
 
   <%= f.submit 'Make it live', class: 'btn btn--success btn--large' %>
