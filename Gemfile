@@ -44,6 +44,7 @@ group :production do
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+ruby '2.4.0'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
