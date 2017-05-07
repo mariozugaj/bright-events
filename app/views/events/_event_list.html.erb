@@ -7,7 +7,7 @@
     <div class='event_list'>
 
       <header class='event_list_main_header'>
-          <%= image_tag event.picture.thumb.url,
+          <%= image_tag event.picture_url(:thumb_list),
                         class: class_string('event_list_image',
                                             'event_image--grayscale' => event.past?) %>
       </header>

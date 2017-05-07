@@ -6,6 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'carrierwave'
+gem 'cloudinary'
 gem 'coffee-rails', '~> 4.2'
 gem 'css-class-string'
 gem 'devise'

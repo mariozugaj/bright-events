@@ -1,5 +1,5 @@
 <div class="hero-image-wrapper">
-    <%= image_tag @event.picture,
+    <%= image_tag @event.picture_url(:show),
                   class: class_string('event_hero--blurry',
                                       'event_hero--blurry--grayscale' => @event.past?) %>
 </div>
@@ -8,9 +8,10 @@
 
   <figure class='event-show_header_picture-container'>
 
-      <%= image_tag @event.picture.show.url,
+      <%= image_tag @event.picture_url(:show),
                     class: class_string('event-show_header_picture',
-                                        'event_image--grayscale' => @event.past?) %>
+                                        'event_image--grayscale' => @event.past?),
+                    alt: @event.title %>
 
     <% if @event.creator == current_user && @event.upcoming? %>
       <div class='event_edit--big event_edit'>

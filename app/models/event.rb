@@ -16,6 +16,7 @@ class Event < ApplicationRecord
   has_many :attendees, through: :attendances, source: :attendee
 
   before_validation :normalize_title
+  before_validation :create_slug
 
   validates_presence_of :user_id, :title, :venue, :address, :date_and_time, :category_id,
                         :description, :picture
@@ -25,13 +26,17 @@ class Event < ApplicationRecord
   validate :date_in_future
 
   mount_uploader :picture, ImageUploader
-  validate :picture_size, :picture_dimensions
+  validate :picture_size
 
   geocoded_by :address
   after_validation :geocode, if: ->(obj){ obj.address.present? and obj.address_changed? }
 
   def per_page
     self.per_page = 15
+  end
+
+  def create_slug
+    self.slug = title.parameterize
   end
 
   private
@@ -41,14 +46,7 @@ class Event < ApplicationRecord
   end
 
   def picture_size
-    errors.add(:picture, 'should be less than 5 MB') if picture.size > 5.megabytes
-  end
-
-  def picture_dimensions
-    image = MiniMagick::Image.open(picture.path)
-    if image[:width] < 2160 && image[:height] < 1080
-      errors.add :picture, 'should be at least 2160px x 1080px'
-    end
+    errors.add(:picture, 'should be less than 10 MB') if picture.size > 10.megabytes
   end
 
   def date_in_future
