@@ -3,6 +3,8 @@ default: &default
   encoding: utf8
   pool: 5
   database: eventbriteclone
+  user: chanjman
+  password: 265MoNs==n
 
 development:
   <<: *default
