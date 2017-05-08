@@ -8,6 +8,8 @@ class Event < ApplicationRecord
   default_scope -> { order(date_and_time: :asc) }
   scope :by_category, -> (category_id) { where category_id: category_id }
   scope :by_title, -> (title) { where("lower(title) LIKE ? OR lower(description) LIKE ?", "%#{title.downcase}%", "%#{title.downcase}%")  }
+  scope :start_date, -> (start_date) { where('date_and_time >= ?', start_date) }
+  scope :end_date, -> (end_date) { where('date_and_time <= ?', end_date)}
 
 
   has_many :attendances, class_name: 'Attendance',

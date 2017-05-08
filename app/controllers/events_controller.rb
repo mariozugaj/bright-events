@@ -8,7 +8,7 @@ class EventsController < ApplicationController
       if params[:location].present?
         Event.near(params[:location]).filter(params.slice(:by_category, :by_title)).paginate(page: params[:page])
       else
-        Event.filter(params.slice(:by_category, :by_title)).upcoming.paginate(page: params[:page])
+        Event.filter(params.slice(:by_category, :by_title, :start_date, :end_date)).upcoming.paginate(page: params[:page])
       end
     @hash = Gmaps4rails.build_markers(@events) do |event, marker|
       marker.lat event.latitude
@@ -68,8 +68,7 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(:title, :venue, :date_and_time, :description,
-                                  :picture, :user_id, :category_id, :address,
-                                  :date, :picture_cache)
+                                  :picture, :user_id, :category_id, :address)
   end
 
   # Before actions
