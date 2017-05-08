@@ -1,26 +1,35 @@
-<div class='event_cell--list' data-date="<%= event.date_and_time %>">
+<div class='event_cell--list'>
   <% if event.creator == current_user && event.upcoming? %>
     <div class='event_edit'><%= link_to('edit', edit_event_path(event), class: 'link-decorate') %></div>
   <% end %>
-  <a href='<%= event_path(event) %>'>
+  <%= link_to event do %>
 
     <div class='event_list'>
 
       <header class='event_list_main_header'>
           <%= image_tag event.picture_url(:thumb_list),
                         class: class_string('event_list_image',
-                                            'event_image--grayscale' => event.past?) %>
+                                            'event_image--grayscale' => event.past?),
+                        alt: event.title %>
       </header>
 
       <div class='event_list_main_body'>
-        <div class='event_list_date'><%= time_tag event.date_and_time, event.date_and_time.strftime("%a, %d %b %Y %l:%M %p")%></div>
+
+        <div class='event_list_date'><%= time_tag event.date_and_time,
+                                                  event.date_and_time.strftime("%a, %d %b %Y %l:%M %p")%>
+        </div>
+
         <%= content_tag(:h5, truncate(event.title, length: 80), class: 'event_list_title') %>
+
         <%= content_tag(:h6, truncate((event.venue + ', ').concat(event.address),length: 80), class: 'event_list_venue') %>
+
         <footer class='event_list_footer'>
           <%= content_tag(:h6, event.category.name, class: 'event_list_category') %>
           <%= content_tag(:h6, "Attendees: #{event.attendees.count}", class: 'event_list_category') %>
         </footer>
+
       </div>
     </div>
+    <% end %>
   </a>
 </div>

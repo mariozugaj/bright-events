@@ -7,13 +7,10 @@
     <%= link_to event, class: 'event-postcard_main' do %>
 
       <header class='event-postcard_main_header'>
-        <% if event.upcoming? %>
           <%= image_tag event.picture_url(:thumb_card),
-                        class: 'event-postcard_image' %>
-        <% else %>
-          <%= image_tag event.picture.thumb.url,
-                        class: 'event-postcard_image event_image--grayscale' %>
-        <% end %>
+                        class: class_string('event-postcard_image',
+                              'event_image--grayscale' => event.past?),
+                        alt: event.title %>
       </header>
 
       <div class='event-postcard_main_body'>
@@ -22,12 +19,10 @@
         <%= content_tag(:h6, truncate((event.venue + ', ').concat(event.address),length: 35), class: 'event-postcard_venue') %>
       </div>
 
+      <footer class='event-postcard_footer'>
+        <%= content_tag(:h6, event.category.name, class: 'event-postcard_venue') %>
+        <%= content_tag(:h6, "Attendees: #{event.attendees.count}", class: 'event-postcard_venue') %>
+      </footer>
     <% end %>
-
-    <footer class='event-postcard_footer'>
-      <%= content_tag(:h6, event.category.name, class: 'event-postcard_category') %>
-      <%= content_tag(:h6, "Attendees: #{event.attendees.count}", class: 'event-postcard_category') %>
-    </footer>
-
   </div>
 </div>
