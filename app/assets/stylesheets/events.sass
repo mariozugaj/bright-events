@@ -105,18 +105,13 @@
 /*--------- Event show ------------*/
 
 .event_hero--blurry
-  -webkit-filter: blur(50px) brightness(0.9)
   filter: blur(50px) brightness(0.9)
-  height: 100%
-  width: 100%
-  -o-object-fit: cover
-  object-fit: cover
-  -o-object-position: center
-  object-position: center
-  position: absolute
-  top: 0
-  left: 0
-  z-index: 0
+  display: inline-block
+  transform: translate(-50%, -50%)
+  width: 200%
+  position: relative
+  top: 50%
+  left: 50%
 
 .event_hero--blurry--grayscale
   -webkit-filter: blur(50px) brightness(0.9) grayscale(0.9)

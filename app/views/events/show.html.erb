@@ -1,5 +1,5 @@
 <div class="hero-image-wrapper">
-    <%= image_tag @event.picture_url(:show),
+    <%= image_tag @event.picture_url,
                   class: class_string('event_hero--blurry',
                                       'event_hero--blurry--grayscale' => @event.past?) %>
 </div>
