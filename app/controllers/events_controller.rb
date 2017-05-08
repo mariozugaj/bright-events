@@ -6,26 +6,26 @@ class EventsController < ApplicationController
   def index
     @events =
       if params[:location].present?
-        Event.near(params[:location]).filter(params.slice(:by_category, :by_title)).paginate(page: params[:page])
+        Event.near(params[:location]).filter(params.slice(:by_category, :by_title, :start_date, :end_date)).paginate(page: params[:page])
       else
         Event.filter(params.slice(:by_category, :by_title, :start_date, :end_date)).upcoming.paginate(page: params[:page])
       end
-    @hash = Gmaps4rails.build_markers(@events) do |event, marker|
+    map_hash = Gmaps4rails.build_markers(@events) do |event, marker|
       marker.lat event.latitude
       marker.lng event.longitude
       marker.infowindow render_to_string(partial: '/events/infowindow', locals: { object: event })
     end
-    gon.mapHash = @hash
+    gon.mapHash = map_hash
   end
 
   def show
     @event = Event.find(params[:id])
-    @hash = Gmaps4rails.build_markers(@event) do |event, marker|
+    map_hash = Gmaps4rails.build_markers(@event) do |event, marker|
       marker.lat event.latitude
       marker.lng event.longitude
       marker.infowindow event.venue
     end
-    gon.mapHash = @hash
+    gon.mapHash = map_hash
   end
 
   def new
