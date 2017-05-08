@@ -15,13 +15,13 @@
 
       <div class='event-postcard_main_body'>
         <%= time_tag event.date_and_time, event.date_and_time.strftime("%a, %d %b %Y %l:%M %p"), class: 'event-postcard_date' %>
-        <%= content_tag(:h5, truncate(event.title, length: 45), class: 'event-postcard_title') %>
-        <%= content_tag(:h6, truncate((event.venue + ', ').concat(event.address),length: 35), class: 'event-postcard_venue') %>
+        <%= content_tag(:h5, event.title, class: 'event-postcard_title') %>
+        <%= content_tag(:h6, (event.venue + ', ').concat(event.address), class: 'event-postcard_venue') %>
       </div>
 
       <footer class='event-postcard_footer'>
-        <%= content_tag(:h6, event.category.name, class: 'event-postcard_venue') %>
-        <%= content_tag(:h6, "Attendees: #{event.attendees.count}", class: 'event-postcard_venue') %>
+        <%= content_tag(:h6, event.category.name, class: 'event-postcard_footer-item') %>
+        <%= content_tag(:h6, "Attendees: #{event.attendees.count}", class: 'event-postcard_footer-item') %>
       </footer>
     <% end %>
   </div>

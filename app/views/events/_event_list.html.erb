@@ -19,9 +19,9 @@
                                                   event.date_and_time.strftime("%a, %d %b %Y %l:%M %p")%>
         </div>
 
-        <%= content_tag(:h5, truncate(event.title, length: 80), class: 'event_list_title') %>
+        <%= content_tag(:h5, event.title, class: 'event_list_title') %>
 
-        <%= content_tag(:h6, truncate((event.venue + ', ').concat(event.address),length: 80), class: 'event_list_venue') %>
+        <%= content_tag(:h6, (event.venue + ', ').concat(event.address), class: 'event_list_venue') %>
 
         <footer class='event_list_footer'>
           <%= content_tag(:h6, event.category.name, class: 'event_list_category') %>

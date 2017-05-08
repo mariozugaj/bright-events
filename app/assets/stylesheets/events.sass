@@ -3,7 +3,7 @@
 
 .events-wrapper
   display: grid
-  grid-template-columns: 1fr 1fr 1fr
+  grid-template-columns: 33.333% 33.333% 33.333%
   grid-template-rows: auto auto auto auto auto
 
 /*------- Event postcard ------*/
@@ -11,7 +11,6 @@
 .event_cell
   padding: 0 0.5rem 0.8rem
   box-sizing: border-box
-  //width: 33.3333333333%
   position: relative
 
 .event-postcard
@@ -60,28 +59,37 @@
   filter: grayscale(0.9)
 
 .event-postcard_main_body, .event-postcard_footer
-  padding: 5px 15px
+  padding: 10px 15px
 
 .event-postcard_date
   text-transform: uppercase
 
-.event-postcard_date, .event-postcard_venue
+.event-postcard_date, .event-postcard_footer-item, .event-postcard_venue
   padding-top: 5px
-
-.event-postcard_date, .event-postcard_title, .event-postcard_venue
   color: $text-color
 
-.event-postcard_title
+.event-postcard_title, .event_list_title
   color: $text-color--accent
   font-size: 15px
-  line-height: 19px
+  text-transform: capitalize
   font-weight: 600
   letter-spacing: 0.5px
-  max-height: 38px
+  line-height: 19px
   height: 38px
-  text-transform: capitalize
+  max-height: 38px
+  display: -webkit-box
+  margin: 0 auto
+  -webkit-box-orient: vertical
+  -webkit-line-clamp: 2
+  overflow: hidden
+  text-overflow: ellipsis
 
-.event-postcard_venue, .event-postcard_date, .event-postcard_category
+.event-postcard_venue, .event_list_venue
+  text-overflow: ellipsis
+  overflow: hidden
+  white-space: nowrap
+
+.event-postcard_venue, .event-postcard_date, .event-postcard_category, .event-postcard_footer-item
   font-size: 12px
   line-height: 18px
   font-weight: 400
