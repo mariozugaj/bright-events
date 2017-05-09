@@ -12,7 +12,14 @@
   </div>
 
   <header class=''>
-    <h2 class='title title--center title--skinny'>Events near you</h2>
+    <h2 class='title title--center title--skinny'>
+      Events for you near
+      <span class='visitor-city'>
+        <%= link_to @visitor_city,
+                    events_path(location: @visitor_city),
+                    class: 'link-decorate' %>
+      </span>
+    </h2>
     <hr class='h-rule-5--orange'>
   </header>
 
