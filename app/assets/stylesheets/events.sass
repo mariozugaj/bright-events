@@ -313,29 +313,6 @@
 .event_list_date
   padding-top: 0.8rem
 
-$loader-size: 5rem
-$animation-duration: 1.5s
-
-.pulse
-  display: none
-  width: $loader-size
-  height: $loader-size
-  margin: 0 auto
-  border-radius: 100%
-  background-color: white
-  opacity: 1
-  animation: pulse $animation-duration infinite ease-in-out
-
-
-@keyframes pulse
-  0%
-    transform: scale(0)
-    opacity: .8
-
-  100%
-    transform: scale(1)
-    opacity: 0
-
 .load-more-container
   display: flex
   flex-direction: column
