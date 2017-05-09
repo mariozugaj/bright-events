@@ -28,6 +28,14 @@
     <%= postcard_events(@events) %>
   </div>
 
+  <div class='categories-container'>
+    <h2 class='title title--center title--skinny'>Browse by popular categories</h2>
+    <hr class='h-rule-5--orange'>
+    <div class='categories-wrapper'>
+      <%= render 'categories' %>
+    </div>
+  </div>
+
 </section>
 
 <% if @events.any? && Event.count > @events.size %>

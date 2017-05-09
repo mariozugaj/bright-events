@@ -1,0 +1,14 @@
+<% @popular_categories.each_with_index do |category, index| %>
+  <div class="category_cell category_cell--<%= index %>">
+    <%= link_to events_path(by_category: category.id) do %>
+      <div class='category_body'>
+        <div class='category_name-container'>
+          <h4 class='category_name title '><%= category.name %></h4>
+        </div>
+        <div class='category_image-wrapper'>
+          <%= image_tag 'http://placehold.it/700x220', class: 'category_image' %>
+        </div >
+      </div>
+    <% end %>
+  </div>
+<% end %>

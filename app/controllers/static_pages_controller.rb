@@ -8,5 +8,9 @@
     @visitor_city = visitor_location.city
     @visitor_city_and_country = "#{@visitor_city}, #{visitor_location.country}"
     @categories = Category.pluck(:name, :id)
+    @popular_categories = Event.includes(:category)
+                               .upcoming
+                               .max_by(7) { |event| event.attendees.count }
+                               .map(&:category)
   end
 end
