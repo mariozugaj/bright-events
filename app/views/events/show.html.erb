@@ -32,7 +32,14 @@
 
     <div class='event-show_info_body'>
       <%= content_tag :h2, @event.title, class: 'event-show_info_title' %>
-      <%= content_tag :h2, "Attendees: #{@event.attendees.count}", class: 'event-show_info_creator text--muted' %>
+
+      <h2 class='event-show_info_creator text--muted'>
+        Attendees:
+        <span id='attendees-count' class='event-show_info_creator text--muted'>
+          <%= @event.attendees.count %>
+        </span>
+      </h2>
+
       <%= content_tag :p, (link_to "by #{@event.creator.name}",
           user_path(@event.creator), class: 'link-decorate'), class: 'event-show_info_creator' %>
     </div>

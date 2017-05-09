@@ -1,1 +1,2 @@
 $('#attend-form').html('<%= j render("events/unattend") %>');
+$('#attendees-count').html('<%= @event.attendees.count %>');
