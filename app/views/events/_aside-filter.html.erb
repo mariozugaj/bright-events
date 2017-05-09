@@ -18,6 +18,7 @@
                           class: 'event-form_select' } %>
       </div>
       <div class='profile_aside_box_item datetime-picker_container'>
+
         <%= text_field_tag :start_date,
                           (params[:start_date].to_datetime.strftime("%e %b, %Y") unless params[:start_date].blank?),
                           { id: 'datepicker',
