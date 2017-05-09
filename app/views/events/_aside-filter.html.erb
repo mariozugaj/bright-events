@@ -5,14 +5,16 @@
       <%= svg('filter.svg', class: 'icon') %>
       Filter events</h3>
     <%= form_tag :events, method: 'get' do %>
-      <%= text_field_tag :location, params[:location], { class: 'profile_aside_box_item event-form_field',
-                                          placeholder: 'Event\'s location' } %>
+
       <%= text_field_tag :by_title, params[:by_title], { class: 'profile_aside_box_item event-form_field',
                                           placeholder: 'Event\'s title, description' } %>
+      <%= text_field_tag :location, params[:location], { class: 'profile_aside_box_item event-form_field',
+                                          placeholder: 'Event\'s location' } %>
+
       <div class='select-box profile_aside_box_item'>
         <%= svg('circle-down.svg', class: 'select-icon') %>
         <%= select_tag :by_category,
-                        options_for_select(Category.pluck(:name, :id),
+                        options_for_select(@categories,
                         params[:by_category]),
                         { include_blank: 'Select category',
                           class: 'event-form_select' } %>

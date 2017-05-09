@@ -16,6 +16,7 @@ class EventsController < ApplicationController
       marker.infowindow render_to_string(partial: '/events/infowindow', locals: { object: event })
     end
     gon.mapHash = map_hash
+    @categories = Category.pluck(:name, :id)
   end
 
   def show

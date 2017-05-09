@@ -6,5 +6,7 @@
     visitor_location = request.safe_location
     @events = Event.near(visitor_location.coordinates, 50).upcoming.limit(13)
     @visitor_city = visitor_location.city
+    @visitor_city_and_country = "#{@visitor_city}, #{visitor_location.country}"
+    @categories = Category.pluck(:name, :id)
   end
 end
