@@ -28,6 +28,10 @@
     <%= postcard_events(@events) %>
   </div>
 
+  <% if @events.any? && @events.size > 15 %>
+    <%= link_to 'Show more', events_path, class: 'btn btn--hollow btn--showmore btn--mtb1' %>
+  <% end %>
+
   <div class='categories-container'>
     <h2 class='title title--center title--skinny'>Browse by popular categories</h2>
     <hr class='h-rule-5--orange'>
@@ -37,7 +41,3 @@
   </div>
 
 </section>
-
-<% if @events.any? && Event.count > @events.size %>
-  <%= link_to 'Show more', events_path, class: 'btn btn--hollow btn--showmore btn--mtb1' %>
-<% end %>

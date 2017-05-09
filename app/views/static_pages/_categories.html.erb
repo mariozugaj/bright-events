@@ -3,10 +3,10 @@
     <%= link_to events_path(by_category: category.id) do %>
       <div class='category_body'>
         <div class='category_name-container'>
-          <h4 class='category_name title '><%= category.name %></h4>
+          <h3 class='category_name title '><%= category.name %></h3>
         </div>
         <div class='category_image-wrapper'>
-          <%= image_tag 'http://placehold.it/700x220', class: 'category_image' %>
+          <%= image_tag category.picture, class: 'category_image' %>
         </div >
       </div>
     <% end %>

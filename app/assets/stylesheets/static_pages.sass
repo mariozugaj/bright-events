@@ -141,13 +141,20 @@
   margin: 0
   display: inline
 
+.events-wrapper--home
+  width: 100%
+
 .categories-container
+  margin-top: 1rem
 
 .categories-wrapper
   display: grid
   grid-template-columns: 1fr 1fr 1fr
-  grid-template-rows: 220px 220px 220px
+  grid-template-rows: auto auto auto
   grid-gap: 30px
+
+.category_cell
+  border-radius: 4px
 
 .category_cell--0
   grid-column: 1 / 3
@@ -192,6 +199,7 @@
   text-align: center
   color: white
   z-index: 99
+  padding: 1rem
 
 .category_image-wrapper
   width: 100%
@@ -201,14 +209,17 @@
   z-index: 0
 
 .category_image
-  max-width: 100%
-  height: 100%
   width: 100%
+  height: auto
+  border-radius: 4px
   -moz-transition: all 0.3s
   -webkit-transition: all 0.3s
   transition: all 0.3s
 
 .category_cell:hover .category_image
-  -moz-transform: scale(1.1)
-  -webkit-transform: scale(1.1)
-  transform: scale(1.1)
+  -moz-transform: scale(1.05)
+  -webkit-transform: scale(1.05)
+  transform: scale(1.05)
+
+.category_name
+  text-shadow: 0.5px 0.5px 0.5px lightgray
