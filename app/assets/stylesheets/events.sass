@@ -2,9 +2,9 @@
 @import 'base'
 
 .events-wrapper
-  display: grid
-  grid-template-columns: 33.333% 33.333% 33.333%
-  grid-template-rows: auto auto auto auto auto
+  display: flex
+  flex-wrap: wrap
+  width: 100%
 
 /*------- Event postcard ------*/
 
@@ -12,6 +12,7 @@
   padding: 0 0.5rem 0.8rem
   box-sizing: border-box
   position: relative
+  max-width: 33.3333333%
 
 .event-postcard
   background-color: white
@@ -260,10 +261,10 @@
 
 /*------- Event list -------*/
 .event_cell--list
-  grid-column: 1 / span 3
   padding: 0 0.5rem 0.8rem
   box-sizing: border-box
   position: relative
+  width: 100%
 
 .event_list
   display: flex

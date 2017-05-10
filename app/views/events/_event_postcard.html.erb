@@ -1,4 +1,4 @@
-<div class='event_cell' data-id="<%= event.id %>">
+<div class='event_cell'>
   <div class='event-postcard'>
     <% if event.creator == current_user && event.upcoming? %>
       <div class='event_edit'><%= link_to('edit', edit_event_path(event), class: 'link-decorate') %></div>
