@@ -277,11 +277,14 @@
   border-radius: 4px 0 0 4px
 
 .event_list_main_body
-  background-color: white
   width: 100%
   min-height: 80%
 
 .event_list_body-wrapper
+  background-color: white
+  display: flex
+  flex-direction: column
+  justify-content: space-between
   overflow: hidden
   width: 100%
   border-radius: 0 4px 4px 0
@@ -292,8 +295,7 @@
   justify-content: flex-start
   align-items: center
   border-top: 1px solid $border-color
-  background-color: white
-  min-height: 20%
+  padding: 0.5rem 0
 
 .event_list_date, .event_list_venue, .event_list_category
   color: $text-color
