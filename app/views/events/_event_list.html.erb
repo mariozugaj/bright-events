@@ -2,34 +2,42 @@
   <% if event.creator == current_user && event.upcoming? %>
     <div class='event_edit'><%= link_to('edit', edit_event_path(event), class: 'link-decorate') %></div>
   <% end %>
-  <%= link_to event do %>
 
     <div class='event_list'>
 
-      <header class='event_list_main_header'>
-          <%= image_tag event.picture_url(:thumb_list),
-                        class: class_string('event_list_image',
-                                            'event_image--grayscale' => event.past?),
-                        alt: event.title %>
-      </header>
+      <%= link_to event do %>
 
-      <div class='event_list_main_body'>
+        <header class='event_list_main_header'>
+            <%= image_tag event.picture_url(:thumb_list),
+                          class: class_string('event_list_image',
+                                              'event_image--grayscale' => event.past?),
+                          alt: event.title %>
+        </header>
 
-        <div class='event_list_date'><%= time_tag event.date_and_time,
-                                                  event.date_and_time.strftime("%a, %d %b %Y %l:%M %p")%>
+      <% end %>
+
+        <div class='event_list_body-wrapper'>
+
+          <%= link_to event do %>
+
+            <div class='event_list_main_body'>
+              <div class='event_list_date'><%= time_tag event.date_and_time,
+                                                        event.date_and_time.strftime("%a, %d %b %Y %l:%M %p")%>
+              </div>
+              <%= content_tag(:h5, event.title, class: 'event_list_title') %>
+              <%= content_tag(:h6, (event.venue + ', ').concat(event.address), class: 'event_list_venue') %>
+            </div>
+
+          <% end %>
+
+          <footer class='event_list_footer'>
+            <%= link_to "##{event.category.name}",
+                        events_path(by_category: event.category.id),
+                        class: 'event_list_category link-decorate' %>
+            <%= content_tag(:h6, "Attendees: #{event.attendees.count}", class: 'event_list_category') %>
+          </footer>
+
         </div>
-
-        <%= content_tag(:h5, event.title, class: 'event_list_title') %>
-
-        <%= content_tag(:h6, (event.venue + ', ').concat(event.address), class: 'event_list_venue') %>
-
-        <footer class='event_list_footer'>
-          <%= content_tag(:h6, event.category.name, class: 'event_list_category') %>
-          <%= content_tag(:h6, "Attendees: #{event.attendees.count}", class: 'event_list_category') %>
-        </footer>
-
-      </div>
     </div>
-    <% end %>
   </a>
 </div>

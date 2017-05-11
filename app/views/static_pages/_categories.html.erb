@@ -6,7 +6,11 @@
           <h3 class='category_name title '><%= category.name %></h3>
         </div>
         <div class='category_image-wrapper'>
-          <%= image_tag category.picture, class: 'category_image' %>
+          <%= cl_image_tag(category.picture, class: 'category_image',
+                                             gravity: :center,
+                                             height: 220,
+                                             width: 708,
+                                             crop: :fill)  %>
         </div >
       </div>
     <% end %>

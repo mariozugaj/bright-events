@@ -80,7 +80,9 @@ class EventsController < ApplicationController
 
   def correct_user
     @event = Event.find(params[:id])
-    flash[:alert] = 'You are not allowed to enter this section!'
-    redirect_to(root_url) unless current_user == @event.creator
+    if current_user != @event.creator
+      redirect_to(root_url)
+      flash[:alert] = 'You are not allowed to enter this section!'
+    end
   end
 end

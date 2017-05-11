@@ -2,7 +2,6 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   include Cloudinary::CarrierWave
 
-  process convert: 'png'
   process tags: ['event_picture']
 
   version :thumb_list do
@@ -10,12 +9,13 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   version :thumb_card do
-    resize_to_fit(338, 165)
+    resize_to_fit(400, 227)
   end
 
   version :show do
     process eager: true
     resize_to_fill(720, 360)
+    cloudinary_transformation quality: 100
   end
 
   def extension_whitelist

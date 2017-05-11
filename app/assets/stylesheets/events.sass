@@ -26,7 +26,7 @@
   background-color: white
   border-radius: 4px
   font-size: 0.8rem
-  right: 8px
+  right: 10px
   top: 8px
   z-index: 10
   text-transform: uppercase
@@ -40,11 +40,12 @@
   height: 165px
   overflow: hidden
   border-bottom: 1px solid $border-color
+  border-radius: 4px 4px 0 0
 
 .event-postcard_image, .event_list_image
   width: 100%
-  max-width: 100%
   height: 100%
+  object-fit: cover
   -moz-transition: all 0.3s
   -webkit-transition: all 0.3s
   transition: all 0.3s
@@ -145,11 +146,7 @@
   overflow: hidden
 
 .event-show_header_picture
-  width: 100%
-  height: 100%
   border-radius: 4px 0 0 0
-  object-fit: cover
-  object-position: center
 
 .event-show_header_picture--grayscale
   filter: grayscale(0.9)
@@ -277,18 +274,26 @@
   height: 137px
   overflow: hidden
   border-right: 1px solid $border-color
+  border-radius: 4px 0 0 4px
 
 .event_list_main_body
   background-color: white
-  flex-grow: 3
-  height: 100%
+  width: 100%
+  height: 80%
+
+.event_list_body-wrapper
+  overflow: hidden
+  width: 100%
+  border-radius: 0 4px 4px 0
 
 .event_list_footer
+  width: 100%
   display: flex
   justify-content: flex-start
-  align-items: flex-end
+  align-items: center
   border-top: 1px solid $border-color
-  padding-top: 0.4rem
+  background-color: white
+  height: 20%
 
 .event_list_date, .event_list_venue, .event_list_category
   color: $text-color
