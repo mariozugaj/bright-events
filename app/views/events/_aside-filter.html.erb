@@ -1,48 +1,62 @@
-<aside class="profile_aside">
+<!-- Events aside -->
 
-  <div class="profile_aside_box">
-    <h3 class='profile_aside_title'>
-      <%= svg('filter.svg', class: 'icon') %>
-      Filter events</h3>
+<aside class="aside">
 
-    <div class='map'>
-      <div id="event-map" style='height: 200px;'></div>
+  <!-- Map of filtered events -->
+
+  <div class='aside__map'>
+    <div id='event-map' class='aside__map'></div>
+  </div>
+
+  <div class='aside__content'>
+
+    <!-- Title -->
+
+    <h3 class='title title--l3 title__container'>
+      Filter events
+      <%= svg('circle-down.svg', class: 'icon--filter') %>
+    </h3>
+
+    <!-- Filter form -->
+
+    <div id='filter-form'>
+      <%= form_tag :events, method: 'get' do %>
+
+        <%= text_field_tag :by_title, params[:by_title], { class: 'form__field aside__item',
+                                            placeholder: 'Event\'s title, description' } %>
+        <%= text_field_tag :location, params[:location], { class: 'form__field aside__item',
+                                            placeholder: 'Event\'s location' } %>
+
+        <div class='aside__item'>
+          <%= svg('circle-down.svg', class: 'select-icon') %>
+          <%= select_tag :by_category,
+                          options_for_select(@categories,
+                          params[:by_category]),
+                          { include_blank: 'Select category',
+                            class: 'form__field' } %>
+        </div>
+
+        <div class='aside__item aside__fromto'>
+
+          <%= text_field_tag :start_date,
+                            (params[:start_date].to_datetime.strftime("%e %b, %Y") unless params[:start_date].blank?),
+                            { id: 'datepicker',
+                              class: 'form__field form__field--half',
+                              placeholder: 'From date...' } %>
+          <%= text_field_tag :end_date,
+                            (params[:end_date].to_datetime.strftime("%e %b, %Y") unless params[:end_date].blank?),
+                            { id: 'datepicker2',
+                              class: 'form__field form__field--half',
+                              placeholder: '...to date' } %>
+        </div>
+
+        <%= submit_tag 'Search', { class: 'btn btn--notice aside__item', id: 'search' } %>
+      <% end %>
+
+      <%= button_to "Clear Search", events_path,
+                                    method: 'get',
+                                    class: 'btn btn--danger aside__item',
+                                    id: 'clear-search' %>
     </div>
-
-    <%= form_tag :events, method: 'get' do %>
-
-      <%= text_field_tag :by_title, params[:by_title], { class: 'profile_aside_box_item event-form_field',
-                                          placeholder: 'Event\'s title, description' } %>
-      <%= text_field_tag :location, params[:location], { class: 'profile_aside_box_item event-form_field',
-                                          placeholder: 'Event\'s location' } %>
-
-      <div class='select-box profile_aside_box_item'>
-        <%= svg('circle-down.svg', class: 'select-icon') %>
-        <%= select_tag :by_category,
-                        options_for_select(@categories,
-                        params[:by_category]),
-                        { include_blank: 'Select category',
-                          class: 'event-form_select' } %>
-      </div>
-      <div class='profile_aside_box_item datetime-picker_container'>
-
-        <%= text_field_tag :start_date,
-                          (params[:start_date].to_datetime.strftime("%e %b, %Y") unless params[:start_date].blank?),
-                          { id: 'datepicker',
-                            class: 'event-form_field datetime-picker--aside',
-                            placeholder: 'From date...' } %>
-        <%= text_field_tag :end_date,
-                          (params[:end_date].to_datetime.strftime("%e %b, %Y") unless params[:end_date].blank?),
-                          { id: 'datepicker2',
-                            class: 'event-form_field datetime-picker--aside',
-                            placeholder: '...to date' } %>
-      </div>
-
-      <%= submit_tag 'Search', { class: 'btn btn--notice btn--aside', id: 'search' } %>
-    <% end %>
-    <%= button_to "Clear Search", events_path,
-                                  method: 'get',
-                                  class: 'btn btn--danger btn--aside',
-                                  id: 'clear-search' %>
   </div>
 </aside>

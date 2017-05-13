@@ -1,11 +1,12 @@
-<div class='page-container_header--2'>
-  <h2 class='title title--bottom title--center title--skinny'>Search all events</h2>
-  <hr class='h-rule-5--orange'>
-</div>
-<%= render 'aside-filter' %>
-<section class='profile_main'>
-  <div class='events-wrapper'>
+<div class="eu-grid">
+
+  <h2 class='eu__header--center title title--bottom title--center title--skinny'>Search all events</h2>
+
+  <%= render 'aside-filter' %>
+
+  <section class='eu__events'>
     <%= list_events @events %>
-  </div>
-  <%= will_paginate %>
-</section>
+    <%= will_paginate %>
+  </section>
+  
+</div>

@@ -50,7 +50,34 @@
   grid-area: categories;
 }
 
-/*-------- Event listing grid -----*/
+/*-------- Events/user grid -----*/
+.eu-grid {
+  display: grid;
+  max-width: 1080px;
+  padding: 0 1rem;
+  margin: 0 auto;
+  grid-template-columns: 2fr 1rem 6fr;
+  grid-template-rows: auto;
+  grid-template-areas: "title-left . title-center"
+                       "aside . eu-events"
+                       ". . eu-events";
+}
+
+.aside {
+  grid-area: aside;
+}
+
+.eu__events {
+  grid-area: eu-events;
+}
+
+.eu__header--center {
+  grid-area: title-center;
+}
+
+.eu__header--left {
+  grid-area: title-left;
+}
 
 
 /*------- Media queries ---------*/
@@ -64,5 +91,16 @@
 @media screen and (max-width: 992px) {
   .hp-grid {
     grid-template-columns: 1fr 90% 1fr;
+  }
+}
+
+@media screen and (max-width: 799px) {
+  .eu-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: "title-left"
+                         "title-center"
+                         "aside"
+                         "eu-events";
   }
 }

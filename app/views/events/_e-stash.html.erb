@@ -1,0 +1,37 @@
+<!-- Event header -->
+
+<div class='event__header'>
+  <%= link_to event do %>
+
+    <%= image_tag event.picture_url(:thumb_card),
+                  class: class_string('event__image',
+                        'img--grayscale' => event.past?),
+                  alt: event.title %>
+  <% end %>
+</div>
+
+<!-- Event stash -->
+
+<div class='event__stash'>
+
+  <!-- Event info -->
+
+  <%= link_to event do %>
+
+    <div class='event__info'>
+      <%= time_tag event.date_and_time, event.date_and_time.strftime("%a, %d %b %Y %l:%M %p"), class: 'title--up title--l6' %>
+      <%= content_tag(:h5, event.title, class: 'title--l4 title--clap-2 title--cpt') %>
+      <%= content_tag(:h6, (event.venue + ', ').concat(event.address), class: 'title--l6 title--clap-1') %>
+    </div>
+
+  <% end %>
+
+  <!-- Event footer -->
+
+  <footer class='event__footer'>
+    <%= link_to "##{event.category.name}",
+                events_path(by_category: event.category.id),
+                class: 'title--l6 link' %>
+    <%= content_tag(:h6, "Attendees: #{event.attendees.count}", class: 'title--l6') %>
+  </footer>
+</div>

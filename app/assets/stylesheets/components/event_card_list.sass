@@ -1,0 +1,128 @@
+@import 'colors'
+
+/*------- Events (e-card and e-list) ------*/
+
+.event__edit
+  position: absolute
+  padding: 0.1rem 0.5rem
+  background-color: white
+  border-radius: 4px
+  font-size: 0.8rem
+  left: 0.5rem
+  top: 0.5rem
+  z-index: 10
+  text-transform: uppercase
+
+.event__edit--big
+  padding: 0.4rem 1rem
+  font-size: 0.8rem
+
+.event__header
+  display: block
+  overflow: hidden
+
+.event__image
+  width: 100%
+  height: 100%
+  object-fit: cover
+  object-position: center
+  transition: all 0.3s
+
+.event__image:hover
+  transform: scale(1.1)
+
+.event__stash
+  padding: 10px 15px
+  background-color: white
+  box-sizing: border-box
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  width: 100%
+
+.event__footer
+  border-top: 1px solid $border-color
+  display: flex
+  padding-top: 0.5rem
+
+/*------ Event card -------*/
+
+.e-card__cell
+  padding: 0.5rem
+  position: relative
+  width: 33.3333333%
+  box-sizing: border-box
+
+  .event__header
+    width: 100%
+    height: 185px
+    border-radius: 4px 4px 0 0
+    box-shadow: 0px 1px 2px 0px rgba(176,166,176,1)
+
+  .event__image
+    border-radius: 4px 4px 0 0
+
+  .event__stash
+    border-radius: 0 0 4px 4px
+    height: 160px
+
+  .event__footer
+    flex-direction: column
+
+
+/*------ Event list -------*/
+
+.e-list__content
+  display: flex
+  flex-wrap: nowrap
+  width: 100%
+
+.e-list__cell
+  position: relative
+  padding: 0.5rem 0
+  width: 100%
+  box-sizing: border-box
+
+  .event__edit
+    left: 0
+
+  .event__header
+    width: 220px
+    height: 140px
+    border-radius: 4px 0 0 4px
+
+  .event__stash
+    border-radius: 0 4px 4px 0
+
+  .event__footer > h6
+    padding-left: 1rem
+
+
+/*------ Media queries ------*/
+
+@media screen and (max-width: 799px)
+  .e-card__cell
+    width: 50%
+
+@media screen and (max-width: 479px)
+  .e-card__cell
+    width: 100%
+
+  .e-list__cell
+    .event__header
+      width: 100%
+      height: 180px
+      border-radius: 4px 4px 0 0
+
+    .event__stash
+      border-radius: 0 0 4px 4px
+      height: 160px
+
+    .event__footer
+      flex-direction: column
+      h6
+        padding-left: 0
+
+  .e-list__content
+    display: flex
+    flex-direction: column

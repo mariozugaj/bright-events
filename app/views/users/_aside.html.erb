@@ -1,33 +1,26 @@
-<aside class="profile_aside">
+<aside class="aside">
 
-  <div class="profile_aside_box">
-    <h3 class='profile_aside_title'>
-      <%= svg('headphones.svg', class: 'icon') %>
-      Your events</h3>
-    <ul class='profile_aside_link-container'>
-      <li class='profile_aside_box_item'>
-        <%= link_to "Events you created (#{@user.events.count})",
-                    user_path,
-                    class: class_string('profile_aside_link',
-                                         'link--active' => current_page?(user_path)) %>
-      </li>
-      <li class='profile_aside_box_item'>
-        <%= link_to "Attending events (#{@user.upcoming_events.count})",
-                     upcoming_events_user_path,
-                     class: class_string('profile_aside_link',
-                                         'link--active' => current_page?(upcoming_events_user_path)) %>
-      </li>
-      <li class ='profile_aside_box_item'>
-        <%= link_to "Attended events (#{@user.past_attended_events.count})",
-                    past_attended_events_user_path,
-                    class: class_string('profile_aside_link',
-                                        'link--active' => current_page?(past_attended_events_user_path)) %>
-      </li>
-    </ul>
+  <div class="aside__content">
+    <div class="aside__content-box">
+      <h3 class='title title--l3 title--left'>
+        <%= svg('headphones.svg', class: 'icon') %>
+        Your events</h3>
+      <ul>
+        <li class='aside__item'>
+          <%= link_to "Events you created (#{@user.events.count})",
+                      user_path,
+                      class: class_string('link title--l4',
+                                           'link--active' => current_page?(user_path)) %>
+        </li>
+        <li class='aside__item'>
+          <%= link_to "Attending events (#{@user.upcoming_events.count})", upcoming_events_user_path, class: class_string('link title--l4', 'link--active' => current_page?(upcoming_events_user_path)) %>
+        </li>
+        <li class='aside__item'>
+          <%= link_to "Attended events (#{@user.past_attended_events.count})", past_attended_events_user_path, class: class_string('link title--l4', 'link--active' => current_page?(past_attended_events_user_path)) %>
+        </li>
+      </ul>
+    </div>
+      <%= button_to 'Create event', new_event_path, class: 'btn btn--success btn--margin-yes' %>
   </div>
-  <div class="profile_aside_box">
-    <button class='btn btn--success btn--aside'>
-      <%= link_to 'Create event', new_event_path, class: 'button-link' %>
-    </button>
-  </div>
+
 </aside>

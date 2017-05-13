@@ -50,4 +50,8 @@ $(document).on('turbolinks:load', function() {
       $('.event_cell--list').css({ 'opacity': '0.5' });
     }, 0);
   });
+
+  $('.icon--filter').click(function () {
+    $('#filter-form').slideToggle();
+  });
 });

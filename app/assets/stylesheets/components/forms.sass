@@ -1,0 +1,23 @@
+@import 'colors'
+
+/*----------- Forms ------*/
+
+.form__field
+  box-sizing: border-box
+  display: block
+  width: 100%
+  padding: 0.5rem
+  font-size: 0.8rem
+  border-radius: 4px
+  border: 1px solid #ccc
+  background-color: white
+  text-align: center
+  text-align-last: center
+
+.form__field--half
+  width: 50%
+  &:first-of-type
+    border-radius: 4px 0 0 4px
+    border-right: none
+  &:last-of-type
+    border-radius: 0 4px 4px 0

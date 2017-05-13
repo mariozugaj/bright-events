@@ -1,43 +1,16 @@
-<div class='event_cell--list'>
+<article class='e-list__cell'>
+
+  <!-- Event edit button -->
+
   <% if event.creator == current_user && event.upcoming? %>
-    <div class='event_edit'><%= link_to('edit', edit_event_path(event), class: 'link-decorate') %></div>
+    <div class='event__edit'><%= link_to('edit', edit_event_path(event), class: 'link-decorate') %></div>
   <% end %>
 
-    <div class='event_list'>
+  <!-- Event content -->
 
-      <%= link_to event do %>
+  <div class='e-list__content'>
 
-        <header class='event_list_main_header'>
-            <%= image_tag event.picture_url(:thumb_list),
-                          class: class_string('event_list_image',
-                                              'event_image--grayscale' => event.past?),
-                          alt: event.title %>
-        </header>
+    <%= render 'events/e-stash', event: event %>
 
-      <% end %>
-
-        <div class='event_list_body-wrapper'>
-
-          <%= link_to event do %>
-
-            <div class='event_list_main_body'>
-              <div class='event_list_date'><%= time_tag event.date_and_time,
-                                                        event.date_and_time.strftime("%a, %d %b %Y %l:%M %p")%>
-              </div>
-              <%= content_tag(:h5, event.title, class: 'event_list_title') %>
-              <%= content_tag(:h6, (event.venue + ', ').concat(event.address), class: 'event_list_venue') %>
-            </div>
-
-          <% end %>
-
-          <footer class='event_list_footer'>
-            <%= link_to "##{event.category.name}",
-                        events_path(by_category: event.category.id),
-                        class: 'event_list_category link-decorate' %>
-            <%= content_tag(:h6, "Attendees: #{event.attendees.count}", class: 'event_list_category') %>
-          </footer>
-
-        </div>
-    </div>
-  </a>
-</div>
+  </div>
+</article>

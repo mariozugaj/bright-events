@@ -3,14 +3,15 @@
 a
   text-decoration: none
 
-.link--decorate, .link--decorate:hover, .link--decorate:visited
-  color: $alt-color
+.link, .link:hover, .link:visited
+  color: $alt-color !important
 
-.link--decorate:hover
+.link:hover
   text-decoration: underline
 
-.link--normal
-  color: inherit
+.link--active
+  color: $primary-color !important
 
-.link--normal:hover
-  color: $alt-color
+.link--active:hover
+  color: $primary-color !important
+  text-decoration: none

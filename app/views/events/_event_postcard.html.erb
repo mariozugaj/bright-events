@@ -1,34 +1,16 @@
-<div class='event_cell'>
-  <div class='event-postcard'>
-    <% if event.creator == current_user && event.upcoming? %>
-      <div class='event_edit'><%= link_to('edit', edit_event_path(event), class: 'link-decorate') %></div>
-    <% end %>
+<article class='e-card__cell'>
 
-    <div class='event-postcard_main'>
+  <!-- Event edit button -->
 
-      <%= link_to event do %>
+  <% if event.creator == current_user && event.upcoming? %>
+    <div class='event__edit'><%= link_to('edit', edit_event_path(event), class: 'link-decorate') %></div>
+  <% end %>
 
-        <header class='event-postcard_main_header'>
-            <%= image_tag event.picture_url(:thumb_card),
-                          class: class_string('event-postcard_image',
-                                'event_image--grayscale' => event.past?),
-                          alt: event.title %>
-        </header>
+  <!-- Event content -->
 
-        <div class='event-postcard_main_body'>
-          <%= time_tag event.date_and_time, event.date_and_time.strftime("%a, %d %b %Y %l:%M %p"), class: 'event-postcard_date' %>
-          <%= content_tag(:h5, event.title, class: 'event-postcard_title') %>
-          <%= content_tag(:h6, (event.venue + ', ').concat(event.address), class: 'event-postcard_venue') %>
-        </div>
+  <div class='e-card__content'>
 
-      <% end %>
+    <%= render 'events/e-stash', event: event %>
 
-      <footer class='event-postcard_footer'>
-        <%= link_to "##{event.category.name}",
-                    events_path(by_category: event.category.id),
-                    class: 'event-postcard_footer-item link-decorate' %>
-        <%= content_tag(:h6, "Attendees: #{event.attendees.count}", class: 'event-postcard_footer-item') %>
-      </footer>
-    </div>
   </div>
-</div>
+</article>
