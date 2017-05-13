@@ -1,44 +1,51 @@
 @import 'colors'
 @import 'base'
 
+/*-------- Titles --------*/
+
 .title
   padding: 1rem 0
-  display: flex
-
-.title--center
-  justify-content: center
-
-.title--bottom
-  align-items: flex-end
+  text-align: center
 
 .title--left
-  justify-content: flex-start
+  text-align: left
 
 .title--right
-  justify-content: flex-end
+  text-align: right
 
 .title--skinny
   font-weight: 300
 
 .title--bold
   font-weight: 500
-  font-size: 35px
-  line-height: 50px
-  
-.title--inline-block
-  display: inline-block
+
+.title--l1
+  font-size: 2rem
+  line-height: 3rem
+  font-weight: 500
+
+.title--color-primary
+  color: $primary-color
+
+/*------- Text --------*/
 
 .text--muted
   color: $text-muted !important
-
-.title--noevents
-  display: block
-  width: 100%
-  text-align: center
-  grid-column: 1 / 4
 
 .visitor-city
   color: $alt-color
   &::before
     content: ' '
     display: inline-block
+
+/*-------- Media queries --------*/
+
+@media screen and (max-width: 800px)
+  .title--l1
+    font-size: 1.8rem
+    line-height: 2rem
+
+@media screen and (max-width: 560px)
+  .title--l1
+    font-size: 1.5rem
+    line-height: 1.5rem

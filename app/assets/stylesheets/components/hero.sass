@@ -1,0 +1,69 @@
+.hero
+  position: relative
+  height: 35vw
+  max-height: 500px
+  max-width: 100%
+  width: 100%
+  z-index: 0
+  overflow: hidden
+
+.hero__img
+  position: absolute
+  top: 0
+  left: 0
+  z-index: 0
+  height: 100%
+  width: 100%
+  object-fit: cover
+  object-position: center
+  animation: heroAnimation 28s ease-in-out infinite
+
+.hero__img--blurry
+  display: inline-block
+  position: relative
+  filter: blur(50px) brightness(0.9)
+  transform: translate(-50%, -50%)
+  width: 200%
+  top: 50%
+  left: 50%
+
+.hero__img--blurry--grayscale
+  -webkit-filter: blur(50px) brightness(0.9) grayscale(0.9)
+  filter: blur(50px) brightness(0.9) grayscale(0.9)
+
+
+/*-------- Animations ---------*/
+
+@-webkit-keyframes heroAnimation
+  0%
+    opacity: 1
+
+  21%
+    opacity: 1
+
+  25%
+    opacity: 0
+
+  96%
+    opacity: 0
+
+  100%
+    opacity: 1
+
+.hero > .hero__img
+  &:nth-child(1)
+    -webkit-animation-delay: 21s
+  &:nth-child(2)
+    -webkit-animation-delay: 14s
+  &:nth-child(3)
+    -webkit-animation-delay: 7s
+  &:nth-child(4)
+    -webkit-animation-delay: 0s
+
+
+/*------ Media queries ------*/
+
+@media screen and (max-width: 479px)
+
+  .hero
+    display: none

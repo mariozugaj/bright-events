@@ -1,0 +1,65 @@
+@import 'colors'
+
+/*------- Event list -------*/
+.event_cell--list
+  padding-bottom: 1rem
+  position: relative
+  width: 100%
+
+.event_list
+  display: flex
+  position: relative
+  height: 137px
+
+.event_list_main_header
+  width: 200px
+  max-width: 200px
+  height: 137px
+  overflow: hidden
+  border-right: 1px solid $border-color
+  border-radius: 4px 0 0 4px
+
+.event_list_main_body
+  width: 100%
+  min-height: 80%
+
+.event_list_body-wrapper
+  background-color: white
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  overflow: hidden
+  width: 100%
+  border-radius: 0 4px 4px 0
+
+.event_list_footer
+  width: 100%
+  display: flex
+  justify-content: flex-start
+  align-items: center
+  border-top: 1px solid $border-color
+  padding: 0.5rem 0
+
+.event_list_date, .event_list_venue, .event_list_category
+  color: $text-color
+  font-size: 12px
+  line-height: 18px
+  font-weight: 400
+  letter-spacing: 0.5px
+  padding-left: 0.8rem
+
+.event_list_title
+  color: $text-color--accent
+  font-size: 16px
+  line-height: 19px
+  font-weight: 600
+  letter-spacing: 0.5px
+  text-transform: capitalize
+  height: 38px
+  padding-left: 0.8rem
+
+.event_list_venue
+  padding: 0.3rem 0.8rem
+
+.event_list_date
+  padding-top: 0.8rem

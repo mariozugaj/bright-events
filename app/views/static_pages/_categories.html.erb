@@ -1,12 +1,12 @@
-<% @popular_categories.each_with_index do |category, index| %>
-  <div class="category_cell category_cell--<%= index %>">
+<% @popular_categories.each do |category| %>
+  <div class='category__cell'>
     <%= link_to events_path(by_category: category.id) do %>
-      <div class='category_body'>
-        <div class='category_name-container'>
-          <h3 class='category_name title '><%= category.name %></h3>
+      <div class='category__body'>
+        <div class='category__name-container'>
+          <h3 class='category__name title '><%= category.name %></h3>
         </div>
-        <div class='category_image-wrapper'>
-          <%= cl_image_tag(category.picture, class: 'category_image',
+        <div class='category__image-wrapper'>
+          <%= cl_image_tag(category.picture, class: 'category__image',
                                              gravity: :center,
                                              height: 220,
                                              width: 708,

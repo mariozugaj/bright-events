@@ -1,108 +1,10 @@
 @import 'colors'
 @import 'base'
 
-.events-wrapper
+.events
   display: flex
   flex-wrap: wrap
   width: 100%
-
-/*------- Event postcard ------*/
-
-.event_cell
-  padding: 0 0.5rem 0.8rem
-  box-sizing: border-box
-  position: relative
-  max-width: 33.3333333%
-
-.event-postcard
-  background-color: white
-  box-shadow: 0 1px 0 0 rgba(0,0,0,.1)
-  border-radius: 4px
-  position: relative
-
-.event_edit
-  position: absolute
-  padding: 0.1rem 0.5rem
-  background-color: white
-  border-radius: 4px
-  font-size: 0.8rem
-  right: 10px
-  top: 8px
-  z-index: 10
-  text-transform: uppercase
-
-.event_edit--big
-  padding: 0.4rem 1rem
-  font-size: 0.8rem
-
-.event-postcard_main_header
-  width: 100%
-  height: 165px
-  overflow: hidden
-  border-bottom: 1px solid $border-color
-  border-radius: 4px 4px 0 0
-
-.event-postcard_image, .event_list_image
-  width: 100%
-  height: 100%
-  object-fit: cover
-  -moz-transition: all 0.3s
-  -webkit-transition: all 0.3s
-  transition: all 0.3s
-
-  &:hover
-    -moz-transform: scale(1.1)
-    -webkit-transform: scale(1.1)
-    transform: scale(1.1)
-
-.event-postcard_image
-  border-radius: 4px 4px 0 0
-
-.event_image--grayscale
-  filter: grayscale(0.9)
-
-.event-postcard_main_body, .event-postcard_footer
-  padding: 10px 15px
-
-.event-postcard_date
-  text-transform: uppercase
-
-.event-postcard_date, .event-postcard_footer-item, .event-postcard_venue
-  padding-top: 5px
-  color: $text-color
-
-.event-postcard_title, .event_list_title
-  color: $text-color--accent
-  font-size: 15px
-  text-transform: capitalize
-  font-weight: 600
-  letter-spacing: 0.5px
-  line-height: 19px
-  height: 38px
-  max-height: 38px
-  display: -webkit-box
-  margin: 0 auto
-  -webkit-box-orient: vertical
-  -webkit-line-clamp: 2
-  overflow: hidden
-  text-overflow: ellipsis
-
-.event-postcard_venue, .event_list_venue
-  text-overflow: ellipsis
-  overflow: hidden
-  white-space: nowrap
-
-.event-postcard_venue, .event-postcard_date, .event-postcard_category, .event-postcard_footer-item
-  font-size: 12px
-  line-height: 18px
-  font-weight: 400
-  letter-spacing: 0.5px
-
-.event-postcard_footer
-  border-top: 1px solid $border-color
-
-.event-postcard_category
-  line-height: 35px
 
 .event-delete
   padding: 1rem
@@ -114,19 +16,6 @@
   grid-column: 6 / 12
 
 /*--------- Event show ------------*/
-
-.event_hero--blurry
-  filter: blur(50px) brightness(0.9)
-  display: inline-block
-  transform: translate(-50%, -50%)
-  width: 200%
-  position: relative
-  top: 50%
-  left: 50%
-
-.event_hero--blurry--grayscale
-  -webkit-filter: blur(50px) brightness(0.9) grayscale(0.9)
-  filter: blur(50px) brightness(0.9) grayscale(0.9)
 
 .event-show_wrapper
   grid-row: 2 / 4
@@ -256,77 +145,6 @@
   font-weight: 300
   line-height: 1rem
 
-/*------- Event list -------*/
-.event_cell--list
-  padding: 0 0.5rem 0.8rem
-  box-sizing: border-box
-  position: relative
-  width: 100%
-
-.event_list
-  display: flex
-  position: relative
-  height: 137px
-
-.event_list_main_header
-  width: 200px
-  max-width: 200px
-  height: 137px
-  overflow: hidden
-  border-right: 1px solid $border-color
-  border-radius: 4px 0 0 4px
-
-.event_list_main_body
-  width: 100%
-  min-height: 80%
-
-.event_list_body-wrapper
-  background-color: white
-  display: flex
-  flex-direction: column
-  justify-content: space-between
-  overflow: hidden
-  width: 100%
-  border-radius: 0 4px 4px 0
-
-.event_list_footer
-  width: 100%
-  display: flex
-  justify-content: flex-start
-  align-items: center
-  border-top: 1px solid $border-color
-  padding: 0.5rem 0
-
-.event_list_date, .event_list_venue, .event_list_category
-  color: $text-color
-  font-size: 12px
-  line-height: 18px
-  font-weight: 400
-  letter-spacing: 0.5px
-  padding-left: 0.8rem
-
-.event_list_title
-  color: $text-color--accent
-  font-size: 16px
-  line-height: 19px
-  font-weight: 600
-  letter-spacing: 0.5px
-  text-transform: capitalize
-  height: 38px
-  padding-left: 0.8rem
-
-.event_list_venue
-  padding: 0.3rem 0.8rem
-
-.event_list_date
-  padding-top: 0.8rem
-
-.load-more-container
-  display: flex
-  flex-direction: column
-  align-items: center
-  justify-content: center
-
 .datetime-picker
   position: relative
 
@@ -344,3 +162,5 @@
 .event-form_img-container
   width: 100%
   max-height: 225px
+
+/*-------- Media queries ------*/

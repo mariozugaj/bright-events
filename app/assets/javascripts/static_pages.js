@@ -4,5 +4,5 @@ $(document).ready(function () {
   }, 10000);
 
   var $usernameWidth = $('#dropbtn').css('width');
-  $('#dropdown-content').css('width', $usernameWidth);
+  $('#dropdown__content').css('min-width', $usernameWidth);
 });

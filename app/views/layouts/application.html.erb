@@ -12,10 +12,12 @@
   </head>
 
   <body>
-    <main class="page-container">
+    <main class="main-grid">
       <%= render 'layouts/header' %>
       <%= render 'shared/flash' %>
-      <%= yield %>
+      <div class='content'>
+        <%= yield %>
+      </div>
       <%= render 'layouts/footer' %>
     </main>
   </body>

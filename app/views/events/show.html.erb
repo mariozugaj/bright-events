@@ -1,106 +1,108 @@
-<div class="hero-image-wrapper">
-    <%= image_tag @event.picture_url,
-                  class: class_string('event_hero--blurry',
-                                      'event_hero--blurry--grayscale' => @event.past?) %>
-</div>
-
-<section class='event-show_wrapper'>
-
-  <figure class='event-show_header_picture-container'>
-
-      <%= image_tag @event.picture_url(:show),
-                    class: class_string('event-show_header_picture',
-                                        'event_image--grayscale' => @event.past?),
-                    alt: @event.title %>
-
-    <% if @event.creator == current_user && @event.upcoming? %>
-      <div class='event_edit--big event_edit'>
-        <%= link_to('edit', edit_event_path(@event), class: 'link-decorate') %>
-      </div>
-    <% end %>
-
-  </figure>
-
-  <aside class='event-show_header_info-container'>
-
-    <div class='event-show_info_date'>
-      <%= time_tag @event.date_and_time, '', class: 'event-show_date' do %>
-        <%= content_tag :p, @event.date_and_time.strftime("%b"), class: 'event-show_sec-title text--muted' %>
-        <%= content_tag :p, @event.date_and_time.strftime("%d"), class: 'event-show_info_date_day text--muted' %>
-      <% end %>
-    </div>
-
-    <div class='event-show_info_body'>
-      <%= content_tag :h2, @event.title, class: 'event-show_info_title' %>
-
-      <h2 class='event-show_info_creator text--muted'>
-        Attendees:
-        <span id='attendees-count' class='event-show_info_creator text--muted'>
-          <%= @event.attendees.count %>
-        </span>
-      </h2>
-
-      <%= content_tag :p, (link_to "by #{@event.creator.name}",
-          user_path(@event.creator), class: 'link-decorate'), class: 'event-show_info_creator' %>
-    </div>
-  </aside>
-
-  <div class='event-show_attend-container'>
-
-    <% if current_user && @event.upcoming? %>
-      <%= render 'attend-form' %>
-
-    <% elsif @event.past? %>
-      <p>This event was held on <%= @event.date_and_time.strftime("%a, %d %b %Y") %></p>
-
-    <% else %>
-      <p><%= link_to 'Sign up', new_user_registration_path, class: 'link-decorate' %> or
-         <%= link_to 'log in', new_user_session_path, class: 'link-decorate' %> to attend this event</p>
-    <% end %>
-
+<div class="event-listing-grid">
+  <div class="hero">
+      <%= image_tag @event.picture_url,
+                    class: class_string('hero__img--blurry',
+                                        'hero__img--blurry--grayscale' => @event.past?) %>
   </div>
 
-  <section class='event-show_description-container'>
-    <%= content_tag :h3, 'Descripton', class: 'event-show_sec-title' %>
-    <div class='event-show_description'>
-      <%= sanitize @event.description, tags: %w(strong em a h3 h4 h5 h6 p hr), attributes: %w(href) %>
+  <section class='event-show_wrapper'>
+
+    <figure class='event-show_header_picture-container'>
+
+        <%= image_tag @event.picture_url(:show),
+                      class: class_string('event-show_header_picture',
+                                          'event_image--grayscale' => @event.past?),
+                      alt: @event.title %>
+
+      <% if @event.creator == current_user && @event.upcoming? %>
+        <div class='event_edit--big event_edit'>
+          <%= link_to('edit', edit_event_path(@event), class: 'link-decorate') %>
+        </div>
+      <% end %>
+
+    </figure>
+
+    <aside class='event-show_header_info-container'>
+
+      <div class='event-show_info_date'>
+        <%= time_tag @event.date_and_time, '', class: 'event-show_date' do %>
+          <%= content_tag :p, @event.date_and_time.strftime("%b"), class: 'event-show_sec-title text--muted' %>
+          <%= content_tag :p, @event.date_and_time.strftime("%d"), class: 'event-show_info_date_day text--muted' %>
+        <% end %>
+      </div>
+
+      <div class='event-show_info_body'>
+        <%= content_tag :h2, @event.title, class: 'event-show_info_title' %>
+
+        <h2 class='event-show_info_creator text--muted'>
+          Attendees:
+          <span id='attendees-count' class='event-show_info_creator text--muted'>
+            <%= @event.attendees.count %>
+          </span>
+        </h2>
+
+        <%= content_tag :p, (link_to "by #{@event.creator.name}",
+            user_path(@event.creator), class: 'link-decorate'), class: 'event-show_info_creator' %>
+      </div>
+    </aside>
+
+    <div class='event-show_attend-container'>
+
+      <% if current_user && @event.upcoming? %>
+        <%= render 'attend-form' %>
+
+      <% elsif @event.past? %>
+        <p>This event was held on <%= @event.date_and_time.strftime("%a, %d %b %Y") %></p>
+
+      <% else %>
+        <p><%= link_to 'Sign up', new_user_registration_path, class: 'link-decorate' %> or
+           <%= link_to 'log in', new_user_session_path, class: 'link-decorate' %> to attend this event</p>
+      <% end %>
+
+    </div>
+
+    <section class='event-show_description-container'>
+      <%= content_tag :h3, 'Descripton', class: 'event-show_sec-title' %>
+      <div class='event-show_description'>
+        <%= sanitize @event.description, tags: %w(strong em a h3 h4 h5 h6 p hr), attributes: %w(href) %>
+      </div>
+    </section>
+
+    <aside class="event-show_aside-info">
+
+      <div class='event-show_aside-info_item'>
+        <%= content_tag :h3, 'Date and time', class: 'event-show_sec-title' %>
+        <div class='event-show_aside-info_content'>
+          <%= time_tag @event.date_and_time, @event.date_and_time.strftime("%a, %d %b %Y %l:%M %p") %>
+        </div>
+      </div>
+
+      <div class='event-show_aside-info_item'>
+        <%= content_tag :h3, 'Location', class: 'event-show_sec-title' %>
+        <address class='event-show_aside-info_content'>
+          <% @event.venue.split(', ').each do |address_slice| %>
+            <%= content_tag :p, address_slice %>
+          <% end %>
+          <% @event.address.split(', ').each do |address_slice| %>
+            <%= content_tag :p, address_slice %>
+          <% end %>
+        </address>
+      </div>
+
+    </aside>
+    <div class='event-show_map-container'>
+      <div id='event-map' class='gmap'>
+      </div>
+    </div>
+    <div class='event-show_footer-info'>
+      <%= content_tag :h2, @event.title, class: 'event-show_footer_title' %>
+      <span class='text--muted event-show_footer_at'>at</span>
+      <%= content_tag :h2, @event.venue, class: 'event-show_footer_title' %>
+      <%= content_tag :p, @event.address, class: 'event-show_footer_address' %>
+      <%= link_to 'Directions',
+                  "https://www.google.com/maps?saddr=My+Location&daddr=#{@event.latitude},#{@event.longitude}",
+                   class: 'link-decorate event-show_footer_address',
+                  target: '_blank' %>
     </div>
   </section>
-
-  <aside class="event-show_aside-info">
-
-    <div class='event-show_aside-info_item'>
-      <%= content_tag :h3, 'Date and time', class: 'event-show_sec-title' %>
-      <div class='event-show_aside-info_content'>
-        <%= time_tag @event.date_and_time, @event.date_and_time.strftime("%a, %d %b %Y %l:%M %p") %>
-      </div>
-    </div>
-
-    <div class='event-show_aside-info_item'>
-      <%= content_tag :h3, 'Location', class: 'event-show_sec-title' %>
-      <address class='event-show_aside-info_content'>
-        <% @event.venue.split(', ').each do |address_slice| %>
-          <%= content_tag :p, address_slice %>
-        <% end %>
-        <% @event.address.split(', ').each do |address_slice| %>
-          <%= content_tag :p, address_slice %>
-        <% end %>
-      </address>
-    </div>
-
-  </aside>
-  <div class='event-show_map-container'>
-    <div id='event-map' class='gmap'>
-    </div>
-  </div>
-  <div class='event-show_footer-info'>
-    <%= content_tag :h2, @event.title, class: 'event-show_footer_title' %>
-    <span class='text--muted event-show_footer_at'>at</span>
-    <%= content_tag :h2, @event.venue, class: 'event-show_footer_title' %>
-    <%= content_tag :p, @event.address, class: 'event-show_footer_address' %>
-    <%= link_to 'Directions',
-                "https://www.google.com/maps?saddr=My+Location&daddr=#{@event.latitude},#{@event.longitude}",
-                 class: 'link-decorate event-show_footer_address',
-                target: '_blank' %>
-  </div>
-</section>
+</div>

@@ -1,41 +1,40 @@
 <header class='main-header'>
   <%= link_to 'BrightEvents', root_path, id: 'logo', class: 'logo' %>
-  <nav class='main-header_nav'>
+  <nav class='main-header__nav'>
+    <div class='nav__item'>
+      <%= link_to 'Search events', events_path, class: 'nav__link'%>
+    </div>
 
-      <div class='main-header_nav-item'>
-        <%= link_to 'Search events', events_path, class: 'main-header_nav-link'%>
+    <% if user_signed_in? %>
+
+      <div class='nav__item dropbtn dropdown' id='dropbtn'>
+        <div class='nav__link'>
+          <%= svg('user.svg', class: 'icon') %>
+          <p class='nav__item--username' id='nav__item--username'><%= current_user.name %></p>
+        </div>
+        <div class="dropdown__content" id='dropdown__content'>
+          <%= link_to 'Manage events', current_user, title: 'Manage your events', class: 'dropdown__link' %>
+          <%= link_to 'Update account', edit_user_registration_path, title: 'Update account', class: 'dropdown__link' %>
+          <%= link_to 'Logout', destroy_user_session_path, title: 'Logout',
+                       class: 'dropdown__link', method: 'delete' %>
+        </div>
       </div>
 
-      <% if user_signed_in? %>
+    <% else %>
 
-        <div class="main-header_nav-item dropdown">
-          <div class='main-header_nav-link dropbtn' id='dropbtn'>
-            <%= svg('user.svg', class: 'icon') %>
-            <p class='main-header_nav-item_username' id='main-header_nav-item_username'><%= current_user.name %></p>
-          </div>
-          <div class="dropdown-content" id='dropdown-content'>
-            <%= link_to 'Manage events', current_user, title: 'Manage your events', class: 'main-header_dropdown-link' %>
-            <%= link_to 'Update account', edit_user_registration_path, title: 'Update account', class: 'main-header_dropdown-link' %>
-            <%= link_to 'Logout', destroy_user_session_path, title: 'Logout',
-                         class: 'main-header_dropdown-link', method: 'delete' %>
-          </div>
-        </div>
-
-      <% else %>
-
-        <div class='main-header_nav-item'>
-          <%= link_to 'Sign up', new_user_registration_path, class: 'main-header_nav-link'%>
-        </div>
-
-        <div class='main-header_nav-item'>
-          <%= link_to 'Log in', new_user_session_path, class: 'main-header_nav-link'%>
-        </div>
-
-      <% end %>
-
-      <div class='main-header_nav-item'>
-        <%= link_to 'Create event', new_event_path, class: 'main-header_nav-link'%>
+      <div class='nav__item'>
+        <%= link_to 'Sign up', new_user_registration_path, class: 'nav__link'%>
       </div>
 
+      <div class='nav__item'>
+        <%= link_to 'Log in', new_user_session_path, class: 'nav__link'%>
+      </div>
+
+    <% end %>
+
+    <div class='nav__item nav__item--reverse'>
+      <%= link_to 'Create event', new_event_path, class: 'nav__link nav__link--reverse'%>
+    </div>
   </nav>
+  <%= svg('menu.svg', class: 'icon icon--menu') %>
 </header>

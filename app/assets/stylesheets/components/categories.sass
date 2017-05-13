@@ -1,0 +1,77 @@
+.hp-categories-c
+  margin-top: 1rem
+
+.categories
+  margin-top: 1rem
+  box-sizing: border-box
+  display: flex
+  flex-wrap: wrap
+
+.category__cell
+  border-radius: 4px
+  padding: 0.5rem
+  box-sizing: border-box
+
+.categories > div:first-of-type, .categories > div:last-of-type
+  width: 66.666667%
+
+.categories > div:nth-child(2), .categories > div:nth-child(3), .categories > div:nth-child(4), .categories > div:nth-child(5)
+  width: 33.33333%
+
+.category__body
+  position: relative
+  border-radius: 4px
+
+.category__name-container
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  display: flex
+  justify-content: center
+  align-items: center
+  text-align: center
+  color: white
+  z-index: 99
+  padding: 1rem
+
+.category__image-wrapper
+  height: 220px
+  overflow: hidden
+  position: relative
+  z-index: 0
+  border-radius: 4px
+
+.category__image
+  height: 220px
+  width: 100%
+  object-fit: cover
+  border-radius: 4px
+  -moz-transition: all 0.3s
+  -webkit-transition: all 0.3s
+  transition: all 0.3s
+
+.category__cell:hover .category__image
+  -moz-transform: scale(1.05)
+  -webkit-transform: scale(1.05)
+  transform: scale(1.05)
+
+.category__name
+  text-shadow: 0.5px 0.5px 0.5px lightgray
+
+
+/*------ Media queries ------*/
+
+@media screen and (max-width: 799px)
+
+  .categories > div:first-of-type, .categories > div:last-of-type
+    width: 100%
+
+  .categories > div:nth-child(2), .categories > div:nth-child(3), .categories > div:nth-child(4), .categories > div:nth-child(5)
+    width: 50%
+
+@media screen and (max-width: 479px)
+
+  .category__cell
+    width: 100% !important

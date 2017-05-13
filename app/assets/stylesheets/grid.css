@@ -1,0 +1,68 @@
+/*------ Default grid -------*/
+
+.main-grid {
+  display: grid;
+  grid-template-columns: repeat(16, 1fr);
+  grid-template-rows: repeat(3, auto);
+  grid-gap: 0 1rem;
+}
+
+.main-header {
+  grid-column: 1 / span 16;
+  grid-row: 1 / span 1;
+}
+
+.content {
+  grid-column: 1 / span 16;
+  grid-row: 2 / span 1;
+}
+
+.main-footer {
+  grid-column: 1 / span 16;
+  grid-row: 3 / span 1;
+}
+
+/*-------- Homepage grid --------*/
+
+.hp-grid {
+  display: grid;
+  grid-template-columns: 1fr 6fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas: "hero hero hero"
+                       ". search ."
+                       ". events ."
+                       ". categories .";
+}
+
+.hero {
+  grid-area: hero;
+}
+
+.hp-search {
+  grid-area: search;
+}
+
+.hp-events {
+  grid-area: events;
+}
+
+.hp-categories-c {
+  grid-area: categories;
+}
+
+/*-------- Event listing grid -----*/
+
+
+/*------- Media queries ---------*/
+
+@media screen and (max-width: 1200px) {
+  .hp-grid {
+    grid-template-columns: 1fr 7fr 1fr;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .hp-grid {
+    grid-template-columns: 1fr 90% 1fr;
+  }
+}
