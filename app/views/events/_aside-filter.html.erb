@@ -10,7 +10,6 @@
 
   <div class='aside__content'>
 
-    <!-- Title -->
 
     <h3 class='title title--l3 title__container'>
       Filter events
@@ -22,11 +21,15 @@
     <div id='filter-form'>
       <%= form_tag :events, method: 'get' do %>
 
+        <!-- Event's description -->
         <%= text_field_tag :by_title, params[:by_title], { class: 'form__field aside__item',
                                             placeholder: 'Event\'s title, description' } %>
+
+        <!-- Event's location -->
         <%= text_field_tag :location, params[:location], { class: 'form__field aside__item',
                                             placeholder: 'Event\'s location' } %>
 
+        <!-- Event's category -->
         <div class='aside__item'>
           <%= svg('circle-down.svg', class: 'select-icon') %>
           <%= select_tag :by_category,
@@ -36,6 +39,7 @@
                             class: 'form__field' } %>
         </div>
 
+        <!-- Event's date -->
         <div class='aside__item aside__fromto'>
 
           <%= text_field_tag :start_date,

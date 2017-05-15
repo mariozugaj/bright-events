@@ -1,36 +1,37 @@
 <% provide(:title, 'Sign up') %>
 
-<section class='reglog-form'>
+<section class='form__container'>
 
-  <header class='reglog-form_header'>
-    <h2>Sign up</h2>
-    <p>(All fields required)</p>
+  <header>
+    <h2 class='title title--l1'><%= yield(:title) %></h2>
+    <p class='text--smaller text--center'>(All fields required)</p>
   </header>
 
   <hr class='h-rule'>
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), class: 'form') do |f| %>
+
     <%= devise_error_messages! %>
 
     <%= f.text_field :name, required: true, autofocus: true,
-                     placeholder: 'Name', class: 'reglog-form_input' %>
+                     placeholder: 'Name', class: 'form__field form__field--margin-yes' %>
 
     <%= f.email_field :email, required: true, placeholder: 'Email',
-                       class: 'reglog-form_input' %>
+                       class: 'form__field form__field--margin-yes' %>
 
     <%= f.password_field :password, autocomplete: 'off', required: true,
                          placeholder: 'Password',
-                         class: 'reglog-form_input reglog-form_input--no-margin' %>
+                         class: 'form__field form__field--margin-yes' %>
 
-    <em class='reglog-form_input-exp'>(<%= @minimum_password_length %> characters minimum)</em>
+    <em class='text--center text--smaller'>(<%= @minimum_password_length %> characters minimum)</em>
 
 
-    <%= f.submit "Sign up", class: 'btn btn--success btn--mtb1' %>
+    <%= f.submit "Sign up", class: 'btn btn--success btn--margin-yes' %>
 
   <% end %>
 
-  <p>Already have an account?
-    <%= link_to 'Log in', new_user_session_path, class: 'link-decorate' %>
+  <p class='text--smaller text--center'>Already have an account?
+    <%= link_to 'Log in', new_user_session_path, class: 'link' %>
   </p>
 
 </section>

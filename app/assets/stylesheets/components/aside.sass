@@ -1,4 +1,5 @@
 @import 'colors'
+@import 'base'
 
 .aside
   margin-top: 0.5rem
@@ -6,26 +7,39 @@
 .aside__map
   width: 100%
   height: 200px
+  border-radius: 4px 4px 0 0
 
 .aside__content
   background-color: white
   padding: 0 1rem 1rem
+  border-radius: 0 0 4px 4px
 
 .aside__item
   margin: 0.5rem 0
   position: relative
   display: block
+  text-align: center
+
+.aside__link, .aside__link:hover, .aside__link--active
+  text-align: center
+  padding: 0 !important
+  white-space: nowrap
+
+.aside__link:hover, .aside__link--active
+  background-color: $border-color
 
 .aside__fromto
   display: flex
   justify-content: space-between
-
-.aside__content-box
-  padding-bottom: 1rem
-  border-bottom: 1px solid $border-color
 
 /*------- Media queries ------*/
 
 @media screen and (max-width: 799px)
   #filter-form
     display: none
+
+  .aside__nav
+    display: none
+
+  .aside__map
+    height: 300px

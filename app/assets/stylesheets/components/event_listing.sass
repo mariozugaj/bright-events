@@ -1,0 +1,84 @@
+@import 'colors'
+@import 'base'
+
+
+/*--------- Event listing------------*/
+
+.event__container
+  position: relative
+  top: 60px
+  background-color: white
+
+.event__header-info
+  position: relative
+  padding: 1.4rem
+  background-color: rgba(232, 231, 231, 1)
+  border-radius: 0 4px 0 0
+
+.event__attend
+  padding: 1rem 0
+  border-bottom: $border
+  border-top: $border
+
+.event__header-body
+  padding-top: 2rem
+
+.event__text
+  font-size: 0.9rem
+  font-weight: 300
+  line-height: 1.1rem
+  letter-spacing: 0.5px
+
+.event__description
+  padding: 2rem 4rem
+
+.event__aside-info
+  padding: 2rem 1.4rem 0
+
+.aside__group
+  margin-bottom: 2rem
+
+.event__map
+  width: 100%
+  height: 350px
+  overflow: hidden
+
+.event__location
+  padding: 1rem 1.4rem
+
+/*------- Media queries ---------*/
+
+@media screen and (max-width: 1079px)
+  .event__container
+    top: 0
+
+@media screen and (max-width: 799px)
+  .eu__events
+    margin-top: 2rem
+
+  .event__description
+    padding: 2rem 1rem
+
+  .event__header-info
+    background-color: white
+    display: flex
+    padding: 1rem
+
+  .event__aside-info
+    padding: 2rem 1rem 0
+
+  .event__header-body
+    padding: 0 0 0 1.4rem
+
+  .event__date
+    align-self: center
+
+@media screen and (max-width: 479px)
+  .event__date
+    display: none
+
+  .event__header-body
+    padding: 0
+
+  .event__aside-info
+    border-top: $border

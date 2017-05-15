@@ -1,43 +1,48 @@
 <% provide(:title, 'Update account') %>
 
-<section class='reglog-form'>
+<section class='form__container'>
 
-  <header class='reglog-form_header'>
-    <h2>Update your account</h2>
-    <p>Member since <%= time_ago_in_words(current_user.created_at) %> ago</p>
+  <header>
+    <h2 class='title title--l1'><%= yield(:title) %></h2>
+    <p class='text--smaller text--center'>Member since <%= time_ago_in_words(current_user.created_at) %> ago</p>
   </header>
 
   <hr class='h-rule'>
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= form_for(resource,
+               as: resource_name,
+               url: registration_path(resource_name),
+               html: { method: :put },
+               class: 'form') do |f| %>
+
     <%= devise_error_messages! %>
 
-    <%= f.text_field :name, autofocus: true, class: 'reglog-form_input', placeholder: 'New name' %>
+    <%= f.text_field :name, autofocus: true, class: 'form__field form__field--margin-yes', placeholder: 'New name' %>
 
-    <%= f.email_field :email, class: 'reglog-form_input', placeholder: 'New email' %>
+    <%= f.email_field :email, class: 'form__field form__field--margin-yes', placeholder: 'New email' %>
 
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <% if resource.pending_reconfirmation? %>
       <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
     <% end %>
 
     <%= f.password_field :password, autocomplete: "off", placeholder: 'New password',
-                        class: 'reglog-form_input reglog-form_input--no-margin' %>
-    <i class='reglog-form_input-exp'>(leave blank if you don't want to change it)</i>
-    <em class='reglog-form_input-exp'><%= @minimum_password_length %> characters minimum</em>
+                        class: 'form__field form__field--margin-yes' %>
+    <i class='text--smaller text--center'>(leave blank if you don't want to change it)</i>
+    <em class='text--smaller text--center'><%= @minimum_password_length %> characters minimum</em>
 
     <hr class='h-rule'>
 
     <%= f.password_field :current_password, autocomplete: "off",
                           placeholder: 'Current password',
-                          class: 'reglog-form_input reglog-form_input--no-margin' %>
-    <i class='reglog-form_input-exp'>(we need your current password to confirm your changes)</i>
+                          class: 'form__field form__field--margin-yes' %>
+    <i class='text--smaller text--center'>(we need your current password to confirm your changes)</i>
 
-    <%= f.submit "Update", class: 'btn btn--success btn--mtb1' %>
+    <%= f.submit "Update", class: 'btn btn--success btn--margin-yes' %>
 
   <% end %>
 
-  <h3>Unhappy with your account?</h3>
+  <h3 class='title title--l3'>Unhappy with your account?</h3>
 
   <%= button_to "Delete account", registration_path(resource_name),
                 data: { confirm: "Are you sure?" }, method: :delete,
-                class: 'btn btn--danger btn--mtb1' %>
+                class: 'btn btn--danger' %>

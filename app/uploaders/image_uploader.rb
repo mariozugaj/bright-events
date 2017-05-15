@@ -14,7 +14,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   version :show do
     process eager: true
-    resize_to_fill(720, 360)
+    resize_to_fill(800, 400)
     cloudinary_transformation quality: 100
   end
 

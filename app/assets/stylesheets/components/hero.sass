@@ -1,3 +1,6 @@
+@import 'colors'
+@import 'base'
+
 .hero
   position: relative
   height: 35vw
@@ -63,7 +66,12 @@
 
 /*------ Media queries ------*/
 
-@media screen and (max-width: 479px)
+@media screen and (max-width: 489px)
 
   .hero
+    display: none
+
+@media screen and (max-width: 1079px)
+
+  .hero__img--blurry
     display: none

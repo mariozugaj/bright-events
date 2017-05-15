@@ -7,8 +7,7 @@ module EventsHelper
                            'No events found',
                            class: 'title
                                    title--center
-                                   title--noevents
-                                   title--skinny')
+                                   text--skinny')
   end
 
   def list_events(events)
@@ -19,7 +18,6 @@ module EventsHelper
                            'No events found',
                            class: 'title
                                    title--center
-                                   title--noevents
-                                   title--skinny')
+                                   text--skinny')
   end
 end

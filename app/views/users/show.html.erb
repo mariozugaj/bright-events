@@ -1,14 +1,16 @@
+<%= provide(:title, @user.name) %>
+
 <div class='eu-grid'>
-  <h2 class='eu__header--left title title--center title--skinny'><%= @user.name %></h2>
+  <h2 class='eu__header--left title title--l2'><%= @user.name %></h2>
 
   <% if @user == current_user %>
 
-    <h2 class='eu__header--center title title--center title--skinny'><%= @header_title %></h2>
+    <h2 class='eu__header--center title title--l3'><%= @header_title %></h2>
     <%= render 'users/aside' %>
 
   <% else %>
 
-    <h2 class='profile-header_title title title--center title--skinny'>Events</h2>
+    <h2 class='profile-header_title title title--l3'>Events</h2>
 
   <% end %>
 

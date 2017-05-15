@@ -31,6 +31,7 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
+    @categories = Category.pluck(:name, :id)
   end
 
   def create
@@ -45,6 +46,7 @@ class EventsController < ApplicationController
 
   def edit
     @event = Event.find(params[:id])
+    @categories = Category.pluck(:name, :id)
   end
 
   def update

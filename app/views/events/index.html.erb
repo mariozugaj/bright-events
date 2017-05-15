@@ -1,6 +1,8 @@
+<%= provide(:title, 'Search events') %>
+
 <div class="eu-grid">
 
-  <h2 class='eu__header--center title title--bottom title--center title--skinny'>Search all events</h2>
+  <h2 class='eu__header--center title title--l1'><%= yield :title %></h2>
 
   <%= render 'aside-filter' %>
 
@@ -8,5 +10,5 @@
     <%= list_events @events %>
     <%= will_paginate %>
   </section>
-  
+
 </div>

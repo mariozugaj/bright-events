@@ -6,15 +6,13 @@
 .title
   padding: 1rem 0
   text-align: center
+  width: 100%
 
 .title--left
   text-align: left
 
 .title--right
   text-align: right
-
-.title--skinny
-  font-weight: 300
 
 .title--bold
   font-weight: 500
@@ -24,18 +22,33 @@
   line-height: 3rem
   font-weight: 500
 
-.title--l3
-  font-size: 1rem
+.title--l2
+  font-size: 1.5rem
+  font-weight: 500
   line-height: 1.5rem
+  letter-spacing: 0.5px
+
+.title--l3
+  font-size: 1.2rem
+  line-height: 1.4rem
+  letter-spacing: 0.5px
+  font-weight: 500
 
 .title--l4
   font-size: 0.8rem
-  font-weight: 700
+  font-weight: 600
   letter-spacing: 0.5px
   line-height: 0.9rem
   height: 1.8rem
   max-height: 1.8rem
   margin: 0 auto
+  color: $text-color--accent
+
+.title--l5
+  font-size: 0.6rem
+  font-weight: 600
+  letter-spacing: 0.5px
+  line-height: 0.8rem
   color: $text-color--accent
 
 .title--l6
@@ -50,9 +63,6 @@
 
 .title--cpt
   text-transform: capitalize
-
-.title--up
-  text-transform: uppercase
 
 .title--clap-2
   max-width: 100%
@@ -72,8 +82,31 @@
 
 /*------- Text --------*/
 
+.text--up
+  text-transform: uppercase
+
+.text--smaller
+  font-size: 0.8rem
+
+.text--smallest
+  font-size: 0.6rem
+  line-height: 0.7rem
+  font-weight: 600
+  letter-spacing: 0.5px
+
+.text--skinny
+  font-weight: 300
+
+.text--center
+  text-align: center
+  display: inline-block
+  width: 100%
+
 .text--muted
   color: $text-muted !important
+
+.text--preline
+  white-space: pre-line
 
 .visitor-city
   color: $alt-color
@@ -83,12 +116,17 @@
 
 /*-------- Media queries --------*/
 
+@media screen and (max-width: 999px)
+  .title--l3
+    font-size: 1rem
+    line-height: 1.2rem
+
 @media screen and (max-width: 800px)
   .title--l1
     font-size: 1.8rem
     line-height: 2rem
 
-@media screen and (max-width: 560px)
+@media screen and (max-width: 574px)
   .title--l1
     font-size: 1.5rem
     line-height: 1.5rem

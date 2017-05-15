@@ -1,65 +1,73 @@
-<%= form_for @event, html: { class: 'event-form' } do |f| %>
+<%= form_for @event, html: { class: 'form' } do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
 
-  <div class='event-form_group'>
-    <%= f.label :title %>
+  <!-- Event's title -->
+  <div class='form__group'>
+    <%= f.label :title, class: 'title--l4' %>
     <%= f.text_field :title, required: true, autofocus: true,
-                    placeholder: 'Short, distinct title', class: 'event-form_field' %>
+                    placeholder: 'Short, distinct title', class: 'form__field' %>
   </div>
 
-  <div class='event-form_group'>
-    <%= f.label :venue %>
+  <!-- Event's venue -->
+  <div class='form__group'>
+    <%= f.label :venue, class: 'title--l4' %>
     <%= f.text_field :venue, required: true, placeholder: 'Where it\'s held',
-                     class: 'event-form_field' %>
+                     class: 'form__field' %>
   </div>
 
-  <div class='event-form_group'>
-    <%= f.label :address %>
+  <!-- Event's address -->
+  <div class='form__group'>
+    <%= f.label :address, class: 'title--l4' %>
     <%= f.text_field :address, required: true, placeholder: 'Venue\'s full address',
-                     class: 'event-form_field' %>
+                     class: 'form__field' %>
   </div>
 
-  <div class='event-form_group'>
-    <%= f.label 'Date and time' %>
+  <!-- Event's date and time -->
+  <div class='form__group'>
+    <%= f.label 'Date and time', class: 'title--l4' %>
 
     <div class='datetime-picker_container'>
       <%= text_field_tag :date,
                          (@event.date_and_time.strftime("%e %b, %Y") unless @event.date_and_time.nil?),
                          { id: 'datepicker',
-                           class: 'event-form_field datetime-picker',
+                           class: 'form__field datetime-picker',
                            placeholder: 'Set event\'s date' } %>
       <%= text_field_tag :time,
                          (@event.date_and_time.strftime("%l:%M %p") unless @event.date_and_time.nil?),
                          { id: 'timepicker',
-                           class: 'event-form_field datetime-picker',
+                           class: 'form__field datetime-picker',
                            placeholder: 'Set event\'s time' } %>
     </div>
   </div>
 
   <%= hidden_field_tag :date_and_time %>
 
-  <div class='event-form_group'>
-    <%= f.label :category %>
-    <div class='select-box'>
+  <!-- Event's category -->
+  <div class='form__group'>
+    <%= f.label :category, class: 'title--l4' %>
+    <div class='select'>
       <%= svg('circle-down.svg', class: 'select-icon') %>
-      <%= f.select :category_id, Category.pluck(:name, :id),
-                                 { include_blank: 'Please select a category' },
-                                 { class: 'event-form_select', required: true } %>
+      <%= select_tag :by_category,
+                      options_for_select(@categories,
+                      @event.category_id),
+                      { include_blank: 'Select category',
+                        class: 'form__field' } %>
     </div>
   </div>
 
-  <div class='event-form_group'>
-    <%= f.label :description %>
+  <!-- Event's description -->
+  <div class='form__group'>
+    <%= f.label :description, class: 'title--l4' %>
     <%= f.text_area :description, placeholder: 'Provide a detailed description of your event',
-                                  class: 'event-form_text-area' %>
-    <p class='file-input-exp'>You can use <em>stong, em, a, h3, h4, h5, h6, p and hr</em> HTML tags.</p>
+                                  class: ' form__field form__textarea' %>
+    <p class='text--center text--smaller'>You can use <em>stong, em, a, h3, h4, h5, h6, p and hr</em> HTML tags.</p>
   </div>
 
-  <div class='event-form_group'>
-    <%= f.hidden_field(:picture_cache) %>
+  <!-- Event's picture -->
+  <div class='form__group'>
 
     <% if @event.picture? %>
-      <%= image_tag @event.picture_url(:thumb_card), class: 'event-form_img-container' %>
+      <%= image_tag @event.picture_url(:thumb_card), class: 'form__img-thumb' %>
     <% end %>
 
     <%= f.file_field :picture, class: 'inputfile inputfile-1' %>
@@ -71,8 +79,9 @@
       <% end %>
     </label>
 
-    <p class='file-input-exp'>Please use only 1 image, at least 1440x720px (2:1), max 10MB</p>
+    <p class='text--center text--smaller'>Please use only 1 image, at least 1440x720px (2:1), max 10MB</p>
   </div>
 
+  <!-- Event's submit btn -->
   <%= f.submit 'Make it live', class: 'btn btn--success btn--large' %>
 <% end %>

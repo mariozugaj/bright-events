@@ -1,20 +1,26 @@
 <% provide(:title, 'Change password') %>
 
-<section class='reglog-form'>
+<section class='form__container'>
 
-  <header class='reglog-form_header'>
-    <h2>Change your password</h2>
+  <header>
+    <h2 class='title title--l1'>Change your password</h2>
   </header>
 
   <hr class='h-rule'>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+<%= form_for(resource,
+             as: resource_name,
+             url: password_path(resource_name),
+             html: { method: :put },
+             class: 'form') do |f| %>
+
   <%= devise_error_messages! %>
+
   <%= f.hidden_field :reset_password_token %>
 
   <%= f.password_field :password, autofocus: true, autocomplete: "off",
-                       class: 'reglog-form_input', placeholder: 'New password' %>
-  <em class='reglog-form_input-exp'>(<%= @minimum_password_length %> characters minimum)</em>
+                       class: 'form__field', placeholder: 'New password' %>
+  <em class='text--center text--smaller'>(<%= @minimum_password_length %> characters minimum)</em>
 
-  <%= f.submit "Change my password", class: 'btn btn--success btn--mtb1' %>
+  <%= f.submit "Change my password", class: 'btn btn--success btn--margin-yes' %>
 <% end %>

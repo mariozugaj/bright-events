@@ -2,21 +2,28 @@
 
   <div class="aside__content">
     <div class="aside__content-box">
-      <h3 class='title title--l3 title--left'>
-        <%= svg('headphones.svg', class: 'icon') %>
-        Your events</h3>
-      <ul>
-        <li class='aside__item'>
+      <h3 class='title title--l3 ttle__container'>
+        Your events
+        <%= svg('circle-down.svg', class: 'icon--filter') %>
+      </h3>
+      <ul class='aside__nav'>
+        <li class='aside__link'>
           <%= link_to "Events you created (#{@user.events.count})",
                       user_path,
-                      class: class_string('link title--l4',
-                                           'link--active' => current_page?(user_path)) %>
+                      class: class_string('nav__link',
+                                          'aside__link--active' => current_page?(user_path)) %>
         </li>
-        <li class='aside__item'>
-          <%= link_to "Attending events (#{@user.upcoming_events.count})", upcoming_events_user_path, class: class_string('link title--l4', 'link--active' => current_page?(upcoming_events_user_path)) %>
+        <li class='aside__link'>
+          <%= link_to "Attending events (#{@user.upcoming_events.count})",
+                      upcoming_events_user_path,
+                      class: class_string('nav__link',
+                                          'aside__link--active' => current_page?(upcoming_events_user_path)) %>
         </li>
-        <li class='aside__item'>
-          <%= link_to "Attended events (#{@user.past_attended_events.count})", past_attended_events_user_path, class: class_string('link title--l4', 'link--active' => current_page?(past_attended_events_user_path)) %>
+        <li class='aside__link'>
+          <%= link_to "Attended events (#{@user.past_attended_events.count})",
+                      past_attended_events_user_path,
+                      class: class_string('nav__link',
+                                          'aside__link--active' => current_page?(past_attended_events_user_path)) %>
         </li>
       </ul>
     </div>

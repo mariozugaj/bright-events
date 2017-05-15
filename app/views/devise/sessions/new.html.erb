@@ -1,38 +1,37 @@
 <% provide(:title, 'Log in') %>
 
-<section class='reglog-form'>
-  <header class="reglog-form_header">
-    <h2>Log in</h2>
+<section class='form__container'>
+  <header>
+    <h2 class='title title--l1'><%= yield(:title)%></h2>
   </header>
 
   <hr class='h-rule'>
 
   <%= form_for(resource, as: resource_name,
-                         url: session_path(resource_name)) do |f| %>
+                         url: session_path(resource_name),
+                         class: 'form') do |f| %>
 
 
     <%= f.email_field :email, autofocus: true, placeholder: 'Email',
-                      class: 'reglog-form_input' %>
+                      class: 'form__field form__field--margin-yes' %>
 
     <%= f.password_field :password, autocomplete: "off", placeholder: 'Password',
-                         class: 'reglog-form_input reglog-form_input--no-margin' %>
+                         class: 'form__field form__field--margin-yes' %>
 
-    <div class="reglog-form_remgot">
-      <% if devise_mapping.rememberable? -%>
-        <div class="checkbox">
-          <%= f.check_box :remember_me %>
-          <%= f.label :remember_me %>
-        </div>
-      <% end -%>
+    <div class="form__remember-me">
+      <div>
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me, class: 'text--smaller' %>
+      </div>
       <%= link_to "Forgot password?", new_password_path(resource_name),
-                                      class: 'reglog-form_forgot link-decorate' %>
+                                      class: 'link text--smaller' %>
     </div>
 
-      <%= f.submit "Log in", class: 'btn btn--success btn--mtb1' %>
+      <%= f.submit "Log in", class: 'btn btn--success btn--margin-yes' %>
   <% end %>
 
-  <p>Don't have an account?
-    <%= link_to 'Sign up', new_user_registration_path, class: 'link-decorate' %>
+  <p class='text--smaller text--center'>Don't have an account?
+    <%= link_to 'Sign up', new_user_registration_path, class: 'link' %>
   </p>
 
 </section>

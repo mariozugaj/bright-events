@@ -36,6 +36,8 @@
 
 .hero {
   grid-area: hero;
+  grid-column: 1 / span 3;
+  grid-row: 1 / span 1;
 }
 
 .hp-search {
@@ -51,6 +53,7 @@
 }
 
 /*-------- Events/user grid -----*/
+
 .eu-grid {
   display: grid;
   max-width: 1080px;
@@ -73,10 +76,71 @@
 
 .eu__header--center {
   grid-area: title-center;
+  margin: 0.5rem 0 1rem;
 }
 
 .eu__header--left {
   grid-area: title-left;
+  margin: 0.5rem 0 1rem;
+}
+
+/*----- Event listing grid ------*/
+.event-listing-grid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  grid-template-rows: auto;
+}
+
+.event__container {
+  grid-column: 2 / span 1;
+  grid-row: 1 / span 2;
+  width: 100%;
+  max-width: 1080px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas: "event-img event-header_info"
+                       "attend attend"
+                       "description event-aside_info"
+                       "events-org events-org"
+                       "map map"
+                       "loc loc"
+                       "other-events other-events";
+}
+.event__header {
+  grid-area: event-img;
+}
+
+.event__header-info {
+  grid-area: event-header_info;
+}
+
+.event__attend {
+  grid-area: attend;
+}
+
+.event__description {
+  grid-area: description;
+}
+
+.event__aside-info {
+  grid-area: event-aside_info;
+}
+
+.event__organizer-events {
+  grid-area: events-org;
+}
+
+.event__map {
+  grid-area: map;
+}
+
+.event__location {
+  grid-area: loc
+}
+
+.event__other-events {
+  grid-area: other-events;
 }
 
 
@@ -85,6 +149,12 @@
 @media screen and (max-width: 1200px) {
   .hp-grid {
     grid-template-columns: 1fr 7fr 1fr;
+  }
+}
+
+@media screen and (max-width: 1079px) {
+  .event-listing-grid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -102,5 +172,32 @@
                          "title-center"
                          "aside"
                          "eu-events";
+  }
+
+  .event__container {
+    grid-column: 1 / span 1;
+    grid-template-areas: "event-img event-img"
+                         "event-header_info event-header_info"
+                         "attend attend"
+                         "description event-aside_info"
+                         "events-org events-org"
+                         "map map"
+                         "loc loc"
+                         "other-events other-events";
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .event__container {
+    grid-template-columns: 1fr;
+    grid-template-areas: "event-img"
+                         "event-header_info"
+                         "event-aside_info"
+                         "attend"
+                         "description"
+                         "events-org"
+                         "map"
+                         "loc"
+                         "other-events";
   }
 }

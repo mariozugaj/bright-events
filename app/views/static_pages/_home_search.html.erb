@@ -1,19 +1,19 @@
 <%= form_tag :events, method: 'get', class: 'h-search__form' do %>
 
-  <%= text_field_tag :by_title, '', { class: 'event-form_field',
+  <%= text_field_tag :by_title, '', { class: 'form__field',
                                       placeholder: 'Search events' } %>
 
-  <%= text_field_tag :location, @visitor_city_and_country, { class: 'event-form_field',
+  <%= text_field_tag :location, @visitor_city_and_country, { class: 'form__field',
                                       placeholder: 'Event\'s location' } %>
 
   <%= text_field_tag :start_date, '',
                     { id: 'datepicker',
-                      class: 'event-form_field',
+                      class: 'form__field',
                       placeholder: 'From date...' } %>
 
   <%= text_field_tag :end_date, '',
                     { id: 'datepicker2',
-                      class: 'event-form_field',
+                      class: 'form__field',
                       placeholder: '...to date' } %>
 
   <%= submit_tag 'Search', { class: 'btn btn--success btn--h-search', id: 'search' } %>

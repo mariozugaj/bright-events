@@ -278,7 +278,8 @@ $(document).on('turbolinks:load', function() {
 
   handler.buildMap({
       provider: {
-        styles: mapStyles
+        styles: mapStyles,
+        scrollwheel: false
       },
       internal: {
         id: 'event-map',

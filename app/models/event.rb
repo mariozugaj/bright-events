@@ -23,7 +23,7 @@ class Event < ApplicationRecord
   validates_presence_of :user_id, :title, :venue, :address, :date_and_time, :category_id,
                         :description, :picture
 
-  validates_length_of :title, :venue, maximum: 140
+  validates_length_of :title, :venue, maximum: 80
   validates_length_of :description, maximum: 1500
   validate :date_in_future
 
