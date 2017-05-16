@@ -25,11 +25,9 @@
     <header class='hp-events__header'>
       <h2 class='title title--center text--skinny'>
         Events for you in
-        <span class='visitor-city'>
           <%= link_to @visitor_city,
                       events_path(location: @visitor_city),
-                      class: 'link-decorate' %>
-        </span>
+                      class: 'link' %>
       </h2>
       <hr class='h-rule'>
     </header>

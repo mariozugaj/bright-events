@@ -101,13 +101,13 @@
 
     <!-- Event's location details and directions link -->
     <div class='event__location'>
-      <%= content_tag :h2, @event.title, class: 'title--l3 text--center' %>
-      <span class='text--muted text--smaller text--skinny text--center'>at</span>
-      <%= content_tag :h2, @event.venue, class: 'title--l3 text--center' %>
-      <%= content_tag :p, @event.address, class: 'text--center text--smaller' %>
+      <%= content_tag :h2, @event.title, class: 'title--l3' %>
+      <span class='text--muted text--smaller text--skinny'>at</span>
+      <%= content_tag :h2, @event.venue, class: 'title--l3' %>
+      <%= content_tag :p, @event.address, class: 'text--smaller' %>
       <%= link_to 'Directions',
                   "https://www.google.com/maps?saddr=My+Location&daddr=#{@event.latitude},#{@event.longitude}",
-                   class: 'link text--smaller text--center',
+                   class: 'link text--smaller',
                   target: '_blank' %>
     </div>
   </div>
