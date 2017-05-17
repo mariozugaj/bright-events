@@ -13,7 +13,7 @@ class Event < ApplicationRecord
 
 
   has_many :attendances, class_name: 'Attendance',
-                         foreign_key: 'attended_event_id',
+                         foreign_key: 'attending_event_id',
                          dependent: :destroy
   has_many :attendees, through: :attendances, source: :attendee
 

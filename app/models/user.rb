@@ -7,16 +7,16 @@ class User < ApplicationRecord
   has_many :attendances, class_name: 'Attendance',
                          foreign_key: 'attendee_id',
                          dependent: :destroy
-  has_many :attending_events, through: :attendances, source: :attended_event
+  has_many :attending_events, through: :attendances, source: :attending_event
 
   validates :name, presence: true
 
   def attend(event)
-    attendances.create!(attended_event_id: event.id)
+    attendances.create!(attending_event_id: event.id)
   end
 
   def unattend(event)
-    attendances.find_by(attended_event_id: event.id).destroy
+    attendances.find_by(attending_event_id: event.id).destroy
   end
 
   def attending?(event)
