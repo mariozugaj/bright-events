@@ -2,24 +2,24 @@
 
 .main-grid {
   display: grid;
-  grid-template-columns: repeat(16, 1fr);
-  grid-template-rows: repeat(3, auto);
+  grid-template-columns: 1fr 6fr 1fr;
+  grid-template-rows: auto;
   grid-gap: 0 1rem;
+  grid-template-areas: "header header header"
+                       "content content content"
+                       "footer footer footer";
 }
 
 .main-header {
-  grid-column: 1 / span 16;
-  grid-row: 1 / span 1;
+  grid-area: header;
 }
 
 .content {
-  grid-column: 1 / span 16;
-  grid-row: 2 / span 1;
+  grid-area: content;
 }
 
 .main-footer {
-  grid-column: 1 / span 16;
-  grid-row: 3 / span 1;
+  grid-area: footer;
 }
 
 /*-------- Homepage grid --------*/
