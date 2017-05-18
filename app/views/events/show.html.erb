@@ -69,7 +69,7 @@
     <!-- Event's description -->
     <section class='event__description'>
       <%= content_tag :h3, 'Descripton', class: 'title--l5 text--up mb1' %>
-      <div class='event__text text--preline'><%= sanitize @event.description, tags: %w(strong em a h3 h4 h5 h6 p hr), attributes: %w(href) %></div>
+      <div class='event__text text--preline'><%= sanitize @event.description, tags: %w(strong em a h3 h4 h5 h6 p hr ul ol li), attributes: %w(href) %></div>
     </section>
 
     <!-- Event's date, time and location info -->
