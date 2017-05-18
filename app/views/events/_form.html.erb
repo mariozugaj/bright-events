@@ -47,11 +47,9 @@
     <%= f.label :category, class: 'title--l4' %>
     <div class='select'>
       <%= svg('circle-down.svg', class: 'select-icon') %>
-      <%= select_tag :by_category,
-                      options_for_select(@categories,
-                      @event.category_id),
-                      { include_blank: 'Select category',
-                        class: 'form__field' } %>
+      <%= f.select :category_id, Category.pluck(:name, :id),
+                                 { include_blank: 'Please select a category' },
+                                 { class: 'form__field', required: true } %>
     </div>
   </div>
 

@@ -24,7 +24,7 @@ class Event < ApplicationRecord
                         :description, :picture
 
   validates_length_of :title, :venue, maximum: 80
-  validates_length_of :description, maximum: 1500
+  validates_length_of :description, maximum: 2000
   validate :date_in_future
 
   mount_uploader :picture, ImageUploader
