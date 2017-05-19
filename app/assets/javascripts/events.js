@@ -1,7 +1,4 @@
 $(document).on('turbolinks:load', function () {
-  $('#create-event_btn').on('click', function () {
-    $('#new_event').submit();
-  });
 
   // Attend or don't attend
 
@@ -55,14 +52,6 @@ $(document).on('turbolinks:load', function () {
   $('#timepicker').pickatime({
     formatSubmit: 'HH:i',
   });
-
-  /* Set opacity to 0.5 on event list
-
-  $('.aside__content').on('click', '#search, #clear-search, .link', function (e) {
-    window.setTimeout(function () {
-      $('.e-list__cell').css({ opacity: '0.5' });
-    }, 0);
-  });*/
 
   // Toggle icon rotation on click
 
