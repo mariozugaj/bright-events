@@ -59,7 +59,7 @@
         <%= render 'attend-form' %>
 
       <% elsif @event.past? %>
-        <p>This event was held on <%= @event.date_and_time.strftime("%a, %d %b %Y") %></p>
+        <p class='text--center'>This event was held on <%= @event.date_and_time.strftime("%a, %d %b %Y") %></p>
 
       <% else %>
         <p class='text--center'><%= link_to 'Sign up', new_user_registration_path, class: 'link' %> or
@@ -70,7 +70,7 @@
 
     <!-- Event's description -->
     <section class='event__description'>
-      <%= content_tag :h3, 'Descripton', class: 'title--l5 text--up mb1' %>
+      <%= content_tag :h3, 'Descripton', class: 'title--l4 text--up mb1' %>
       <div class='event__text text--preline'><%= sanitize @event.description, tags: %w(strong em a h3 h4 h5 h6 p hr ul ol li), attributes: %w(href) %></div>
     </section>
 
@@ -78,12 +78,12 @@
     <aside class="event__aside-info event__text">
 
       <div class='aside__group'>
-        <%= content_tag :h3, 'Date and time', class: 'title--l5 text--up mb1' %>
+        <%= content_tag :h3, 'Date and time', class: 'title--l4 text--up mb1' %>
         <%= time_tag @event.date_and_time, @event.date_and_time.strftime("%a, %d %b %Y %l:%M %p") %>
       </div>
 
       <div class='aside__group'>
-        <%= content_tag :h3, 'Location', class: 'title--l5 text--up mb1' %>
+        <%= content_tag :h3, 'Location', class: 'title--l4 text--up mb1' %>
         <address>
           <% @event.venue.split(', ').each do |address_slice| %>
             <%= content_tag :p, address_slice, class: 'event__text' %>
@@ -103,10 +103,10 @@
 
     <!-- Event's location details and directions link -->
     <div class='event__location'>
-      <%= content_tag :h2, @event.title, class: 'title--l3' %>
-      <span class='text--muted text--smaller text--skinny'>at</span>
-      <%= content_tag :h2, @event.venue, class: 'title--l3' %>
-      <%= content_tag :p, @event.address, class: 'text--smaller' %>
+      <%= content_tag :h2, @event.title, class: 'title--l3 text--center' %>
+      <span class='text--muted text--smaller text--skinny text--center'>at</span>
+      <%= content_tag :h2, @event.venue, class: 'title--l3 text--center' %>
+      <%= content_tag :p, @event.address, class: 'text--smaller text--center' %>
       <%= link_to 'Directions',
                   "https://www.google.com/maps?saddr=My+Location&daddr=#{@event.latitude},#{@event.longitude}",
                    class: 'link text--smaller mt1',

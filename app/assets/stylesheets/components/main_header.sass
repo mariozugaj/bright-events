@@ -5,77 +5,120 @@
   position: fixed
   top: 0
   width: 100%
+  height: 60px
   display: flex
   background-color: white
   z-index: 9999
   box-shadow: 0px 1px 2px 0px rgba(176,166,176,1)
 
+.logo
+  display: inline-block
+  color: $primary-color
+  font-weight: 700
+  font-size: 1rem
+  line-height: 2rem
+  padding: 8px
+  position: relative
+  z-index: 9998
+
 .main-header__nav
-  margin-left: auto
-  display: flex
+  position: absolute
+  top: 0
+  right: 0
+  min-height: 60px
+
+.nav__menu
+  list-style-type: none
+  margin: 0
+  padding: 0
+  position: relative
 
 .nav__item
-  border-left: $border
+  display: inline-block
+  float: left
   margin-left: auto
   margin-right: auto
-
-.nav__item:hover, .dropdown__link:hover
-  background-color: $border-color
-
-.nav__item--username
-  display: inline
-  padding-left: 0.3rem
-
-.nav__item--reverse
-  background-color: $alt-color
-
-.nav__item--reverse:hover
-  background-color: #035f91
+  border-left: $border
 
 .nav__link
-  padding: 0 1rem
-
-.nav__link, .dropdown__link
-  box-sizing: border-box
   display: block
-  width: 100%
+  padding: 0 0.5rem
+  min-width: 150px
+  height: 60px
+  text-align: center
   line-height: 60px
+  background: white
+  text-decoration: none
   color: $text-color
   font-size: 0.6rem
   text-transform: uppercase
   letter-spacing: 0.5px
-  text-align: center
-
-.dropdown__link
-  min-width: 160px
 
 .nav__link--reverse
   color: white
-  font-weight: bold
+  background-color: $alt-color
+  border: none
 
-.dropdown
-  position: relative
-  cursor: default
-  box-sizing: border-box
+.nav__link--reverse:hover
+  background-color: #035f91 !important
 
-.dropdown__content
+.nav__icon
+  display: inline
+
+.nav__inline
+  display: inline-block
+
+.nav__link:hover
+  background-color: $border-color
+
+.nav__item ul
   display: none
-  position: absolute
-  right: 0
-  background-color: white
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2)
-  z-index: 9999
 
-.dropdown:hover .dropdown__content
+.nav__item ul li
+  display: block
+  float: none
+
+.nav__item ul li a
+  width: auto
+  min-width: 150px
+  padding: 0 0.5rem
+
+ul li .nav__link:hover + .hidden, .hidden:hover
   display: block
 
-/*------- Media queries ------*/
+.show-menu
+  display: none
+  position: relative
+  top: 8px
+  right: 8px
+  width: 52px
+  height: 52px
+  margin-left: auto
+
+input[type=checkbox]
+  display: none
+  &:checked ~ .nav__menu
+    display: block
+
 @media screen and (max-width: 799px)
-  .main-header__nav
-    display: none
 
   .logo
-    border-right: none
+    border: none
 
-  .icon--menu
+  .main-header__nav
+    width: 100%
+
+  .nav__menu
+    position: static
+    display: none
+    width: 100%
+
+  .nav__item
+    width: 100%
+    border: none
+
+  ul li, li .nav__link
+    width: 100%
+
+  .show-menu
     display: block

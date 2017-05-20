@@ -1,40 +1,39 @@
 <header class='main-header'>
   <%= link_to 'BrightEvents', root_path, id: 'logo', class: 'logo' %>
+
   <nav class='main-header__nav'>
-    <div class='nav__item'>
-      <%= link_to 'Search events', events_path, class: 'nav__link'%>
-    </div>
-
-    <% if user_signed_in? %>
-
-      <div class='nav__item dropbtn dropdown' id='dropbtn'>
-        <div class='nav__link'>
-          <%= svg('user.svg', class: 'icon') %>
-          <p class='nav__item--username' id='nav__item--username'><%= current_user.name %></p>
-        </div>
-        <div class="dropdown__content" id='dropdown__content'>
-          <%= link_to 'Manage events', current_user, title: 'Manage your events', class: 'dropdown__link' %>
-          <%= link_to 'Update account', edit_user_registration_path, title: 'Update account', class: 'dropdown__link' %>
-          <%= link_to 'Logout', destroy_user_session_path, title: 'Logout',
-                       class: 'dropdown__link', method: 'delete' %>
-        </div>
-      </div>
-
-    <% else %>
-
-      <div class='nav__item'>
-        <%= link_to 'Sign up', new_user_registration_path, class: 'nav__link'%>
-      </div>
-
-      <div class='nav__item'>
-        <%= link_to 'Log in', new_user_session_path, class: 'nav__link'%>
-      </div>
-
-    <% end %>
-
-    <div class='nav__item nav__item--reverse'>
-      <%= link_to 'Create event', new_event_path, class: 'nav__link nav__link--reverse'%>
-    </div>
+    <label for='show-menu' class='show-menu'><%= svg('menu.svg', class: 'icon icon--menu') %></label>
+    <input type='checkbox' id='show-menu' role='button'>
+    <ul class='nav__menu'>
+      <li class='nav__item'>
+        <%= link_to 'Search events', events_path, class: 'nav__link' %>
+      </li>
+      <% if !user_signed_in? %>
+        <li class='nav__item'>
+          <%= link_to 'Sign up', new_user_registration_path, class: 'nav__link' %>
+        </li>
+        <li class='nav__item'>
+          <%= link_to 'Log in', new_user_session_path, class: 'nav__link' %>
+        </li>
+      <% else %>
+        <li class='nav__item'>
+          <a class='nav__link' onclick='return false;' href=''><%= svg('user.svg', class: 'icon') %><%=current_user.name %></a>
+          <ul class='hidden'>
+            <li class='nav__item'>
+              <%= link_to 'Manage events', user_path(current_user), class: 'nav__link' %>
+            </li>
+            <li class='nav__item'>
+              <%= link_to 'Edit account', edit_user_registration_path, class: 'nav__link' %>
+            </li>
+            <li class='nav__item'>
+              <%= link_to 'Logout', destroy_user_session_path, class: 'nav__link', method: 'delete' %>
+            </li>
+          </ul>
+        </li>
+      <% end %>
+      <li class='nav__item'>
+        <%= link_to 'Create event', new_event_path, class: 'nav__link nav__link--reverse' %>
+      </li>
+    </ul>
   </nav>
-  <%= svg('menu.svg', class: 'icon icon--menu') %>
 </header>
