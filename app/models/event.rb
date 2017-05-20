@@ -19,8 +19,8 @@ class Event < ApplicationRecord
   before_validation :normalize_title
   before_validation :create_slug
 
-  validates_presence_of :user_id, :title, :venue, :address, :date_and_time, :category_id,
-                        :description, :picture
+  validates_presence_of :user_id, :title, :venue, :address, :date_and_time,
+                        :category_id, :description, :picture
 
   validates_length_of :title, :venue, maximum: 80
   validates_length_of :description, maximum: 2000

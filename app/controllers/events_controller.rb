@@ -41,11 +41,19 @@ class EventsController < ApplicationController
 
   def edit
     @event = Event.includes(:creator).find(params[:id])
+    if @event.past?
+      flash[:danger] = 'You cannot edit past event!'
+      redirect_to @event
+    end
   end
 
   def update
     @event = Event.find(params[:id])
-    if @event.update_attributes(event_params)
+
+    if @event.past?
+      flash[:danger] = 'You cannot edit past event!'
+      redirect_to @event
+    elsif @event.update_attributes(event_params)
       flash[:success] = 'Event updated'
       redirect_to @event
     else
