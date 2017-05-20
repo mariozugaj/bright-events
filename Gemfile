@@ -30,6 +30,7 @@ gem 'underscore-rails'
 gem 'will_paginate'
 
 group :development, :test do
+  gem 'bullet'
   gem 'byebug', platform: :mri
 end
 

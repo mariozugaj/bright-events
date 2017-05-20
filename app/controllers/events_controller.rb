@@ -4,12 +4,8 @@ class EventsController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
-    @events =
-      if params[:location].present?
-        Event.near(params[:location]).filter(params.slice(:by_category, :by_title, :start_date, :end_date)).paginate(page: params[:page])
-      else
-        Event.filter(params.slice(:by_category, :by_title, :start_date, :end_date)).upcoming.paginate(page: params[:page])
-      end
+    @events = search(params).paginate(page: params[:page])
+
     map_hash = Gmaps4rails.build_markers(@events) do |event, marker|
       marker.lat event.latitude
       marker.lng event.longitude
@@ -44,7 +40,7 @@ class EventsController < ApplicationController
   end
 
   def edit
-    @event = Event.find(params[:id])
+    @event = Event.includes(:creator).find(params[:id])
   end
 
   def update
@@ -63,6 +59,14 @@ class EventsController < ApplicationController
     @event.destroy
     flash[:success] = 'Event deleted'
     redirect_to user_path(current_user)
+  end
+
+  def search(params)
+    events = Event.filter(params.slice(:by_category, :by_title, :start_date, :end_date))
+                  .upcoming
+                  .includes(:creator, :category)
+    events = events.near(params[:location]) if params[:location].present?
+    events
   end
 
   private

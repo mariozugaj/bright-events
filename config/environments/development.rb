@@ -55,4 +55,10 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
   config.sass.preferred_syntax = :sass
   config.generators.javascript_engine = :js
+
+  config.after_initialize do
+    #Enable bullet in your application
+    Bullet.enable = true
+    Bullet.console = true
+  end
 end

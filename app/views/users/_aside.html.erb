@@ -8,7 +8,7 @@
       </h3>
       <ul class='aside__nav'>
         <li class='aside__link'>
-          <%= link_to "Events you created (#{@user.events.count})",
+          <%= link_to "Events you created (#{@user.created_events_count})",
                       user_path,
                       class: class_string('nav__link',
                                           'aside__link--active' => current_page?(user_path)) %>

@@ -2,20 +2,19 @@ class Event < ApplicationRecord
   include EventState
   include Filterable
 
-  belongs_to :creator, class_name: 'User', foreign_key: 'user_id'
+  belongs_to :creator, class_name: 'User', foreign_key: 'user_id', counter_cache: :created_events_count
   belongs_to :category, class_name: 'Category', foreign_key: 'category_id'
+
+  has_many :attendances, class_name: 'Attendance',
+                         foreign_key: 'attending_event_id',
+                         dependent: :destroy
+  has_many :attendees, through: :attendances, source: :attendee
 
   default_scope -> { order(date_and_time: :asc) }
   scope :by_category, -> (category_id) { where category_id: category_id }
   scope :by_title, -> (title) { where("lower(title) LIKE ? OR lower(description) LIKE ?", "%#{title.downcase}%", "%#{title.downcase}%")  }
   scope :start_date, -> (start_date) { where('date_and_time >= ?', start_date) }
   scope :end_date, -> (end_date) { where('date_and_time <= ?', end_date)}
-
-
-  has_many :attendances, class_name: 'Attendance',
-                         foreign_key: 'attending_event_id',
-                         dependent: :destroy
-  has_many :attendees, through: :attendances, source: :attendee
 
   before_validation :normalize_title
   before_validation :create_slug

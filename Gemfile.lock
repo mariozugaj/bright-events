@@ -43,6 +43,9 @@ GEM
     bcrypt (3.1.11)
     bindex (0.5.0)
     builder (3.2.3)
+    bullet (5.5.1)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.10.0)
     byebug (9.0.6)
     carrierwave (1.0.0)
       activemodel (>= 4.0.0)
@@ -192,6 +195,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.4)
+    uniform_notifier (1.10.0)
     warden (1.2.7)
       rack (>= 1.0)
     web-console (3.5.0)
@@ -210,6 +214,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bullet
   byebug
   carrierwave
   cloudinary

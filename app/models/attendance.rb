@@ -1,6 +1,6 @@
 class Attendance < ApplicationRecord
   belongs_to :attendee, class_name: 'User'
-  belongs_to :attending_event, class_name: 'Event'
+  belongs_to :attending_event, class_name: 'Event', counter_cache: :attendees_count
 
   validates :attendee_id, presence: true
   validates :attending_event_id, presence: true

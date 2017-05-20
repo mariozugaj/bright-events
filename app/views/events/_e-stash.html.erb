@@ -32,6 +32,6 @@
     <%= link_to "##{event.category.name}",
                 events_path(by_category: event.category.id),
                 class: 'title--l6 link' %>
-    <%= content_tag(:h6, "Attendees: #{event.attendees.count}", class: 'title--l6') %>
+    <%= content_tag(:h6, "Attendees: #{event.attendees_count}", class: 'title--l6') %>
   </footer>
 </div>
