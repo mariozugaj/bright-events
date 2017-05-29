@@ -19,10 +19,12 @@
                          class: 'form__field form__field--margin-yes' %>
 
     <div class="form__remember-me">
+
       <div>
         <%= f.check_box :remember_me %>
         <%= f.label :remember_me, class: 'text--smaller' %>
       </div>
+      
       <%= link_to "Forgot password?", new_password_path(resource_name),
                                       class: 'link text--smaller' %>
     </div>
