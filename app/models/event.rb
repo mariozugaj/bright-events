@@ -40,6 +40,10 @@ class Event < ApplicationRecord
     self.slug = title.parameterize
   end
 
+  def self.popular_categories
+    Event.includes(:category).upcoming.max_by(7) { |event| event.attendees_count }.map(&:category).uniq
+  end
+
   private
 
   def normalize_title

@@ -16,9 +16,6 @@
 
     # browse by popular categories
     @categories = Category.pluck(:name, :id)
-    @popular_categories = Event.includes(:category)
-                               .upcoming
-                               .max_by(7) { |event| event.attendees_count }
-                               .map(&:category)
+    @popular_categories = Event.popular_categories
   end
 end
