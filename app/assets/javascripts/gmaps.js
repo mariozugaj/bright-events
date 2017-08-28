@@ -19,6 +19,5 @@ $(document).on('turbolinks:load', function() {
       if (Object.keys(mapMarkers).length == 1) {
         handler.getMap().setZoom(15);
       }
-      
     });
 });

@@ -62,8 +62,15 @@
         <p class='text--center'>This event was held on <%= @event.date_and_time.strftime("%a, %d %b %Y") %></p>
 
       <% else %>
-        <p class='text--center'><%= link_to 'Sign up', new_user_registration_path, class: 'link' %> or
-           <%= link_to 'log in', new_user_session_path, class: 'link' %> to attend this event</p>
+        <p class='text--center'>
+          <%= link_to 'Sign up', new_user_registration_path, class: 'link' %>
+          &nbsp;
+          or
+          &nbsp;
+          <%= link_to 'log in', new_user_session_path, class: 'link' %>
+          &nbsp;
+          to attend this event
+        </p>
       <% end %>
 
     </div>

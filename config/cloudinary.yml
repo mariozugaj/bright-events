@@ -6,6 +6,7 @@ development:
   enhance_image_tag: true
   static_image_support: false
   secure: true
+
 production:
   cloud_name: <%= ENV["CLOUD_NAME"] %>
   api_key: <%= ENV["CL_API_KEY"] %>
@@ -13,6 +14,7 @@ production:
   enhance_image_tag: true
   static_image_support: true
   secure: true
+
 test:
   cloud_name: <%= ENV["CLOUD_NAME"] %>
   api_key: <%= ENV["CL_API_KEY"] %>

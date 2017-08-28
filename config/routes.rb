@@ -14,5 +14,5 @@ Rails.application.routes.draw do
       get :upcoming_events, :created_events, :past_attended_events
     end
   end
-  resources :attendances, only: [:create, :destroy]
+  resources :attendances, only: %i[create destroy]
 end
