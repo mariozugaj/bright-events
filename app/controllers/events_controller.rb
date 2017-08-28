@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
-  before_action :concatenate_date, only: [:create, :update]
-  before_action :correct_user, only: [:edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: %i[index show]
+  before_action :concatenate_date, only: %i[create update]
+  before_action :correct_user, only: %i[edit update destroy]
 
   def index
     @events = search(params).paginate(page: params[:page])
