@@ -70,9 +70,10 @@ class EventsController < ApplicationController
   end
 
   def search(params)
-    events = Event.filter(params.slice(:by_category, :by_title, :start_date, :end_date))
+    events = Event.includes(:creator, :category)
+                  .filter(params.slice(:by_category, :by_title, :start_date, :end_date))
                   .upcoming
-                  .includes(:creator, :category)
+                  .by_date
     events = events.near(params[:location]) if params[:location].present?
     events
   end
