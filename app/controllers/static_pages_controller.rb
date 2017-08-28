@@ -18,5 +18,6 @@ class StaticPagesController < ApplicationController
     # browse by popular categories
     @categories = Category.pluck(:name, :id)
     @popular_categories = Event.popular_categories
+    @images = Event.all.by_attendees_count.limit(5).map(&:picture_url)
   end
 end

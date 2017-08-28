@@ -15,6 +15,7 @@ class Event < ApplicationRecord
   scope :start_date, ->(start_date) { where('date_and_time >= ?', start_date) }
   scope :end_date, ->(end_date) { where('date_and_time <= ?', end_date) }
   scope :by_date, -> { order(date_and_time: :desc) }
+  scope :by_attendees_count, -> { order(attendees_count: :desc) }
 
   before_validation :normalize_title
   before_validation :create_slug

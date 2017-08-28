@@ -3,10 +3,9 @@
   <!-- Homepage hero image -->
 
   <section class="hero">
-    <%= image_tag 'hero-imgs/hero-4_npd6jy', class: 'hero__img', type: :upload %>
-    <%= image_tag 'hero-imgs/hero-3_mdkafy', class: 'hero__img', type: :upload %>
-    <%= image_tag 'hero-imgs/hero-2_bjm2a0', class: 'hero__img', type: :upload %>
-    <%= image_tag 'hero-imgs/hero-1_z4or6s', class: 'hero__img', type: :upload %>
+    <% @images.each do |image| %>
+      <%= image_tag image, class: 'hero__img' %>
+    <% end %>
   </section>
 
   <!-- Homepage search box -->
