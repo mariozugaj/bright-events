@@ -1,4 +1,4 @@
-<%= form_for(current_user.attendances.find_by(attendee_id: current_user.id),
+<%= form_for(current_user.attendances.find_by(attending_event_id: @event.id),
             html: { method: :delete },
             remote: true) do |f| %>
   <div class='dont-attend-container'>

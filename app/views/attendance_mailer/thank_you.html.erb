@@ -1,0 +1,19 @@
+<p>
+  Hi <%= @user.name %>!
+</p>
+<br/>
+<p>
+  Thank you for attending <%= @event.title %>
+  Just to remind you, event is held on <%= @event.date_and_time.strftime("%a, %d %b %Y %l:%M %p") %>
+  at <%= @event.venue %>.
+</p>
+<p>
+  Thanks for attending and have a great day!
+</p>
+<br/>
+<p>
+  Yours sincerely,
+</p>
+<p>
+  People of BrightEvents
+</p>
