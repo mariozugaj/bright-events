@@ -1,0 +1,17 @@
+<div class="modal" id="modal">
+  <div class="modal__content">
+    <div class="modal__header">
+      <h2>
+        Attendees (<%= @event.attendees_count %>)
+      </h2>
+      <span class="modal__close" id="modal-close">&times;</span>
+    </div>
+    <div class="modal__body">
+      <% @event.attendees.each do |attendee| %>
+        <span>
+          <%= link_to attendee.name, user_path(attendee), class: 'link' %>
+        </span>
+      <% end %>
+    </div>
+  </div>
+</div>

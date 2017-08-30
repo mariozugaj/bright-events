@@ -1,5 +1,7 @@
 <%= provide(:title, @event.title) %>
 
+<%= render 'modal/modal' %>
+
 <div class="event-listing-grid">
 
   <!-- Blurry hero image -->
@@ -45,6 +47,11 @@
           <span id='attendees-count' class='title--l4 text--muted'>
             <%= @event.attendees_count %>
           </span>
+          <% if current_user == @event.creator %>
+            <a href='#' id='modal-btn'>
+              (See list)
+            </a>
+          <% end %>
         </h2>
 
         <p class='text--smaller text--skinny'>by <%= link_to @event.creator.name,

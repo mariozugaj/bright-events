@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @events = @user.events
-                   .includes(:category)
+                   .includes(:category, :creator)
                    .by_date
                    .paginate(page: params[:page])
     @header_title = 'Events you created'
