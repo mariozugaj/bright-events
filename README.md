@@ -1,6 +1,6 @@
 # BrightEvents
 
-BrightEvents is an Eventbrite clone built with the power of Ruby on rails. View the [demo](https://brightevents.herokuapp.com/).
+BrightEvents is an Eventbrite clone built with the power of Ruby on rails. View the [demo](https://brightevents.mariozugaj.com/).
 
 You can sign in using **prepopulated account**:
 
